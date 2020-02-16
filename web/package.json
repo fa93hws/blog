@@ -7,12 +7,14 @@
   "repository": {},
   "scripts": {
     "build": "bin/webdev.sh build",
-    "serve": "bin/webdev.sh serve"
+    "serve": "bin/webdev.sh serve",
+    "lint:ts": "eslint \"{conf,src,tools}/**/*.ts{,x}\""
   },
   "dependencies": {
     "@types/mini-css-extract-plugin": "^0.9.0",
     "@types/terser-webpack-plugin": "^2.2.0",
     "@types/webpack-dev-server": "^3.10.0",
+    "@typescript-eslint/parser": "^2.19.2",
     "classnames": "^2.2.6",
     "mobx": "^5.15.4",
     "mobx-react": "^6.1.8",
@@ -31,9 +33,14 @@
     "@types/react-dom": "^16.9.5",
     "@types/react-router": "^5.1.4",
     "@types/webpack": "^4.41.6",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
     "css-loader": "^3.4.2",
     "enzyme": "^3.11.0",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.7.0",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "html-webpack-plugin": "^3.2.0",

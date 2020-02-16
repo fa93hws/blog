@@ -15,9 +15,9 @@ function parseMode(raw: string | undefined): Configuration['mode'] {
     case 'prod':
       return 'production';
     case undefined:
-      throw new Error(`webpack mode must be provided`);
+      throw new Error('webpack mode must be provided');
     default:
-      throw new Error(`Unknown webpack mode ${raw}`)
+      throw new Error(`Unknown webpack mode ${raw}`);
   }
 }
 
@@ -37,6 +37,6 @@ export function getOptionsFromEnv(): Option {
   return {
     hashOutput: parseBoolean('HASH_OUTPUT'),
     sourceMap: parseBoolean('SOURCE_MAP'),
-    mode: parseMode(process.env['WEBPACK_MODE'])
-  }
+    mode: parseMode(process.env.WEBPACK_MODE),
+  };
 }

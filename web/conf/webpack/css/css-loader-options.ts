@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 
 export function getCssLoaderOption({ hashOutput, sourceMap }: {
-  hashOutput: boolean,
-  sourceMap: boolean,
+  hashOutput: boolean;
+  sourceMap: boolean;
 }) {
   const localIdentName = hashOutput
     ? '[hash:base64]'
