@@ -4,4 +4,4 @@ import { createPage } from './pages/hello-world/hello-world';
 
 const HelloWorldPage = createPage();
 
-ReactDOM.render(<HelloWorldPage/>, document.getElementById('root'));
+ReactDOM.render(<HelloWorldPage />, document.getElementById('root'));

@@ -1,12 +1,13 @@
 import { resolve } from 'path';
 
-export function getCssLoaderOption({ hashOutput, sourceMap }: {
+export function getCssLoaderOption({
+  hashOutput,
+  sourceMap,
+}: {
   hashOutput: boolean;
   sourceMap: boolean;
 }) {
-  const localIdentName = hashOutput
-    ? '[hash:base64]'
-    : '[path][name]__[local]';
+  const localIdentName = hashOutput ? '[hash:base64]' : '[path][name]__[local]';
   return {
     modules: {
       mode: 'local',

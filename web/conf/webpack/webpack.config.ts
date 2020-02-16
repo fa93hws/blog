@@ -7,11 +7,7 @@ import { getOutput } from './output';
 import { getMiniCssExtractPluginOptions } from './css/mini-css-plugin';
 import { getOptionsFromEnv } from './env-options';
 
-const {
-  hashOutput,
-  sourceMap,
-  mode,
-} = getOptionsFromEnv();
+const { hashOutput, sourceMap, mode } = getOptionsFromEnv();
 
 export const webpackConfig: Configuration = {
   mode,

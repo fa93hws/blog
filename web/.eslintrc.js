@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   env: {
     node: true,
   },
@@ -16,9 +16,9 @@ module.exports = {
     },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-      }
-    }
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
   plugins: [
     '@typescript-eslint',
@@ -30,6 +30,7 @@ module.exports = {
   ],
   extends: [
     'airbnb-base',
+    'eslint-config-prettier',
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
     'plugin:react/recommended',
@@ -39,9 +40,12 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-default-export': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'import/no-extraneous-dependencies': ['error', {
-      devDependencies: ['conf/**/*.ts', 'tools/**/*.ts']
-    }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['conf/**/*.ts', 'tools/**/*.ts'],
+      },
+    ],
     'import/extensions': 'off',
-  }
-}
+  },
+};
