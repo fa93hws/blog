@@ -9,15 +9,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Find npm Cache
-        uses: actions/cache@v1
-        with:
-          path: web/node_modules
-          key: ${{ runner.OS }}-npm-${{ hashFiles('web/package-lock.json') }}
-          restore-keys: ${{ runner.OS }}-npm-
-      - name: Run npm
+      - name: Run npm ci
         working-directory: web
-        run: npm install
+        run: npm ci
       - name: Check ESLint
         working-directory: web
         run: npm run lint:ts
@@ -27,10 +21,10 @@ jobs:
       - name: Check prettier
         working-directory: web
         run: npm run format:ts
-      - name: Unit test
+      - name: Run Unit test
         working-directory: web
         run: npm run test -- --ci
-      - name: webpack build
+      - name: Run webpack build
         env:
           CI: true
         working-directory: web
