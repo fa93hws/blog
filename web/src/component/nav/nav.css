@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  flex-grow: 3;
+  background-color: blue;
+}
+
+.content {
+  flex-grow: 7;
+  background-color: black;
+}

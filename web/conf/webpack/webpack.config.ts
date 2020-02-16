@@ -7,7 +7,7 @@ import { getOutput } from './output';
 import { getMiniCssExtractPluginOptions } from './css/mini-css-plugin';
 import { getOptionsFromEnv } from './env-options';
 
-const { hashOutput, sourceMap, mode } = getOptionsFromEnv();
+const { hashOutput, sourceMap, mode, isOnCI } = getOptionsFromEnv();
 
 export const webpackConfig: Configuration = {
   mode,
@@ -19,15 +19,20 @@ export const webpackConfig: Configuration = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx|css)$/,
+        test: /\.(ts|tsx)$/,
         loader: 'ts-loader',
       },
       {
         test: /\.css$/,
         use: [
-          './conf/css-module-types-loader.ts',
           {
             loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-modules-typescript-loader',
+            options: {
+              mode: isOnCI ? 'verify' : 'emit',
+            },
           },
           {
             loader: 'css-loader',

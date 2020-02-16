@@ -3,8 +3,8 @@ name: web-CI
 on: [push]
 
 jobs:
-  lint:
-    name: Lint
+  CI:
+    name: CI
     runs-on: ubuntu-latest
 
     steps:
@@ -28,5 +28,7 @@ jobs:
         working-directory: web
         run: npm run format:ts
       - name: webpack build
+        env:
+          CI: true
         working-directory: web
         run: npm run build

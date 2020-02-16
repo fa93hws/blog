@@ -4,6 +4,7 @@ type Option = {
   hashOutput: boolean;
   sourceMap: boolean;
   mode: Configuration['mode'];
+  isOnCI: boolean;
 };
 
 function parseMode(raw: string | undefined): Configuration['mode'] {
@@ -21,7 +22,7 @@ function parseMode(raw: string | undefined): Configuration['mode'] {
   }
 }
 
-function parseBoolean(name: string): boolean {
+function parseBoolean(name: string, defaultValue?: boolean): boolean {
   const value = process.env[name];
   switch (value?.toLowerCase()) {
     case 'true':
@@ -29,7 +30,10 @@ function parseBoolean(name: string): boolean {
     case 'false':
       return false;
     default:
-      throw new Error(`unknown ${name}: ${value}`);
+      if (defaultValue == null) {
+        throw new Error(`unknown ${name}: ${value}`);
+      }
+      return defaultValue;
   }
 }
 
@@ -38,5 +42,6 @@ export function getOptionsFromEnv(): Option {
     hashOutput: parseBoolean('HASH_OUTPUT'),
     sourceMap: parseBoolean('SOURCE_MAP'),
     mode: parseMode(process.env.WEBPACK_MODE),
+    isOnCI: parseBoolean('CI', false),
   };
 }
