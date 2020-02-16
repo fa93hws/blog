@@ -1,0 +1,26 @@
+name: web-CI
+
+on: [push]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Find npm Cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-${{ hashFiles('web/package-lock.json') }}
+          restore-keys: ${{ runner.OS }}-npm-
+      - name: Run npm
+        working-directory: web
+        run: npm install
+      - name: Check ESLint
+        working-directory: web
+        run: npm run lint:ts
+      - name: Check typescript
+        working-directory: web
+        run: npm run lint:ts:types

@@ -8,7 +8,8 @@
   "scripts": {
     "build": "bin/webdev.sh build",
     "serve": "bin/webdev.sh serve",
-    "lint:ts": "eslint \"{conf,src,tools}/**/*.ts{,x}\""
+    "lint:ts": "eslint \"{conf,src,tools}/**/*.ts{,x}\"",
+    "lint:ts:types": "tsc --project conf/typescript/tsconfig.check.json"
   },
   "dependencies": {
     "@types/mini-css-extract-plugin": "^0.9.0",
