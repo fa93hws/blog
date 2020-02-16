@@ -1,7 +1,13 @@
-import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { createPage } from './pages/hello-world/hello-world';
+import * as React from 'react';
+import { createHomePage } from './pages/home/home';
+import { Skeleton } from './pages/skeleton';
+import { createNav } from './component/nav/nav';
 
-const HelloWorldPage = createPage();
+export const App = () => {
+  const Nav = createNav();
+  const MainContent = createHomePage();
+  return <Skeleton Nav={Nav} MainContent={MainContent} />;
+};
 
-ReactDOM.render(<HelloWorldPage />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

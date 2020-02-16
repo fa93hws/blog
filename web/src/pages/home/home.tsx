@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function createPage() {
+export function createHomePage() {
   const page = () => (
     <div>
       <p>hello world</p>
