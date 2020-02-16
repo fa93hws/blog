@@ -11,7 +11,8 @@
     "lint:ts": "eslint \"{conf,src,tools}/**/*.ts{,x}\"",
     "format:ts": "prettier --check \"{conf,src,tools}/**/*.ts{,x}\"",
     "format:ts:fix": "prettier --write \"{conf,src,tools}/**/*.ts{,x}\"",
-    "lint:ts:types": "tsc --project conf/typescript/tsconfig.check.json"
+    "lint:ts:types": "tsc --project conf/typescript/tsconfig.check.json",
+    "test": "jest"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/html-webpack-plugin": "^3.2.2",
     "@types/jest": "^25.1.2",
     "@types/mini-css-extract-plugin": "^0.9.0",
@@ -40,6 +42,8 @@
     "css-loader": "^3.4.2",
     "css-modules-typescript-loader": "^4.0.0",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
@@ -52,6 +56,7 @@
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
+    "jest-serializer-html": "^7.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss": "^7.0.26",
     "prettier": "^1.19.1",
