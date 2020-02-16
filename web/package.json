@@ -12,7 +12,7 @@
     "format:ts": "prettier --check \"{conf,src,tools}/**/*.ts{,x}\"",
     "format:ts:fix": "prettier --write \"{conf,src,tools}/**/*.ts{,x}\"",
     "lint:ts:types": "tsc --project conf/typescript/tsconfig.check.json",
-    "test": "jest --ci"
+    "test": "jest"
   },
   "dependencies": {
     "classnames": "^2.2.6",

@@ -27,6 +27,9 @@ jobs:
       - name: Check prettier
         working-directory: web
         run: npm run format:ts
+      - name: Unit test
+        working-directory: web
+        run: npm run test --ci
       - name: webpack build
         env:
           CI: true
