@@ -2,7 +2,11 @@ module.exports = {
   roots: ['<rootDir>'],
   preset: 'ts-jest',
   testMatch: ['**/tests/**/*.tests.ts{,x}'],
-  collectCoverageFrom: ['!**/node_modules/**', '!*.d.ts'],
+  collectCoverageFrom: [
+    '!**/node_modules/**',
+    '{tools,conf,src}/**/*.(j|t)s{,x}',
+    '!**/*.d.ts',
+  ],
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['<rootDir>/tools/jest/setup.ts'],
   moduleNameMapper: {
