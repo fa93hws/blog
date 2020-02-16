@@ -12,7 +12,7 @@ jobs:
       - name: Find npm Cache
         uses: actions/cache@v1
         with:
-          path: node_modules
+          path: web/node_modules
           key: ${{ runner.OS }}-npm-${{ hashFiles('web/package-lock.json') }}
           restore-keys: ${{ runner.OS }}-npm-
       - name: Run npm
