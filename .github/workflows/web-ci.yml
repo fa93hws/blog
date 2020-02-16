@@ -24,3 +24,9 @@ jobs:
       - name: Check typescript
         working-directory: web
         run: npm run lint:ts:types
+      - name: Check prettier
+        working-directory: web
+        run: npm run format:ts
+      - name: webpack build
+        working-directory: web
+        run: npm run build
