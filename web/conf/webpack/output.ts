@@ -6,6 +6,6 @@ export function getOutput(hashOutput: boolean): Output {
   return {
     path: resolve(__dirname, '..', '..', 'dist/'),
     filename: `static/js/[name]${suffix}.js`,
-    chunkFilename: `static/js/[name]${suffix}.js`
+    chunkFilename: `static/js/[name]${suffix}.js`,
   };
 }

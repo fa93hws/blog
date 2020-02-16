@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 export function createPage() {
-  return () => (
+  const page = () => (
     <div>
       <p>hello world</p>
     </div>
   );
+  return page;
 }

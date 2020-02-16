@@ -4,7 +4,7 @@ import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as TerserPlugin from 'terser-webpack-plugin';
 import { getCssLoaderOption } from './css/css-loader-options';
 import { getOutput } from './output';
-import { getMiniCssExtractPluginOptions } from './css/mini-css-plugin'
+import { getMiniCssExtractPluginOptions } from './css/mini-css-plugin';
 import { getOptionsFromEnv } from './env-options';
 
 const {
