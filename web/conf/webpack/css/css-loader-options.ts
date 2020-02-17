@@ -11,7 +11,7 @@ export function getCssLoaderOption({
   return {
     modules: {
       mode: 'local',
-      context: resolve(__dirname, '../src'),
+      context: resolve(__dirname, '..', '..', '..', 'src'),
       localIdentName,
     },
     localsConvention: 'camelCaseOnly',
