@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Cache node modules
+      - name: Download node modules
         uses: actions/cache@v1
         with:
           path: web/node_modules
@@ -49,7 +49,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Cache node modules
+      - name: Download node modules
         uses: actions/cache@v1
         with:
           path: web/node_modules
@@ -65,7 +65,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Cache node modules
+      - name: Download node modules
         uses: actions/cache@v1
         with:
           path: web/node_modules
