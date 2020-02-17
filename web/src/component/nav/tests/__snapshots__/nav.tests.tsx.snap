@@ -3,7 +3,7 @@
 exports[`Global Nav should match the snapshot 1`] = `
 <nav>
   <div>
-    This is avatar
+    This is an avatar
   </div>
   <div>
     This is content

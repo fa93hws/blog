@@ -27,5 +27,6 @@ jobs:
       - name: Run webpack build
         env:
           CI: true
+          DEBUG: "*"
         working-directory: web
         run: npm run build

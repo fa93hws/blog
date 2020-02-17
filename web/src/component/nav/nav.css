@@ -5,10 +5,10 @@
 
 .avatar {
   flex-grow: 3;
-  background-color: blue;
+  background-color: rgb(74, 74, 221);
 }
 
 .content {
   flex-grow: 7;
-  background-color: black;
+  background-color: rgb(44, 35, 35);
 }

@@ -7,7 +7,14 @@ import { getOutput } from './output';
 import { getMiniCssExtractPluginOptions } from './css/mini-css-plugin';
 import { getOptionsFromEnv } from './env-options';
 
-const { hashOutput, sourceMap, mode, isOnCI } = getOptionsFromEnv();
+const {
+  hashOutput,
+  sourceMap,
+  mode,
+  isOnCI,
+  hotModuleReplacement: hotModuleReload,
+  tsTranspileOnly,
+} = getOptionsFromEnv();
 
 export const webpackConfig: Configuration = {
   mode,
@@ -21,12 +28,18 @@ export const webpackConfig: Configuration = {
       {
         test: /\.(ts|tsx)$/,
         loader: 'ts-loader',
+        options: {
+          transpileOnly: tsTranspileOnly,
+        },
       },
       {
         test: /\.css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: hotModuleReload,
+            },
           },
           {
             loader: 'css-modules-typescript-loader',
@@ -49,6 +62,7 @@ export const webpackConfig: Configuration = {
   devServer: {
     historyApiFallback: true,
     inline: true,
+    hot: hotModuleReload,
   },
   plugins: [
     new HtmlWebpackPlugin({ template: 'index.html' }),

@@ -1,10 +1,15 @@
+import * as debug from 'debug';
 import { Configuration } from 'webpack';
 
-type Option = {
+const info = debug('webpack_options:info');
+
+type Options = {
   hashOutput: boolean;
   sourceMap: boolean;
   mode: Configuration['mode'];
   isOnCI: boolean;
+  hotModuleReplacement: boolean;
+  tsTranspileOnly: boolean;
 };
 
 function parseMode(raw: string | undefined): Configuration['mode'] {
@@ -37,11 +42,15 @@ function parseBoolean(name: string, defaultValue?: boolean): boolean {
   }
 }
 
-export function getOptionsFromEnv(): Option {
-  return {
+export function getOptionsFromEnv(): Options {
+  const options = {
     hashOutput: parseBoolean('HASH_OUTPUT'),
     sourceMap: parseBoolean('SOURCE_MAP'),
     mode: parseMode(process.env.WEBPACK_MODE),
     isOnCI: parseBoolean('CI', false),
+    hotModuleReplacement: parseBoolean('HOT_MODULE_RELOAD', false),
+    tsTranspileOnly: parseBoolean('TS_TRANSPILE_ONLY', false),
   };
+  info(options);
+  return options;
 }
