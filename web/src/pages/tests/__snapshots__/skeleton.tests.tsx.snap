@@ -1,11 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Skeleton should match the snapshot 1`] = `
-<div>
+<div
+  class="container"
+>
   <div>
     Nav
   </div>
-  <main>
+  <main
+    class="mainContent"
+  >
     <div>
       MainContent
     </div>
