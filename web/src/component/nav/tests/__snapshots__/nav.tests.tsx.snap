@@ -1,11 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Global Nav should match the snapshot 1`] = `
-<nav>
-  <div>
+<nav
+  class="nav"
+>
+  <div
+    class="avatar"
+  >
     This is an avatar
   </div>
-  <div>
+  <div
+    class="content"
+  >
     This is content
   </div>
 </nav>
