@@ -41,13 +41,24 @@ webpack_dev_server() {
   webpack-dev-server --config="${WEB_DIR}"/conf/webpack/webpack.config.js
 }
 
+storybook() {
+  export HASH_OUTPUT="false"
+  export SOURCE_MAP="true"
+  export WEBPACK_MODE="development"
+
+  local pkg="${1:-src}"
+  export STORYBOOK_PKG="${pkg}"
+  start-storybook --config-dir="${WEB_DIR}"/conf/storybook
+}
+
 main () {
   local cmd="$1"
   shift
 
   case "${cmd}" in
-    build) build "$@";;
-    serve) webpack_dev_server "$@";;
+    build) build "$@" ;;
+    serve) webpack_dev_server "$@" ;;
+    storybook) storybook "$@" ;;
     *) error "unknown command: ${cmd}" ;;
   esac
 }

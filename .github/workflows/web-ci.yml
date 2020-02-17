@@ -20,7 +20,7 @@ jobs:
         run: npm run lint:ts:types
       - name: Check prettier
         working-directory: web
-        run: npm run format:ts
+        run: npm run format
       - name: Run Unit test
         working-directory: web
         run: npm run test -- --ci

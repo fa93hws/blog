@@ -43,7 +43,11 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['conf/**/*.ts', 'tools/**/*.ts'],
+        devDependencies: [
+          'conf/**/*.ts',
+          'tools/**/*.ts',
+          'src/**/stories/*.ts{,x}',
+        ],
       },
     ],
     'import/extensions': 'off',
