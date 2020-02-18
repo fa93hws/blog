@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { text, withKnobs } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import { text } from '@storybook/addon-knobs';
 import { Nav } from '../nav';
-
-addDecorator(withKnobs);
 
 storiesOf('component.nav', module).add('global nav', () => {
   const author = {
