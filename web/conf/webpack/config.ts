@@ -6,6 +6,7 @@ import { getCssLoaderOption } from './css/css-loader-options';
 import { getOutput } from './output';
 import { getMiniCssExtractPluginOptions } from './css/mini-css-plugin';
 import { getOptionsFromEnv } from './env-options';
+import { getPostcssOption } from './css/postcss-options';
 
 const {
   hashOutput,
@@ -56,17 +57,7 @@ export const webpackConfig: Configuration = {
           },
           {
             loader: 'postcss-loader',
-            options: {
-              /* eslint-disable global-require */
-              /* eslint-disable  @typescript-eslint/no-var-requires */
-              plugins: [
-                require('autoprefixer'),
-                require('postcss-modules-values-replace'),
-                require('postcss-modules-values'),
-                require('postcss-calc')({ mediaQueries: true }),
-                require('postcss-color-function'),
-              ],
-            },
+            options: getPostcssOption({ sourceMap }),
           },
         ],
       },
