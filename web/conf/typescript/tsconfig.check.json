@@ -1,11 +1,15 @@
 {
   "extends": "../../tsconfig.json",
+  "include": [
+    "../../conf/**/*",
+    "../../src/**/*",
+    "../../tools/**/*",
+    "../../types/**/*"
+  ],
+  "exclude": ["../../node_modules"],
   "compilerOptions": {
     "incremental": true,
     "tsBuildInfoFile": "../../cache/ts-check.json",
     "outDir": "../../dist"
-  },
-  "include": [
-    "../../**/*"
-  ]
+  }
 }

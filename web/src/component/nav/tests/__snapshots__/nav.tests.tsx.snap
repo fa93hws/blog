@@ -5,9 +5,27 @@ exports[`Global Nav should match the snapshot 1`] = `
   class="nav"
 >
   <div
-    class="avatar"
+    class="container"
   >
-    This is an avatar
+    <a
+      href="author avatar link"
+    >
+      <img
+        alt="author avatar alt"
+        class="avatarImg"
+        src="author avatar path"
+      />
+    </a>
+    <p
+      class="name"
+    >
+      author name
+    </p>
+    <p
+      class="email"
+    >
+      author email
+    </p>
   </div>
   <div
     class="content"

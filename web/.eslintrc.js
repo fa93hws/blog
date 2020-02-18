@@ -27,12 +27,14 @@ module.exports = {
     'import',
     'jest',
     'react-hooks',
+    'jsx-a11y',
   ],
   extends: [
     'airbnb-base',
     'eslint-config-prettier',
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
+    'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
   ],
   rules: {

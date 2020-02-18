@@ -1,0 +1,30 @@
+@value gridBaseline from '../../metrics.css';
+@value colorBlueLight, monoWhite, colorPurpleLight from '../../colors.css';
+
+@value marginLeft: calc(gridBaseline * 2);
+
+.container {
+  background-color: colorBlueLight;
+  padding: calc(gridBaseline * 5);
+}
+
+.avatarImg {
+  width: calc(gridBaseline * 10);
+  height: calc(gridBaseline * 10);
+  border-radius: 50%;
+  margin-left: marginLeft;
+}
+
+.name {
+  white-space: nowrap;
+  color: monoWhite;
+  margin-top: gridBaseline;
+  margin-left: marginLeft;
+}
+
+.email {
+  white-space: nowrap;
+  color: colorPurpleLight;
+  margin-top: calc(gridBaseline * 0.5);
+  margin-left: marginLeft;
+}

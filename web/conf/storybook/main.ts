@@ -4,8 +4,7 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import { resolve, relative, join } from 'path';
 import { webpackConfig } from '../webpack/config';
 
-const info = debug('storybook_config:info');
-
+const info = debug('storybook_config').extend('info');
 function getStoriesFromEnv() {
   const folder = process.env.STORYBOOK_PKG || 'src';
   const webRoot = resolve(__dirname, '..', '..');
@@ -49,4 +48,8 @@ export const storybookConfig = {
   },
 
   stories: [getStoriesFromEnv()],
+  addons: [
+    '@storybook/addon-knobs/register',
+    '@storybook/addon-actions/register',
+  ],
 };

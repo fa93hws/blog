@@ -3,11 +3,6 @@
   flex-direction: column;
 }
 
-.avatar {
-  flex-grow: 3;
-  background-color: rgb(74, 74, 221);
-}
-
 .content {
   flex-grow: 7;
   background-color: rgb(44, 35, 35);
