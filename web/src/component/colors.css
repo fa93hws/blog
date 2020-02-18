@@ -1,0 +1,18 @@
+@value colorBlue: color(#2F407F);
+@value colorBlueLight: color(#6AA1C9);
+
+@value monoWhite: color(#ffffff);
+@value monoWhiteA50: color(monoWhite a(95%));
+@value monoWhiteA100: color(monoWhite a(65%));
+@value monoWhiteA200: color(monoWhite a(40%));
+@value monoWhiteA300: color(monoWhite a(15%));
+@value monoWhiteA400: color(monoWhite a(10%));
+@value monoWhiteA500: color(monoWhite a(7%));
+
+@value monoGrey: color(#293039);
+@value monoGreyUltraLight: color(#f8f9f9);
+@value monoGreyLight: color(#edf0f2);
+@value monoGreyA100: color(#808080 a(20%));
+@value monoGreyA200: color(monoGrey a(70%));
+
+@value colorPurpleLight: color(#c5cae9);

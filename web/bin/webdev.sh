@@ -46,7 +46,14 @@ storybook() {
   export SOURCE_MAP="true"
   export WEBPACK_MODE="development"
 
-  local pkg="${1:-src}"
+  local pkg="${1:-null}"
+  if [[ "${pkg}" != null ]]; then
+    shift
+  else
+    pkg="src"
+  fi
+  _parse_webpack_dev_args "$@"
+
   export STORYBOOK_PKG="${pkg}"
   start-storybook --config-dir="${WEB_DIR}"/conf/storybook
 }
