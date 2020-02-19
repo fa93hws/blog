@@ -4,9 +4,13 @@ exports[`Skeleton should match the snapshot 1`] = `
 <div
   class="container"
 >
-  <div>
-    Nav
-  </div>
+  <aside
+    class="nav"
+  >
+    <div>
+      Nav
+    </div>
+  </aside>
   <main
     class="mainContent"
   >

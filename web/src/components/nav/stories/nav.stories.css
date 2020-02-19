@@ -1,0 +1,7 @@
+@value gridBaseline from '../../metrics.css';
+
+.nav {
+  display: flex;
+  width: calc(gridBaseline * 30);
+  height: 100vh;
+}

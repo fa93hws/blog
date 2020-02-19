@@ -5,6 +5,15 @@ exports[`Global Nav should match the snapshot 1`] = `
   class="nav"
 >
   <div
+    class="banner"
+  >
+    <a
+      href="sourceCodeUrl"
+    >
+      源代码
+    </a>
+  </div>
+  <div
     class="container"
   >
     <a
@@ -27,10 +36,25 @@ exports[`Global Nav should match the snapshot 1`] = `
       author email
     </p>
   </div>
-  <div
-    class="content"
+  <ul
+    class="list"
   >
-    This is content
-  </div>
+    <li>
+      <a
+        class="link"
+        href="/link1"
+      >
+        item1
+      </a>
+    </li>
+    <li>
+      <a
+        class="link"
+        href="/link2"
+      >
+        item2
+      </a>
+    </li>
+  </ul>
 </nav>
 `;

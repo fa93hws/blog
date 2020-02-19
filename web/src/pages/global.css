@@ -7,3 +7,22 @@ body {
 p {
   margin: 0;
 }
+
+a,
+a:link,
+a:link:active,
+a:visited:active,
+a:visited,
+a:active {
+  color: unset;
+  text-decoration: unset;
+}
+
+li {
+  display: block;
+}
+
+ul {
+  margin: unset;
+  padding: unset;
+}
