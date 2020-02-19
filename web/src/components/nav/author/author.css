@@ -1,11 +1,11 @@
 @value gridBaseline from '../../metrics.css';
 @value colorBlueLight, monoWhite, colorPurpleLight from '../../colors.css';
 
-@value marginLeft: calc(gridBaseline * 2);
+@value marginLeft: calc(gridBaseline * 3);
 
 .container {
   background-color: colorBlueLight;
-  padding: calc(gridBaseline * 5);
+  padding: calc(gridBaseline * 5) 0;
 }
 
 .avatarImg {
