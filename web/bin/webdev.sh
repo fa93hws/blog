@@ -46,11 +46,11 @@ storybook() {
   export SOURCE_MAP="true"
   export WEBPACK_MODE="development"
 
-  local pkg="${1:-null}"
-  if [[ "${pkg}" != null ]]; then
-    shift
-  else
+  local pkg="${1:-}"
+  if [[ -z "${pkg}" ]]; then
     pkg="src"
+  else
+    shift
   fi
   _parse_webpack_dev_args "$@"
 
