@@ -61,6 +61,10 @@ export const webpackConfig: Configuration = {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        loader: 'raw-loader',
+      },
     ],
   },
   devtool: 'source-map',

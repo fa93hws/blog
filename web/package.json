@@ -76,6 +76,7 @@
     "postcss-modules-values": "^3.0.0",
     "postcss-modules-values-replace": "^3.1.0",
     "prettier": "^1.19.1",
+    "raw-loader": "^4.0.0",
     "rimraf": "^3.0.2",
     "storybook-react-router": "^1.0.8",
     "stylelint": "^13.2.0",
