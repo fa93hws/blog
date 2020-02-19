@@ -54,4 +54,12 @@ module.exports = {
     ],
     'import/extensions': 'off',
   },
+  overrides: [
+    {
+      files: ['*.d.ts'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
+  ],
 };

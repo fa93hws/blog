@@ -6,7 +6,7 @@ import { Nav } from '../nav';
 import { fakeNavLinkItems } from '../nav-links/fake/fake-links';
 import styles from './nav.stories.css';
 
-storiesOf('component.nav', module)
+storiesOf('components.nav', module)
   .addDecorator(StoryRouter())
   .add('global nav', () => {
     const author = {
