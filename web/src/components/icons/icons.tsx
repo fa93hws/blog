@@ -16,5 +16,5 @@ export const Menu = createIcon(MenuSvg);
 export const Share = createIcon(ShareSvg);
 export const Tags = createIcon(TagsSvg);
 
-export const Github = createIcon(GithubSvg);
 export const SinaWeibo = createIcon(SinaWeiboSvg);
+export const Github = createIcon(GithubSvg);
