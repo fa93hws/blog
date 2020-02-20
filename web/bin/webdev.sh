@@ -1,6 +1,7 @@
 set -eu
 
 WEB_DIR="$(dirname $( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P ))"
+STORYBOOK_TARGET="dist/storybook"
 
 _parse_webpack_dev_args() {
   while [[ $# -gt 0 ]]
@@ -58,6 +59,24 @@ storybook() {
   start-storybook --config-dir="${WEB_DIR}"/conf/storybook
 }
 
+build_storybook() {
+  export HASH_OUTPUT="true"
+  export SOURCE_MAP="false"
+  export WEBPACK_MODE="production"
+  export STORYBOOK_PKG="src"
+
+  local target="dist/storybook"
+  build-storybook \
+    --config-dir="${WEB_DIR}"/conf/storybook \
+    -o "${STORYBOOK_TARGET}"
+}
+
+percy_storybook() {
+  percy-storybook \
+    --widths=640,1280 \
+    --build_dir="${STORYBOOK_TARGET}"
+}
+
 main () {
   local cmd="$1"
   shift
@@ -66,6 +85,8 @@ main () {
     build) build "$@" ;;
     serve) webpack_dev_server "$@" ;;
     storybook) storybook "$@" ;;
+    build-storybook) build_storybook "$@" ;;
+    percy-storybook) percy_storybook "$@" ;;
     *) error "unknown command: ${cmd}" ;;
   esac
 }
