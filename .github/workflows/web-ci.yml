@@ -59,7 +59,7 @@ jobs:
         run: npm run test -- --ci
 
   build:
-    name: Build webpack
+    name: Build(webpack)
     runs-on: ubuntu-latest
     needs: install
 
@@ -73,6 +73,14 @@ jobs:
       - name: Run webpack build
         env:
           CI: true
-          DEBUG: "*"
+          DEBUG: "webpack_options"
         working-directory: web
         run: npm run build
+      - name: Run storybook build
+        working-directory: web
+        run: npm run storybook:build
+      - name: Run percy on storybook
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        working-directory: web
+        run: npm run percy:storybook

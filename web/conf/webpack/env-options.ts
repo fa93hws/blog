@@ -1,7 +1,7 @@
 import * as debug from 'debug';
 import { Configuration } from 'webpack';
 
-const info = debug('webpack_options:info');
+const info = debug('webpack_options').extend(':info');
 
 type Options = {
   hashOutput: boolean;
