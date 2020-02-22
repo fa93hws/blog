@@ -1,1 +1,7 @@
 *.css.d.ts
+web-ci.yml
+dist
+node_modules
+coverage
+cache
+*.sh

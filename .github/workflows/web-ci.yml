@@ -1,99 +1,166 @@
-name: web
-
-on: [push]
-
 jobs:
-  install:
-    name: Install Node Modules
+  build-webpack:
+    name: webpack
+    needs:
+      - install
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v1
-      - name: Cache node modules
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
+          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Install node modules
-        working-directory: web
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
         run: npm ci
-
+        working-directory: web
+      - env:
+          CI: 'true'
+          DEBUG: webpack_options
+        id: webpack
+        name: Run webpack build
+        run: npm run build
+        working-directory: web
+  check-generated-files:
+    name: Check generated files
+    needs:
+      - install
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
+          path: web/node_modules
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
+        working-directory: web
+      - id: web-ci
+        name: Regenerate web-ci.yml
+        run: 'npm run pipeline:update'
+        working-directory: web
+      - id: check-regenerated-files
+        name: Check regenerated files
+        run: git --no-pager diff --exit-code
+        working-directory: web
+  install:
+    name: Install node modules
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
+          path: web/node_modules
+      - id: npm-ci
+        name: install node modules
+        run: npm ci
+        working-directory: web
   lint:
     name: Linting
+    needs:
+      - install
     runs-on: ubuntu-latest
-    needs: install
-
     steps:
-      - uses: actions/checkout@v1
-      - name: Download node modules
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
+          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Check ESLint
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
         working-directory: web
-        run: npm run lint:ts
-      - name: Check typescript
+      - id: eslint
+        name: Check ESlint
+        run: 'npm run lint:ts'
+        working-directory: web
+      - id: tscheck
         if: always()
+        name: Check Typescripe
+        run: 'npm run lint:ts:types'
         working-directory: web
-        run: npm run lint:ts:types
-      - name: Check prettier
+      - id: prettier
         if: always()
-        working-directory: web
+        name: Check Prettier
         run: npm run format
-
-  test:
+        working-directory: web
+  storybook:
+    name: storybook
+    needs:
+      - install
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
+          path: web/node_modules
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
+        working-directory: web
+      - env:
+          DEBUG: storybook_config
+        id: storybook
+        name: Run storybook build
+        run: 'npm run storybook:build'
+        working-directory: web
+      - env:
+          PERCY_TOKEN: '${{ secrets.PERCY_TOKEN }}'
+        id: percy-storybook
+        name: Run percy on storybook
+        run: 'npm run percy:storybook'
+        working-directory: web
+  unit-test:
     name: Unit test
+    needs:
+      - install
     runs-on: ubuntu-latest
-    needs: install
-
     steps:
-      - uses: actions/checkout@v1
-      - name: Download node modules
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
+          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Run Unit test
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
         working-directory: web
-        run: npm run test -- --ci
-
-  build-webpack:
-    name: Build(webpack)
-    runs-on: ubuntu-latest
-    needs: install
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Download node modules
-        uses: actions/cache@v1
-        with:
-          path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Run webpack build
-        env:
-          CI: true
-          DEBUG: 'webpack_options'
+      - id: jest
+        name: Run unit test
+        run: npm run test
         working-directory: web
-        run: npm run build
-
-  build-storybook:
-    name: Build(storybook)
-    runs-on: ubuntu-latest
-    needs: install
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Download node modules
-        uses: actions/cache@v1
-        with:
-          path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Run storybook build
-        working-directory: web
-        run: npm run storybook:build
-      - name: Run percy on storybook
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-        working-directory: web
-        run: npm run percy:storybook
+name: web
+'on':
+  - push
