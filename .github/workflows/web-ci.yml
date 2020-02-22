@@ -1,4 +1,59 @@
 jobs:
+  build-webpack:
+    name: webpack
+    needs:
+      - install
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
+          path: web/node_modules
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
+        working-directory: web
+      - env:
+          CI: 'true'
+          DEBUG: webpack_options
+        id: webpack
+        name: Run webpack build
+        run: npm run build
+        working-directory: web
+  check-generated-files:
+    name: Check generated files
+    needs:
+      - install
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
+          path: web/node_modules
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
+        working-directory: web
+      - id: web-ci
+        name: Regenerate web-ci.yml
+        run: 'npm run pipeline:update'
+        working-directory: web
+      - id: check-regenerated-files
+        name: Check regenerated files
+        run: git --no-pager diff --exit-code
+        working-directory: web
   install:
     name: Install node modules
     runs-on: ubuntu-latest
@@ -103,33 +158,6 @@ jobs:
       - id: jest
         name: Run unit test
         run: npm run test
-        working-directory: web
-  webpack:
-    name: webpack
-    needs:
-      - install
-    runs-on: ubuntu-latest
-    steps:
-      - id: checkout
-        name: checkout
-        uses: actions/checkout@v1
-      - id: cache-npm
-        name: fetch node modules
-        uses: actions/cache@v1
-        with:
-          key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
-          path: web/node_modules
-      - id: npm-ci
-        if: steps.cache-npm.outputs.cache-hit != 'true'
-        name: install node modules
-        run: npm ci
-        working-directory: web
-      - env:
-          CI: 'true'
-          DEBUG: webpack_options
-        id: webpack
-        name: Run webpack build
-        run: npm run build
         working-directory: web
 name: web
 'on':

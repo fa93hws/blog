@@ -64,6 +64,26 @@ const unitTestJob: Job<JobType> = {
   ],
 };
 
+const checkGeneratedJob: Job<JobType> = {
+  tag: 'check-generated-files',
+  name: 'Check generated files',
+  'runs-on': 'ubuntu-latest',
+  needs: [installJob],
+  steps: [
+    ...warmUpSteps,
+    createCommonStep({
+      id: 'web-ci',
+      name: 'Regenerate web-ci.yml',
+      run: 'npm run pipeline:update',
+    }),
+    createCommonStep({
+      id: 'check-regenerated-files',
+      name: 'Check regenerated files',
+      run: 'git --no-pager diff --exit-code',
+    }),
+  ],
+};
+
 const webpackJob: Job<JobType> = {
   tag: 'build-webpack',
   name: 'webpack',
@@ -94,6 +114,9 @@ const storybookJob: Job<JobType> = {
       id: 'storybook',
       name: 'Run storybook build',
       run: 'npm run storybook:build',
+      env: {
+        DEBUG: 'storybook_config',
+      },
     }),
     createCommonStep({
       id: 'percy-storybook',
@@ -110,11 +133,12 @@ const storybookJob: Job<JobType> = {
 export const workFlow: WorkFlows<JobType> = {
   name: 'web',
   on: ['push'],
-  jobs: {
-    install: installJob,
-    lint: lintJob,
-    'unit-test': unitTestJob,
-    webpack: webpackJob,
-    storybook: storybookJob,
-  },
+  jobs: [
+    installJob,
+    lintJob,
+    unitTestJob,
+    checkGeneratedJob,
+    webpackJob,
+    storybookJob,
+  ],
 };
