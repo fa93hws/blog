@@ -12,6 +12,7 @@ function handler({ output }: CliArgs) {
   writeFileSync(output, yamlContent, { encoding: 'utf-8' });
 }
 
+// TODO Add test to guarantee web-ci.yml is updated
 export function cli() {
   Yargs.command('$0', 'generate yml for github workflow in web folder', {
     builder: (y: Yargs.Argv<any>): Yargs.Argv<CliArgs> =>

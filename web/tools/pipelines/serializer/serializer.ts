@@ -1,18 +1,15 @@
 import { dump } from 'js-yaml';
 import { WorkFlows, CommonStep } from './types';
 
-// function processArray<T>(target: T | readonly T[]) {
-//   return Array.isArray(target) ? `[${target.join(', ')}]` : target;
-// }
-
 export function toYaml<T extends CommonStep>(obj: WorkFlows<T>) {
+  // TODO Change to an immutable way
   /* eslint-disable no-param-reassign */
   Object.values(obj.jobs).forEach(j => {
     if (j.needs != null) {
       j.needs = j.needs.map(s => (typeof s === 'string' ? s : s.tag));
     }
-    // j['runs-on'] = processArray(j['runs-on']);
   });
+  Object.values(obj.jobs).forEach(j => delete j.tag);
   return dump(obj, {
     styles: {
       '!!seq': '[ ... ]',

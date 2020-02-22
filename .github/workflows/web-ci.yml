@@ -3,7 +3,6 @@ name: web
   - push
 jobs:
   install:
-    tag: install
     name: Install node modules
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +20,6 @@ jobs:
         run: npm ci
         working-directory: web
   lint:
-    tag: lint
     needs:
       - install
     name: Linting
@@ -56,7 +54,6 @@ jobs:
         working-directory: web
         if: always()
   unit-test:
-    tag: unit-test
     name: Unit test
     runs-on: ubuntu-latest
     needs:
@@ -81,7 +78,6 @@ jobs:
         run: npm run test
         working-directory: web
   webpack:
-    tag: build-webpack
     name: webpack
     runs-on: ubuntu-latest
     needs:
@@ -109,7 +105,6 @@ jobs:
           DEBUG: webpack_options
         working-directory: web
   storybook:
-    tag: storybook
     name: storybook
     runs-on: ubuntu-latest
     needs:

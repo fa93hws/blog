@@ -14,7 +14,8 @@
     "serve": "bin/webdev.sh serve",
     "storybook": "bin/webdev.sh storybook",
     "storybook:build": "bin/webdev.sh build-storybook",
-    "percy:storybook": "bin/webdev.sh percy-storybook"
+    "percy:storybook": "bin/webdev.sh percy-storybook",
+    "pipeline:update": "node tools/pipelines/cli.js -o ../.github/workflows/web-ci.yml"
   },
   "dependencies": {
     "classnames": "^2.2.6",
