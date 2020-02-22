@@ -1,99 +1,141 @@
 name: web
-
-on: [push]
-
+'on':
+  - push
 jobs:
   install:
-    name: Install Node Modules
+    tag: install
+    name: Install node modules
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
-      - name: Cache node modules
+        name: checkout
+        id: checkout
+      - id: cache-npm
         uses: actions/cache@v1
+        name: fetch node modules
         with:
           path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Install node modules
-        working-directory: web
+          key: '${{ runner.os }}-npm-${{ hashFiles("web/package-lock.json") }}'
+      - id: npm-ci
+        name: install node modules
         run: npm ci
-
+        working-directory: web
   lint:
+    tag: lint
+    needs:
+      - install
     name: Linting
     runs-on: ubuntu-latest
-    needs: install
-
     steps:
       - uses: actions/checkout@v1
-      - name: Download node modules
+        name: checkout
+        id: checkout
+      - id: cache-npm
         uses: actions/cache@v1
+        name: fetch node modules
         with:
           path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Check ESLint
+          key: '${{ runner.os }}-npm-${{ hashFiles("web/package-lock.json") }}'
+      - id: npm-ci
+        name: install node modules
+        run: npm ci
         working-directory: web
-        run: npm run lint:ts
-      - name: Check typescript
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+      - id: eslint
+        name: Check ESlint
+        run: 'npm run lint:ts'
+        working-directory: web
+      - id: tscheck
+        name: Check Typescripe
+        run: 'npm run lint:ts:types'
+        working-directory: web
         if: always()
-        working-directory: web
-        run: npm run lint:ts:types
-      - name: Check prettier
-        if: always()
-        working-directory: web
+      - id: prettier
+        name: Check Prettier
         run: npm run format
-
-  test:
+        working-directory: web
+        if: always()
+  unit-test:
+    tag: unit-test
     name: Unit test
     runs-on: ubuntu-latest
-    needs: install
-
+    needs:
+      - install
     steps:
       - uses: actions/checkout@v1
-      - name: Download node modules
+        name: checkout
+        id: checkout
+      - id: cache-npm
         uses: actions/cache@v1
+        name: fetch node modules
         with:
           path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Run Unit test
+          key: '${{ runner.os }}-npm-${{ hashFiles("web/package-lock.json") }}'
+      - id: npm-ci
+        name: install node modules
+        run: npm ci
         working-directory: web
-        run: npm run test -- --ci
-
-  build-webpack:
-    name: Build(webpack)
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+      - id: jest
+        name: Run unit test
+        run: npm run test
+        working-directory: web
+  webpack:
+    tag: build-webpack
+    name: webpack
     runs-on: ubuntu-latest
-    needs: install
-
+    needs:
+      - install
     steps:
       - uses: actions/checkout@v1
-      - name: Download node modules
+        name: checkout
+        id: checkout
+      - id: cache-npm
         uses: actions/cache@v1
+        name: fetch node modules
         with:
           path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Run webpack build
-        env:
-          CI: true
-          DEBUG: 'webpack_options'
+          key: '${{ runner.os }}-npm-${{ hashFiles("web/package-lock.json") }}'
+      - id: npm-ci
+        name: install node modules
+        run: npm ci
         working-directory: web
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+      - id: webpack
+        name: Run webpack build
         run: npm run build
-
-  build-storybook:
-    name: Build(storybook)
+        env:
+          CI: 'true'
+          DEBUG: webpack_options
+        working-directory: web
+  storybook:
+    tag: storybook
+    name: storybook
     runs-on: ubuntu-latest
-    needs: install
-
+    needs:
+      - install
     steps:
       - uses: actions/checkout@v1
-      - name: Download node modules
+        name: checkout
+        id: checkout
+      - id: cache-npm
         uses: actions/cache@v1
+        name: fetch node modules
         with:
           path: web/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}
-      - name: Run storybook build
+          key: '${{ runner.os }}-npm-${{ hashFiles("web/package-lock.json") }}'
+      - id: npm-ci
+        name: install node modules
+        run: npm ci
         working-directory: web
-        run: npm run storybook:build
-      - name: Run percy on storybook
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+      - id: storybook
+        name: Run storybook build
+        run: 'npm run storybook:build'
+        working-directory: web
+      - id: percy-storybook
+        name: Run percy on storybook
+        run: 'npm run percy:storybook'
         env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_TOKEN: '${{ secrets.PERCY_TOKEN }}'
         working-directory: web
-        run: npm run percy:storybook
