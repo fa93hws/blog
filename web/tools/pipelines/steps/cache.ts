@@ -8,6 +8,6 @@ export const cacheStep: CacheStep = {
   with: {
     path: 'web/node_modules',
     // eslint-disable-next-line no-template-curly-in-string
-    key: '${{ runner.os }}-npm-${{ hashFiles("web/package-lock.json") }}',
+    key: "${{ runner.os }}-npm-${{ hashFiles('web/package-lock.json') }}",
   },
 };

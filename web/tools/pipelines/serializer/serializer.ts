@@ -11,6 +11,7 @@ export function toYaml<T extends CommonStep>(obj: WorkFlows<T>) {
   });
   Object.values(obj.jobs).forEach(j => delete j.tag);
   return dump(obj, {
+    sortKeys: true,
     styles: {
       '!!seq': '[ ... ]',
     },
