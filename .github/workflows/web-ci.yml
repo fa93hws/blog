@@ -40,9 +40,9 @@ jobs:
           args: '--acl public-read --delete'
       - id: print-url
         name: Print deployed url
-        run: echo github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html
-        run: echo $GITHUB_SHA
-        run: curl https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?commitHash=$GITHUB_SHA&url="github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html"
+        run: echo github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html &&
+        echo $GITHUB_SHA &&
+        curl https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?commitHash=$GITHUB_SHA&url="github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html"
   check-generated-files:
     name: Check generated files
     needs:
