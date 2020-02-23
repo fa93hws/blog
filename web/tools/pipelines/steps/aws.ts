@@ -1,6 +1,7 @@
 import { S3ActionStep, CommonStep } from '../serializer/types';
 
 const BUCKET_NAME = 'github-cd';
+const REGION = 'ap-northeast-2';
 export type S3SyncStep = CommonStep & S3ActionStep;
 export function createDeploySteps({
   sourceDir,
@@ -24,7 +25,7 @@ export function createDeploySteps({
         AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}',
         // eslint-disable-next-line no-template-curly-in-string
         AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_ACCESS_KEY_VALUE }}',
-        AWS_REGION: 'ap-northeast-2',
+        AWS_REGION: REGION,
         SOURCE_DIR: sourceDir,
         DEST_DIR: destDir,
       },
@@ -32,7 +33,7 @@ export function createDeploySteps({
     {
       id: 'print-url',
       name: 'Print deployed url',
-      run: `echo ${destDir}/index.html`,
+      run: `echo ${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${destDir}/index.html`,
     },
   ];
 }
