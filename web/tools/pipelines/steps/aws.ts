@@ -13,7 +13,7 @@ export function createDeploySteps({
   app: string;
 }): [S3SyncStep, CommonStep] {
   const destDir = `$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/${app}`;
-  const deployUrl = `${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${destDir}/index.html`;
+  const deployUrl = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${destDir}/index.html`;
   return [
     {
       id: 'deploy-to-s3',
@@ -36,7 +36,7 @@ export function createDeploySteps({
     {
       id: 'display-url',
       name: 'Display deployed url',
-      run: `curl "${WEBHOOK_URL}?name=${app}&commitHash=$GITHUB_SHA&url=${deployUrl}`,
+      run: `curl "${WEBHOOK_URL}?name=${app}&commitHash=$GITHUB_SHA&url=${deployUrl}"`,
     },
   ];
 }
