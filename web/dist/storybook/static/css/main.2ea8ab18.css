@@ -1,0 +1,148 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+p {
+  margin: 0;
+}
+
+a,
+a:link,
+a:link:active,
+a:visited:active,
+a:visited,
+a:active {
+  color: unset;
+  text-decoration: unset;
+}
+
+li {
+  display: block;
+}
+
+ul {
+  margin: unset;
+  padding: unset;
+}
+
+
+
+._3ocGHL2D4t2svjJ_BIPF8Q {
+  display: inline-flex;
+  padding: 8px;
+  border: 1px dashed black;
+  margin: 16px;
+}
+
+._1hBBliudFFw70mPscidxrX {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+}
+
+._2fDdEAXgQWIYj0ygaDh5eu {
+  display: inline-flex;
+  margin-right: 32px;
+}
+
+._2fDdEAXgQWIYj0ygaDh5eu:last-child {
+  margin-right: 0;
+}
+
+._11CWuIg60piDPEABWIc7rM {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.rSMQyz7MiYm1nz8zFio55 {
+  flex-grow: 7;
+  background-color: rgb(44, 35, 35);
+}
+
+
+
+.b-JPiCMpsJRy2RyTkSrRS {
+  background-color: rgb(106, 161, 201);
+  padding: 40px 0;
+}
+
+._1EQJ9SbtRQJ6pkKE6wG7WK {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-left: 24px;
+}
+
+._3OAILM15lGYVxwfR0yDq6Z {
+  white-space: nowrap;
+  color: rgb(255, 255, 255);
+  margin-top: 8px;
+  margin-left: 24px;
+}
+
+.TOBsWgZEvt61yl-XzaOil {
+  white-space: nowrap;
+  color: rgb(197, 202, 233);
+  margin-top: 4px;
+  margin-left: 24px;
+}
+
+.FtHZu0ldBky7X4TiBQ_fB {
+  width: 128px;
+  height: 32px;
+  line-height: 32px;
+  left: -18.752px;
+  top: 29.248px;
+  /* TODO Fix the bug and change to -bannerHeight */
+  -webkit-transform: rotate(-45deg) translate(0, -32px);
+          transform: rotate(-45deg) translate(0, -32px);
+
+  position: absolute;
+  overflow: hidden;
+  z-index: 15;
+  text-align: center;
+  background-color: green;
+  box-shadow: 0 0 48px 0 rgba(128, 128, 128, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+}
+
+.FtHZu0ldBky7X4TiBQ_fB:hover {
+  text-decoration: underline;
+  box-shadow: 0 0 16px 8px rgb(237, 240, 242);
+}
+
+._7PQcMh7i8e8k3D0FPpIn2 {
+  display: block;
+  line-height: 48px;
+  padding-left: 64px;
+  height: 100%;
+}
+
+._7PQcMh7i8e8k3D0FPpIn2:hover {
+  color: rgba(14, 19, 24, 0.7);
+  background-color: rgba(47, 64, 127, 0.1);
+}
+
+._1z0TiNaf5FuRQP89VsOfc0 {
+  padding-top: 8px;
+  border-right: 1px solid rgba(128, 128, 128, 0.2);
+  box-shadow: 0 0 10px 0 rgba(128, 128, 128, 0.2);
+  box-sizing: border-box;
+  background-color: rgb(248, 249, 249);
+  color: rgba(14, 19, 24, 0.6);
+  flex-grow: 1;
+}
+
+._3pCeNJcc42RrnsVg4Brfhw {
+  display: flex;
+  width: 240px;
+  height: 100vh;
+}
+
+
+/*# sourceMappingURL=main.2ea8ab18.css.map*/

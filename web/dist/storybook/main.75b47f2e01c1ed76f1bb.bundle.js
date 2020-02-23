@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{0:function(n,o,i){i(470),i(612),i(1261),i(1262),n.exports=i(1372)},1:function(n,o){},1261:function(n,o,i){"use strict";i.r(o);var s=i(85);s.addons.setConfig({panelPosition:"right"})}},[[0,1,2]]]);
