@@ -2,15 +2,18 @@ import { S3ActionStep, CommonStep } from '../serializer/types';
 
 const BUCKET_NAME = 'github-cd';
 const REGION = 'ap-northeast-2';
+const WEBHOOK_URL =
+  'https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3';
 export type S3SyncStep = CommonStep & S3ActionStep;
 export function createDeploySteps({
   sourceDir,
-  targetDir,
+  app,
 }: {
   sourceDir: string;
-  targetDir: string;
+  app: string;
 }): [S3SyncStep, CommonStep] {
-  const destDir = `$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/${targetDir}`;
+  const destDir = `$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/${app}`;
+  const deployUrl = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${destDir}/index.html`;
   return [
     {
       id: 'deploy-to-s3',
@@ -31,9 +34,9 @@ export function createDeploySteps({
       },
     },
     {
-      id: 'print-url',
-      name: 'Print deployed url',
-      run: `echo ${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${destDir}/index.html`,
+      id: 'display-url',
+      name: 'Display deployed url',
+      run: `curl "${WEBHOOK_URL}?name=${app}&commitHash=$GITHUB_SHA&url=${deployUrl}"`,
     },
   ];
 }

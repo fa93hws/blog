@@ -105,7 +105,7 @@ const webpackJob: Job<JobType> = {
     }),
     ...createDeploySteps({
       sourceDir: 'web/dist/blog',
-      targetDir: 'blog',
+      app: 'blog',
     }),
   ],
 };
@@ -127,7 +127,7 @@ const storybookJob: Job<JobWithDeployment> = {
     }),
     ...createDeploySteps({
       sourceDir: 'web/dist/storybook',
-      targetDir: 'storybook',
+      app: 'storybook',
     }),
     createCommonStep({
       id: 'percy-storybook',

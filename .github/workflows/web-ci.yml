@@ -38,9 +38,9 @@ jobs:
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: '--acl public-read --delete'
-      - id: print-url
-        name: Print deployed url
-        run: echo github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html
+      - id: display-url
+        name: Display deployed url
+        run: 'curl "https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?name=blog&commitHash=$GITHUB_SHA&url=https://github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html"'
   check-generated-files:
     name: Check generated files
     needs:
@@ -159,9 +159,9 @@ jobs:
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: '--acl public-read --delete'
-      - id: print-url
-        name: Print deployed url
-        run: echo github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook/index.html
+      - id: display-url
+        name: Display deployed url
+        run: 'curl "https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?name=storybook&commitHash=$GITHUB_SHA&url=https://github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook/index.html"'
       - env:
           PERCY_TOKEN: '${{ secrets.PERCY_TOKEN }}'
         id: percy-storybook
