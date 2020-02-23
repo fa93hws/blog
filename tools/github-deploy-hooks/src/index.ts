@@ -8,6 +8,7 @@ const HOSTNAME = 'api.github.com';
 
 type Params = {
   commitHash: string;
+  name: string;
   url: string;
 };
 
@@ -18,9 +19,13 @@ function parseQueryStringParameter(query: any): Params {
   if (query.url == null || typeof query.url !== 'string') {
     throw new Error(`url must be string, got ${query.url}`);
   }
+  if (query.name == null || typeof query.name !== 'string') {
+    throw new Error(`name must be string, got ${query.name}`)
+  }
   return {
     commitHash: query.commitHash,
     url: query.url,
+    name: query.name
   };
 }
 
@@ -86,7 +91,7 @@ function doAuth(token: string) {
   return makeRequest(options, undefined);
 }
 
-function createCheck({ commitHash, url }: Params, token: string) {
+function createCheck({ commitHash, url, name }: Params, token: string) {
   const options: RequestOptions = {
     hostname: 'api.github.com',
     path: '/repos/fa93hws/blog/check-runs',
@@ -99,7 +104,7 @@ function createCheck({ commitHash, url }: Params, token: string) {
     },
   };
   const data = {
-    name: 'deploy-storybook',
+    name: `deploy: ${name}`,
     head_sha: commitHash,
     details_url: url,
     status: 'completed',
