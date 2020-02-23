@@ -26,6 +26,21 @@ jobs:
         name: Run webpack build
         run: npm run build
         working-directory: web
+      - env:
+          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+          AWS_REGION: ap-northeast-2
+          AWS_S3_BUCKET: github-cd
+          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_ACCESS_KEY_VALUE }}'
+          DEST_DIR: $GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog
+          SOURCE_DIR: web/dist/blog
+        id: deploy-to-s3
+        name: Deploy to s3
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: '--acl public-read --delete'
+      - id: print-url
+        name: Print deployed url
+        run: echo github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html
   check-generated-files:
     name: Check generated files
     needs:
@@ -68,6 +83,7 @@ jobs:
           key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
       - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         name: install node modules
         run: npm ci
         working-directory: web
@@ -131,6 +147,21 @@ jobs:
         name: Run storybook build
         run: 'npm run storybook:build'
         working-directory: web
+      - env:
+          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+          AWS_REGION: ap-northeast-2
+          AWS_S3_BUCKET: github-cd
+          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_ACCESS_KEY_VALUE }}'
+          DEST_DIR: $GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook
+          SOURCE_DIR: web/dist/storybook
+        id: deploy-to-s3
+        name: Deploy to s3
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: '--acl public-read --delete'
+      - id: print-url
+        name: Print deployed url
+        run: echo github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook/index.html
       - env:
           PERCY_TOKEN: '${{ secrets.PERCY_TOKEN }}'
         id: percy-storybook

@@ -3,20 +3,23 @@ import { checkoutStep, CheckoutStep } from './steps/checkout';
 import { CacheStep, cacheStep } from './steps/cache';
 import { createInstallNodeModulesStep } from './steps/install-node-modules';
 import { createCommonStep } from './steps/create-common-step';
+import { createDeploySteps, S3SyncStep } from './steps/aws';
 
 type JobType = CommonStep | CacheStep | CheckoutStep;
-const installJob: Job<JobType> = {
-  tag: 'install',
-  name: 'Install node modules',
-  'runs-on': 'ubuntu-latest',
-  steps: [checkoutStep, cacheStep, createInstallNodeModulesStep()],
-};
+type JobWithDeployment = JobType | S3SyncStep;
 
 const warmUpSteps: readonly JobType[] = [
   checkoutStep,
   cacheStep,
   createInstallNodeModulesStep(cacheStep),
 ];
+
+const installJob: Job<JobType> = {
+  tag: 'install',
+  name: 'Install node modules',
+  'runs-on': 'ubuntu-latest',
+  steps: warmUpSteps,
+};
 
 const lintJob: Job<JobType> = {
   tag: 'lint',
@@ -100,10 +103,14 @@ const webpackJob: Job<JobType> = {
         DEBUG: 'webpack_options',
       },
     }),
+    ...createDeploySteps({
+      sourceDir: 'web/dist/blog',
+      targetDir: 'blog',
+    }),
   ],
 };
 
-const storybookJob: Job<JobType> = {
+const storybookJob: Job<JobWithDeployment> = {
   tag: 'storybook',
   name: 'storybook',
   'runs-on': 'ubuntu-latest',
@@ -117,6 +124,10 @@ const storybookJob: Job<JobType> = {
       env: {
         DEBUG: 'storybook_config',
       },
+    }),
+    ...createDeploySteps({
+      sourceDir: 'web/dist/storybook',
+      targetDir: 'storybook',
     }),
     createCommonStep({
       id: 'percy-storybook',

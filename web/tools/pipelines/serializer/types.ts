@@ -10,6 +10,13 @@ export type CacheActionStep = {
   };
 };
 
+export type S3ActionStep = {
+  uses: 'jakejarvis/s3-sync-action@v0.5.1';
+  with: {
+    args: string;
+  };
+};
+
 export type CommonStep = {
   name: string;
   id: string;

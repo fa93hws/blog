@@ -22,7 +22,7 @@ _parse_webpack_dev_args() {
 }
 
 build() {
-  rm -rf "${WEB_DIR}"/dist
+  rm -rf "${WEB_DIR}"/dist/blog
 
   export HASH_OUTPUT="true"
   export SOURCE_MAP="true"
