@@ -17,6 +17,7 @@ export function toYaml<T extends CommonStep>(obj: WorkFlows<T>) {
   }, {});
   return dump(obj, {
     sortKeys: true,
+    lineWidth: 1000,
     styles: {
       '!!seq': '[ ... ]',
     },

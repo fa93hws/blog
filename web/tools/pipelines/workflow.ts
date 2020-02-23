@@ -103,6 +103,10 @@ const webpackJob: Job<JobType> = {
         DEBUG: 'webpack_options',
       },
     }),
+    ...createDeploySteps({
+      sourceDir: 'web/dist/blog',
+      targetDir: 'blog',
+    }),
   ],
 };
 
