@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "declaration": true,
+    "module": "CommonJS",
+    "allowSyntheticDefaultImports": true,
+    "types": ["node"],
+    "moduleResolution": "node",
+    "noErrorTruncation": true,
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "strictNullChecks": true,
+    "target": "ES5"
+  }
+}
