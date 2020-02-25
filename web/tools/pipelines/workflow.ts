@@ -17,7 +17,7 @@ const warmUpSteps: readonly JobType[] = [
 const installJob: Job<JobType> = {
   tag: 'install',
   name: 'Install node modules',
-  'runs-on': 'ubuntu-latest',
+  runsOn: 'ubuntu-latest',
   steps: warmUpSteps,
 };
 
@@ -25,7 +25,7 @@ const lintJob: Job<JobType> = {
   tag: 'lint',
   needs: [installJob],
   name: 'Linting',
-  'runs-on': 'ubuntu-latest',
+  runsOn: 'ubuntu-latest',
   steps: [
     ...warmUpSteps,
     createCommonStep({
@@ -55,7 +55,7 @@ const lintJob: Job<JobType> = {
 const unitTestJob: Job<JobType> = {
   tag: 'unit-test',
   name: 'Unit test',
-  'runs-on': 'ubuntu-latest',
+  runsOn: 'ubuntu-latest',
   needs: [installJob],
   steps: [
     ...warmUpSteps,
@@ -70,7 +70,7 @@ const unitTestJob: Job<JobType> = {
 const checkGeneratedJob: Job<JobType> = {
   tag: 'check-generated-files',
   name: 'Check generated files',
-  'runs-on': 'ubuntu-latest',
+  runsOn: 'ubuntu-latest',
   needs: [installJob],
   steps: [
     ...warmUpSteps,
@@ -90,7 +90,7 @@ const checkGeneratedJob: Job<JobType> = {
 const webpackJob: Job<JobType> = {
   tag: 'build-webpack',
   name: 'webpack',
-  'runs-on': 'ubuntu-latest',
+  runsOn: 'ubuntu-latest',
   needs: [installJob],
   steps: [
     ...warmUpSteps,
@@ -113,7 +113,7 @@ const webpackJob: Job<JobType> = {
 const storybookJob: Job<JobWithDeployment> = {
   tag: 'storybook',
   name: 'storybook',
-  'runs-on': 'ubuntu-latest',
+  runsOn: 'ubuntu-latest',
   needs: [installJob],
   steps: [
     ...warmUpSteps,
