@@ -10,7 +10,6 @@
   line-height: bannerHeight;
   left: calc(bannerWidth * 0.707 / 2 - bannerWidth / 2);
   top: calc(bannerWidth * 0.707 / 2 - bannerHeight / 2);
-  /* TODO Fix the bug and change to -bannerHeight */
   transform: rotate(-45deg) translate(0, calc(0 - bannerHeight));
 
   position: absolute;

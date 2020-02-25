@@ -17,6 +17,7 @@ export function createDeploySteps({
   return [
     {
       id: 'deploy-to-s3',
+      // TODO it's too slow, change to bash
       uses: 'jakejarvis/s3-sync-action@v0.5.1',
       name: 'Deploy to s3',
       with: {

@@ -30,9 +30,9 @@ export type Job<T extends CommonStep> = {
   tag: string;
 
   name: string;
-  'runs-on': readonly string[] | string;
+  runsOn: readonly string[] | string;
   steps: readonly T[];
-  needs?: readonly (Job<CommonStep> | string)[];
+  needs?: readonly Job<CommonStep>[];
 };
 
 export type WorkFlows<T extends CommonStep> = {
