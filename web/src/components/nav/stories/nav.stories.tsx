@@ -2,6 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 import StoryRouter from 'storybook-react-router';
+import { StorySection } from '../../storybook/storybook';
 import { Nav } from '../nav';
 import { fakeNavLinkItems } from '../nav-links/fake/fake-links';
 import styles from './nav.stories.css';
@@ -25,14 +26,26 @@ storiesOf('components.nav', module)
       'sourcecode link',
       'https://github.com/fa93hws/blog',
     );
+    const NavStory = () => (
+      <Nav
+        author={author}
+        sourceCodeUrl={sourceCodeUrl}
+        navItems={fakeNavLinkItems}
+      />
+    );
 
     return (
-      <div className={styles.nav}>
-        <Nav
-          author={author}
-          sourceCodeUrl={sourceCodeUrl}
-          navItems={fakeNavLinkItems}
-        />
-      </div>
+      <>
+        <StorySection name="Short">
+          <div className={styles.shortNav}>
+            <NavStory />
+          </div>
+        </StorySection>
+        <StorySection name="Full Height">
+          <div className={styles.tallNav}>
+            <NavStory />
+          </div>
+        </StorySection>
+      </>
     );
   });

@@ -3,5 +3,15 @@
 .nav {
   display: flex;
   width: calc(gridBaseline * 30);
-  height: 100vh;
+  overflow: hidden;
+}
+
+.tallNav {
+  composes: nav;
+  min-height: 100vh;
+}
+
+.shortNav {
+  composes: nav;
+  height: 400px;
 }
