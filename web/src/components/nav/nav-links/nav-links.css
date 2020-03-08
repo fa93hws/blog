@@ -21,4 +21,5 @@
   background-color: monoGreyUltraLight;
   color: monoBlackA150;
   flex-grow: 1;
+  overflow-y: auto;
 }
