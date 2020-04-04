@@ -25,6 +25,5 @@
 .email {
   white-space: nowrap;
   color: colorPurpleLight;
-  margin-top: calc(gridBaseline * 0.5);
   margin-left: marginLeft;
 }

@@ -2,10 +2,10 @@
 @value monoGreyA100, monoGreyUltraLight, monoBlackA100, monoBlackA150, blueA400 from '../../colors.css';
 
 .link {
-  display: block;
-  line-height: calc(gridBaseline * 6);
+  display: flex;
+  align-items: center;
+  height: calc(gridBaseline * 6);
   padding-left: calc(gridBaseline * 8);
-  height: 100%;
 }
 
 .link:hover {
