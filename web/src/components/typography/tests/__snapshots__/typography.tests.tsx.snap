@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text renders medium text 1`] = `
+<p
+  class="textMedium"
+>
+  Medium
+</p>
+`;
+
+exports[`Text renders micro text 1`] = `
+<p
+  class="textMicro"
+>
+  Micro
+</p>
+`;
+
+exports[`Title renders large title 1`] = `
+<h2
+  class="titleLarge"
+>
+  Large
+</h2>
+`;
+
+exports[`Title renders medium title 1`] = `
+<h3
+  class="titleMedium"
+>
+  Medium
+</h3>
+`;
+
+exports[`Title renders small title 1`] = `
+<h4
+  class="titleSmall"
+>
+  Small
+</h4>
+`;

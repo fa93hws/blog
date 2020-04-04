@@ -97,5 +97,8 @@
   },
   "browserslist": [
     "last 1 version"
-  ]
+  ],
+  "engines": {
+    "node": ">=12 < 13"
+  }
 }

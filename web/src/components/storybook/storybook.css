@@ -1,3 +1,12 @@
+@value gridBaseline from '../metrics.css';
+
 .section {
   margin-top: 20px;
+}
+
+.subSection {
+  display: inline-flex;
+  padding: gridBaseline;
+  border: 1px dashed black;
+  margin: calc(gridBaseline * 2);
 }

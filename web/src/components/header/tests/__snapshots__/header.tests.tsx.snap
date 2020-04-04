@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders the header with top bar title 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="shortBar withBottomShadow"
+  >
+    <button
+      class="cross"
+    >
+      <span
+        aria-hidden="true"
+        title="close"
+      >
+        <svg
+          height="16"
+          version="1.1"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            transform="scale(1)"
+          >
+            src/components/icons/assets/cross.svg
+          </g>
+        </svg>
+      </span>
+    </button>
+    <h4
+      class="titleSmall"
+    >
+      夏目天子的博客
+    </h4>
+  </div>
+  <div
+    class="content"
+  >
+    <div>
+      <h4
+        class="titleSmall"
+      >
+        兴趣使然的博客
+      </h4>
+    </div>
+    <div
+      class="subTitle"
+    >
+      <p
+        class="textMicro"
+      >
+        白嫖是我快乐
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Header renders the header without top bar title 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="shortBar"
+  >
+    <button
+      class="cross"
+    >
+      <span
+        aria-hidden="true"
+        title="close"
+      >
+        <svg
+          height="16"
+          version="1.1"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            transform="scale(1)"
+          >
+            src/components/icons/assets/cross.svg
+          </g>
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div
+    class="content"
+  >
+    <div>
+      <h4
+        class="titleSmall"
+      >
+        兴趣使然的博客
+      </h4>
+    </div>
+    <div
+      class="subTitle"
+    >
+      <p
+        class="textMicro"
+      >
+        白嫖是我快乐
+      </p>
+    </div>
+  </div>
+</div>
+`;

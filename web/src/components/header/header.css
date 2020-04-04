@@ -1,0 +1,40 @@
+@value gridBaseline from '../metrics.css';
+@value colorBlue from '../colors.css';
+@value monoWhite, monoWhiteA50, monoWhiteA200, monoBlackA250 from '../colors.css';
+@value colorPurpleLight from '../colors.css';
+
+.cross {
+  fill: monoWhite;
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  margin-left: calc(gridBaseline * 3);
+}
+
+.container {
+  background-color: colorBlue;
+  color: monoWhiteA50;
+  height: calc(gridBaseline * 30);
+}
+
+.shortBar {
+  position: fixed;
+  top: 0;
+  height: calc(gridBaseline * 7);
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.withBottomShadow {
+  box-shadow: 0 0 gridBaseline 0 monoBlackA250;
+}
+
+.content {
+  padding-left: calc(gridBaseline * 30);
+  padding-top: calc(gridBaseline * 13);
+}
+
+.subTitle {
+  color: colorPurpleLight;
+}

@@ -9,6 +9,7 @@ import TagsSvg from './assets/tags.svg';
 import GithubSvg from './assets/github.svg';
 import SinaWeiboSvg from './assets/sina-weibo.svg';
 
+console.log(ArchiveSvg);
 export const Archive = createIcon(ArchiveSvg);
 export const Cross = createIcon(CrossSvg);
 export const Home = createIcon(HomeSvg);

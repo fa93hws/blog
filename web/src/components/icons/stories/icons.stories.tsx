@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+import { StorySubSection } from '../../storybook/storybook';
 import { Size } from '../create-icon';
 import * as Icons from '../icons';
 import styles from './icons.stories.css';
@@ -14,7 +15,7 @@ const IconContainer = ({
   const allSizes: readonly Size[] = ['small', 'medium', 'large'];
   return (
     <div>
-      <section className={styles.container}>
+      <StorySubSection>
         <h1>{title}: </h1>
         <div className={styles.section}>
           {allSizes.map(s => (
@@ -26,7 +27,7 @@ const IconContainer = ({
             />
           ))}
         </div>
-      </section>
+      </StorySubSection>
     </div>
   );
 };
