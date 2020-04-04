@@ -12,6 +12,9 @@ module.exports = {
   moduleNameMapper: {
     '.css$': '<rootDir>/tools/jest/css-transformer.ts',
   },
+  transform: {
+    '.svg$': '<rootDir>/tools/jest/svg-transformer.js',
+  },
   snapshotSerializers: ['enzyme-to-json/serializer', 'jest-serializer-html'],
   globals: {
     'ts-jest': {

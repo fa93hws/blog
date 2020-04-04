@@ -13,3 +13,9 @@ export const StorySection = ({
     {children}
   </fieldset>
 );
+
+export const StorySubSection = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => <section className={styles.subSection}>{children}</section>;
