@@ -14,7 +14,7 @@ function handler({ output }: CliArgs) {
 
 export function cli() {
   Yargs.command('$0', 'generate yml for github workflow in web folder', {
-    builder: (y: Yargs.Argv<any>): Yargs.Argv<CliArgs> =>
+    builder: (): Yargs.Argv<CliArgs> =>
       Yargs.option('output', {
         alias: 'o',
         demand: true,
