@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { Text } from '../../typography/typography';
 import styles from './nav-links.css';
 
 export type NavItem = {
@@ -9,7 +10,7 @@ export type NavItem = {
 const NavLink = ({ item: { text, link } }: { item: NavItem }) => (
   <li>
     <Link to={link} className={styles.link}>
-      {text}
+      <Text.Micro>{text}</Text.Micro>
     </Link>
   </li>
 );

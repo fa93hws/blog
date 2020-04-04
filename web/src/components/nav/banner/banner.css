@@ -7,7 +7,6 @@
 .banner {
   width: bannerWidth;
   height: bannerHeight;
-  line-height: bannerHeight;
   left: calc(bannerWidth * 0.707 / 2 - bannerWidth / 2);
   top: calc(bannerWidth * 0.707 / 2 - bannerHeight / 2);
   transform: rotate(-45deg) translate(0, calc(0 - bannerHeight));
@@ -20,6 +19,10 @@
   box-shadow: 0 0 calc(gridBaseline * 6) 0 monoGreyA100;
   color: monoWhiteA50;
   cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner:hover {

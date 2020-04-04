@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Text } from '../../typography/typography';
 import styles from './author.css';
 
 export type AuthorProps = {
@@ -16,7 +17,11 @@ export const Author = ({ name, email, avatar }: AuthorProps) => (
     <a href={avatar.linkTo}>
       <img src={avatar.img} alt={avatar.alt} className={styles.avatarImg} />
     </a>
-    <p className={styles.name}>{name}</p>
-    <p className={styles.email}>{email}</p>
+    <div className={styles.name}>
+      <Text.Micro>{name}</Text.Micro>
+    </div>
+    <div className={styles.email}>
+      <Text.Micro>{email}</Text.Micro>
+    </div>
   </div>
 );
