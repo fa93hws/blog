@@ -1,12 +1,5 @@
 @value gridBaseline from '../../metrics.css';
 
-.container {
-  display: inline-flex;
-  padding: gridBaseline;
-  border: 1px dashed black;
-  margin: calc(gridBaseline * 2);
-}
-
 .section {
   margin-left: gridBaseline;
   display: flex;
