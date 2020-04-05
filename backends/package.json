@@ -11,6 +11,7 @@
     "lint:ts:types": "tsc --project tsconfig.check.json",
     "format": "prettier --check **/*",
     "build": "nest build",
+    "pipeline:update": "generate-pipeline -o ./backends-ci.yml --workflowFile workflow/workflow.js",
     "test": "jest"
   },
   "author": "fa93hws",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@fa93hws-blog/eslint-config": "file:../tools/eslint/config/fa93hws-blog-eslint-config-1.0.2.tgz",
+    "@fa93hws-blog/pipeline-generator": "file:../tools/pipeline-generator/fa93hws-blog-pipeline-generator-1.0.1.tgz",
     "@nestjs/cli": "^7.0.0",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
