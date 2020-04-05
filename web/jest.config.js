@@ -6,6 +6,7 @@ module.exports = {
     '!**/node_modules/**',
     '{tools,conf,src}/**/*.(j|t)s{,x}',
     '!**/*.d.ts',
+    '!**/*.stories.tsx',
   ],
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['<rootDir>/tools/jest/setup.ts'],
