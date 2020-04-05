@@ -10,9 +10,11 @@ import {
   createCacheStep,
   createDeploySteps,
   createCodeCovStep,
-  createCommonStep,
+  createCommonStepCreator,
   createInstallNodeModulesStep,
 } from '@fa93hws-blog/pipeline-generator';
+
+const createCommonStep = createCommonStepCreator('web');
 
 type JobType = CommonStep | CacheStep | CheckoutStep;
 type JobWithDeployment = JobType | S3SyncStep;
