@@ -190,8 +190,19 @@ jobs:
         working-directory: web
       - id: jest
         name: Run unit test
-        run: npm run test
+        run: npm run test -- --coverage
         working-directory: web
+      - id: codecov_unittest
+        name: Upload unittest codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage/**/*
+          flags: web_unittest
+          token: '${{ secrets.CODECOV_TOKEN }}'
+          yml: ./codecov.yml
 name: web
 'on':
-  - push
+  push:
+    paths:
+      - web/**
+      - .github/workflows/web-ci.yml

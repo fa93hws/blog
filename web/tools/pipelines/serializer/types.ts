@@ -17,6 +17,16 @@ export type S3ActionStep = {
   };
 };
 
+export type CodeCovStep = {
+  uses: 'codecov/codecov-action@v1';
+  with: {
+    token: string;
+    file: string;
+    yml: string;
+    flags: string;
+  };
+};
+
 export type CommonStep = {
   name: string;
   id: string;
@@ -37,6 +47,6 @@ export type Job<T extends CommonStep> = {
 
 export type WorkFlows<T extends CommonStep> = {
   name: string;
-  on: readonly string[] | string;
+  on: any;
   jobs: readonly Job<T>[];
 };
