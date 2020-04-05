@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "cache/ts-check.json"
+  }
+}
