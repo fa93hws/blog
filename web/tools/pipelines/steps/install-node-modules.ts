@@ -1,7 +1,7 @@
 import { CommonStep } from '../serializer/types';
 
 export const createInstallNodeModulesStep = (
-  cacheStep?: CommonStep,
+  cacheSteps: readonly CommonStep[],
 ): CommonStep => {
   const out: CommonStep = {
     id: 'npm-ci',
@@ -9,9 +9,11 @@ export const createInstallNodeModulesStep = (
     run: 'npm ci',
     'working-directory': 'web',
   };
-  if (cacheStep != null) {
-    out.if = `steps.${cacheStep.id}.outputs.cache-hit != 'true'`;
+  if (cacheSteps.length > 0) {
+    const conditions = cacheSteps.map(
+      step => `steps.${step.id}.outputs.cache-hit != 'true'`,
+    );
+    out.if = conditions.join(' && ');
   }
-  // if: condition,
   return out;
 };
