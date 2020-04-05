@@ -1,4 +1,1 @@
-module.exports = {
-  trailingComma: 'all',
-  singleQuote: true,
-};
+module.exports = require('../tools/prettier/prettier-config');
