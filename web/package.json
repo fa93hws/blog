@@ -15,7 +15,7 @@
     "storybook": "bin/webdev.sh storybook",
     "storybook:build": "bin/webdev.sh build-storybook",
     "percy:storybook": "bin/webdev.sh percy-storybook",
-    "pipeline:update": "node tools/pipelines/cli.js -o ./web-ci.yml"
+    "pipeline:update": "generate-pipeline -o ./web-ci.yml --workflowFile tools/workflow.js"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@fa93hws-blog/eslint-config": "file:../tools/eslint/config/fa93hws-blog-eslint-config-1.0.2.tgz",
+    "@fa93hws-blog/pipeline-generator": "file:../tools/pipeline-generator/fa93hws-blog-pipeline-generator-1.0.0.tgz",
     "@percy/storybook": "^3.3.0",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
@@ -41,7 +42,6 @@
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/html-webpack-plugin": "^3.2.2",
     "@types/jest": "^25.1.2",
-    "@types/js-yaml": "^3.12.2",
     "@types/mini-css-extract-plugin": "^0.9.0",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
@@ -73,7 +73,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
     "jest-serializer-html": "^7.0.0",
-    "js-yaml": "^3.13.1",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss": "^7.0.26",
     "postcss-calc": "^7.0.2",
@@ -92,8 +91,7 @@
     "typescript": "^3.8.2",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
-    "yargs": "^15.1.0"
+    "webpack-dev-server": "^3.10.3"
   },
   "browserslist": [
     "last 1 version"

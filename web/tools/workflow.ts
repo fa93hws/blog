@@ -1,16 +1,26 @@
-import { Job, CommonStep, WorkFlows } from './serializer/types';
-import { checkoutStep, CheckoutStep } from './steps/checkout';
-import { CacheStep, createCacheStep } from './steps/cache';
-import { createInstallNodeModulesStep } from './steps/install-node-modules';
-import { createCommonStep } from './steps/create-common-step';
-import { createCodeCovStep } from './steps/codecov';
-import { createDeploySteps, S3SyncStep } from './steps/aws';
+import { resolve } from 'path';
+import {
+  Job,
+  CacheStep,
+  CommonStep,
+  S3SyncStep,
+  WorkFlows,
+  checkoutStep,
+  CheckoutStep,
+  createCacheStep,
+  createDeploySteps,
+  createCodeCovStep,
+  createCommonStep,
+  createInstallNodeModulesStep,
+} from '@fa93hws-blog/pipeline-generator';
 
 type JobType = CommonStep | CacheStep | CheckoutStep;
 type JobWithDeployment = JobType | S3SyncStep;
 
+const repoDir = resolve(__dirname, '..', '..');
 const webFolder = 'web';
 const webCacheStep = createCacheStep({
+  repoDir,
   folder: webFolder,
   id: 'npm-cache-web',
 });
