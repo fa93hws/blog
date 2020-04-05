@@ -1,17 +1,18 @@
-import { resolve, join } from 'path';
+import { join } from 'path';
 import { existsSync } from 'fs';
 import { CacheActionStep, CommonStep } from '../serializer/types';
 
-const REPO_DIR = resolve(__dirname, '..', '..', '..', '..');
 export type CacheStep = CommonStep & CacheActionStep;
 export function createCacheStep({
   folder,
   id,
+  repoDir,
 }: {
   folder: string;
   id: string;
+  repoDir: string;
 }): CacheStep {
-  const absPath = join(REPO_DIR, folder);
+  const absPath = join(repoDir, folder);
   if (!existsSync(absPath)) {
     throw new Error(`folder ${absPath} does not exist`);
   }
