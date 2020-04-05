@@ -1,0 +1,86 @@
+name: backends
+'on':
+  push:
+    paths:
+      - backends/**
+      - .github/workflows/backends-ci.yml
+
+jobs:
+  install:
+    name: Install node modules
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-npm-${{ hashFiles('backends/package-lock.json') }}"
+          path: backends/node_modules
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
+        working-directory: backends
+
+  lint:
+    name: Linting
+    needs:
+      - install
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-npm-${{ hashFiles('backends/package-lock.json') }}"
+          path: backends/node_modules
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
+        working-directory: backends
+      - id: eslint
+        name: Check ESlint
+        run: 'npm run lint:ts'
+        working-directory: backends
+      - id: tscheck
+        if: always()
+        name: Check Typescripe
+        run: 'npm run lint:ts:types'
+        working-directory: backends
+      - id: prettier
+        if: always()
+        name: Check Prettier
+        run: npm run format
+        working-directory: backends
+
+  build:
+    name: build
+    needs:
+      - install
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+      - id: cache-npm
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-npm-${{ hashFiles('backends/package-lock.json') }}"
+          path: backends/node_modules
+      - id: npm-ci
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        name: install node modules
+        run: npm ci
+        working-directory: backends
+      - id: build
+        name: Run nest build
+        run: npm run build
+        working-directory: backends

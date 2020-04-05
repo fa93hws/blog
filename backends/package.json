@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nest start",
     "start:dev": "nest start --watch",
-    "lint": "eslint \"src/**/*.ts{,x}\"",
+    "lint:ts": "eslint \"src/**/*.ts{,x}\"",
+    "lint:ts:types": "tsc --project tsconfig.check.json",
     "format": "prettier --check **/*",
     "build": "nest build",
     "test": "jest"
