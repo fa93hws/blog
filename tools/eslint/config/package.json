@@ -1,8 +1,8 @@
 {
-  "name": "eslint-config",
-  "version": "1.0.0",
+  "name": "@fa93hws-blog/eslint-config",
+  "version": "1.0.2",
   "description": "",
-  "main": ".eslintrc.js",
+  "main": "eslint-config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,9 @@
     "eslint-config-prettier": "^6.10.1",
     "typescript": "^3.8.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2"
+  }
 }

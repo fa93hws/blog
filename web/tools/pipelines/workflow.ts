@@ -24,26 +24,11 @@ const warmUpSteps: readonly JobType[] = [
   }),
 ];
 
-const eslintConfigFolder = 'tools/eslint/config';
-const eslintConfigCacheStep = createCacheStep({
-  folder: eslintConfigFolder,
-  id: 'npm-cache-eslint',
-});
-const lintingWarmUpSteps: readonly JobType[] = [
-  ...warmUpSteps,
-  eslintConfigCacheStep,
-  createInstallNodeModulesStep({
-    id: 'npm-install-eslint',
-    folder: eslintConfigFolder,
-    cacheStep: eslintConfigCacheStep,
-  }),
-];
-
 const installJob: Job<JobType> = {
   tag: 'install',
   name: 'Install node modules',
   runsOn: 'ubuntu-latest',
-  steps: lintingWarmUpSteps,
+  steps: warmUpSteps,
 };
 
 const lintJob: Job<JobType> = {
@@ -52,7 +37,7 @@ const lintJob: Job<JobType> = {
   name: 'Linting',
   runsOn: 'ubuntu-latest',
   steps: [
-    ...lintingWarmUpSteps,
+    ...warmUpSteps,
     createCommonStep({
       id: 'eslint',
       name: 'Check ESlint',

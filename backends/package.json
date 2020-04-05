@@ -24,6 +24,7 @@
     "rxjs": "^6.5.4"
   },
   "devDependencies": {
+    "@fa93hws-blog/eslint-config": "file:../tools/eslint/config/fa93hws-blog-eslint-config-1.0.2.tgz",
     "@nestjs/cli": "^7.0.0",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
