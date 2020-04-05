@@ -17,6 +17,16 @@ export type S3ActionStep = {
   };
 };
 
+export type CodeCovStep = {
+  uses: 'codecov/codecov-action@v1';
+  with: {
+    token: string;
+    file: string;
+    yml: string;
+    flags: string;
+  };
+};
+
 export type CommonStep = {
   name: string;
   id: string;

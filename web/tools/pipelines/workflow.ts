@@ -3,6 +3,7 @@ import { checkoutStep, CheckoutStep } from './steps/checkout';
 import { CacheStep, cacheStep } from './steps/cache';
 import { createInstallNodeModulesStep } from './steps/install-node-modules';
 import { createCommonStep } from './steps/create-common-step';
+import { createCodeCovStep } from './steps/codecov';
 import { createDeploySteps, S3SyncStep } from './steps/aws';
 
 type JobType = CommonStep | CacheStep | CheckoutStep;
@@ -62,7 +63,12 @@ const unitTestJob: Job<JobType> = {
     createCommonStep({
       id: 'jest',
       name: 'Run unit test',
-      run: 'npm run test',
+      run: 'npm run test -- --coverage',
+    }),
+    createCodeCovStep({
+      file: './coverage/**/*',
+      yml: './codecov.yml',
+      name: 'web-unittest',
     }),
   ],
 };
