@@ -197,9 +197,12 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           file: ./coverage/**/*
-          flags: web-unittest
+          flags: web_unittest
           token: '${{ secrets.CODECOV_TOKEN }}'
           yml: ./codecov.yml
 name: web
 'on':
-  - push
+  push:
+    paths:
+      - web/**
+      - .github/workflows/web-ci.yml

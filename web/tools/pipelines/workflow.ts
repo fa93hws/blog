@@ -68,7 +68,7 @@ const unitTestJob: Job<JobType> = {
     createCodeCovStep({
       file: './coverage/**/*',
       yml: './codecov.yml',
-      name: 'web-unittest',
+      name: 'web_unittest',
     }),
   ],
 };
@@ -149,7 +149,11 @@ const storybookJob: Job<JobWithDeployment> = {
 
 export const workFlow: WorkFlows<JobType> = {
   name: 'web',
-  on: ['push'],
+  on: {
+    push: {
+      paths: ['web/**', '.github/workflows/web-ci.yml'],
+    },
+  },
   jobs: [
     installJob,
     lintJob,

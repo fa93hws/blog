@@ -47,6 +47,6 @@ export type Job<T extends CommonStep> = {
 
 export type WorkFlows<T extends CommonStep> = {
   name: string;
-  on: readonly string[] | string;
+  on: any;
   jobs: readonly Job<T>[];
 };
