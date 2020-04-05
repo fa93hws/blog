@@ -24,6 +24,17 @@ jobs:
         name: install node modules
         run: npm ci
         working-directory: backends
+      - id: npm-cache-eslint
+        name: fetch node modules in tools/eslint/config
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-npm-${{ hashFiles('tools/eslint/config/package-lock.json') }}"
+          path: tools/eslint/config/node_modules
+      - id: npm-install-eslint
+        if: steps.npm-cache-eslint.outputs.cache-hit != 'true'
+        name: install node modules in tools/eslint/config
+        run: npm ci
+        working-directory: tools/eslint/config
 
   lint:
     name: Linting
@@ -45,6 +56,17 @@ jobs:
         name: install node modules
         run: npm ci
         working-directory: backends
+      - id: npm-cache-eslint
+        name: fetch node modules in tools/eslint/config
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-npm-${{ hashFiles('tools/eslint/config/package-lock.json') }}"
+          path: tools/eslint/config/node_modules
+      - id: npm-install-eslint
+        if: steps.npm-cache-eslint.outputs.cache-hit != 'true'
+        name: install node modules in tools/eslint/config
+        run: npm ci
+        working-directory: tools/eslint/config
       - id: eslint
         name: Check ESlint
         run: 'npm run lint:ts'

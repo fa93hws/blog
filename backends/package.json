@@ -1,7 +1,8 @@
 {
   "name": "backends",
   "version": "1.0.0",
-  "description": "",
+  "description": "backends of the blog",
+  "repository": {},
   "main": "index.ts",
   "scripts": {
     "start": "nest start",
@@ -31,10 +32,8 @@
     "@types/node": "^13.9.1",
     "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
-    "@typescript-eslint/parser": "^2.23.0",
+    "@typescript-eslint/parser": "^2.26.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",

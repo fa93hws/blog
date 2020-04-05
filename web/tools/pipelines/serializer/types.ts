@@ -47,6 +47,7 @@ export type Job<T extends CommonStep> = {
 
 export type WorkFlows<T extends CommonStep> = {
   name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   on: any;
   jobs: readonly Job<T>[];
 };
