@@ -1,8 +1,12 @@
+import { resolve } from 'path';
 import { NestFactory } from '@nestjs/core';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import { GatewayModule } from './gateway/gateway-module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(GatewayModule);
+  const app = await NestFactory.create<NestExpressApplication>(GatewayModule);
+  app.setBaseViewsDir(resolve(process.cwd(), 'views'));
+  app.setViewEngine('ejs');
   await app.listen(3000);
 }
 
