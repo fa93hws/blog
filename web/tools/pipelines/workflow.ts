@@ -1,6 +1,6 @@
 import { Job, CommonStep, WorkFlows } from './serializer/types';
 import { checkoutStep, CheckoutStep } from './steps/checkout';
-import { CacheStep, cacheStep } from './steps/cache';
+import { CacheStep, createCacheStep } from './steps/cache';
 import { createInstallNodeModulesStep } from './steps/install-node-modules';
 import { createCommonStep } from './steps/create-common-step';
 import { createCodeCovStep } from './steps/codecov';
@@ -9,17 +9,41 @@ import { createDeploySteps, S3SyncStep } from './steps/aws';
 type JobType = CommonStep | CacheStep | CheckoutStep;
 type JobWithDeployment = JobType | S3SyncStep;
 
+const webFolder = 'web';
+const webCacheStep = createCacheStep({
+  folder: webFolder,
+  id: 'npm-cache-web',
+});
 const warmUpSteps: readonly JobType[] = [
   checkoutStep,
-  cacheStep,
-  createInstallNodeModulesStep(cacheStep),
+  webCacheStep,
+  createInstallNodeModulesStep({
+    id: 'npm-install-web',
+    folder: webFolder,
+    cacheStep: webCacheStep,
+  }),
+];
+
+const eslintConfigFolder = 'tools/eslint/config';
+const eslintConfigCacheStep = createCacheStep({
+  folder: eslintConfigFolder,
+  id: 'npm-cache-eslint',
+});
+const lintingWarmUpSteps: readonly JobType[] = [
+  ...warmUpSteps,
+  eslintConfigCacheStep,
+  createInstallNodeModulesStep({
+    id: 'npm-install-eslint',
+    folder: eslintConfigFolder,
+    cacheStep: eslintConfigCacheStep,
+  }),
 ];
 
 const installJob: Job<JobType> = {
   tag: 'install',
   name: 'Install node modules',
   runsOn: 'ubuntu-latest',
-  steps: warmUpSteps,
+  steps: lintingWarmUpSteps,
 };
 
 const lintJob: Job<JobType> = {
@@ -28,7 +52,7 @@ const lintJob: Job<JobType> = {
   name: 'Linting',
   runsOn: 'ubuntu-latest',
   steps: [
-    ...warmUpSteps,
+    ...lintingWarmUpSteps,
     createCommonStep({
       id: 'eslint',
       name: 'Check ESlint',
