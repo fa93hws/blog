@@ -25,8 +25,7 @@ function handler({ output, workflowFile }: CliArgs) {
   }
   const { workFlow } = require(filePath);
   const yamlContent = toYaml(workFlow);
-  const outputPath = resolveFile({ cwd: process.cwd(), file: output });
-  writeFileSync(outputPath, yamlContent, { encoding: 'utf-8' });
+  writeFileSync(output, yamlContent, { encoding: 'utf-8' });
 }
 
 export function cli() {
