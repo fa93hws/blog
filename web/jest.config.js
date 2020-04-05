@@ -4,8 +4,9 @@ module.exports = {
   testMatch: ['**/tests/**/*.tests.ts{,x}'],
   collectCoverageFrom: [
     '!**/node_modules/**',
-    '{tools,conf,src}/**/*.(j|t)s{,x}',
+    'src/**/*.(j|t)s{,x}',
     '!**/*.d.ts',
+    '!**/*.stories.tsx',
   ],
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['<rootDir>/tools/jest/setup.ts'],
