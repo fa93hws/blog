@@ -43,7 +43,7 @@ jobs:
         name: install node modules in backends
         run: npm ci
         working-directory: backends
-      - id: backends-c
+      - id: backends-ci
         name: Regenerate backends-ci.yml
         run: 'npm run pipeline:update'
         working-directory: backends
