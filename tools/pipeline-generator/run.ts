@@ -8,24 +8,25 @@ type CliArgs = {
   workflowFile: string;
 };
 
-function resolveWorkflowFile({ cwd, workflowFile }: {
+function resolveFile({ cwd, file }: {
   cwd: string;
-  workflowFile: string;
+  file: string;
 }) {
-  if (isAbsolute(workflowFile)) {
-    return workflowFile;
+  if (isAbsolute(file)) {
+    return file;
   }
-  return join(cwd, workflowFile);
+  return join(cwd, file);
 }
 
 function handler({ output, workflowFile }: CliArgs) {
-  const filePath = resolveWorkflowFile({ cwd: process.cwd(), workflowFile })
+  const filePath = resolveFile({ cwd: process.cwd(), file: workflowFile })
   if (!existsSync(filePath)) {
     throw new Error(`workflow file ${filePath} does not exist`);
   }
   const { workFlow } = require(filePath);
   const yamlContent = toYaml(workFlow);
-  writeFileSync(output, yamlContent, { encoding: 'utf-8' });
+  const outputPath = resolveFile({ cwd: process.cwd(), file: output });
+  writeFileSync(outputPath, yamlContent, { encoding: 'utf-8' });
 }
 
 export function cli() {
