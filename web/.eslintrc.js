@@ -21,7 +21,7 @@ module.exports = {
     'jsx-a11y',
   ],
   extends: [
-    '../tools/eslint/config/eslint-config.js',
+    '@fa93hws-blog/eslint-config',
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
   ],

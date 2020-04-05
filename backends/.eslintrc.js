@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: '../tools/eslint/config/eslint-config.js',
+  extends: '@fa93hws-blog/eslint-config',
   rules: {
     'class-methods-use-this': 'off',
   },
