@@ -1,6 +1,6 @@
 import { Job, CommonStep, WorkFlows } from './serializer/types';
 import { checkoutStep, CheckoutStep } from './steps/checkout';
-import { CacheStep, createCacheStep } from './steps/cache';
+import { CacheStep, cacheStep } from './steps/cache';
 import { createInstallNodeModulesStep } from './steps/install-node-modules';
 import { createCommonStep } from './steps/create-common-step';
 import { createCodeCovStep } from './steps/codecov';
@@ -9,21 +9,10 @@ import { createDeploySteps, S3SyncStep } from './steps/aws';
 type JobType = CommonStep | CacheStep | CheckoutStep;
 type JobWithDeployment = JobType | S3SyncStep;
 
-const cacheSteps = [
-  createCacheStep({
-    id: 'cache-npm-web',
-    folder: 'web',
-  }),
-  createCacheStep({
-    id: 'cache-npm-eslint',
-    folder: 'tools/eslint/config',
-  }),
-];
-
 const warmUpSteps: readonly JobType[] = [
   checkoutStep,
-  ...cacheSteps,
-  createInstallNodeModulesStep(cacheSteps),
+  cacheStep,
+  createInstallNodeModulesStep(cacheStep),
 ];
 
 const installJob: Job<JobType> = {

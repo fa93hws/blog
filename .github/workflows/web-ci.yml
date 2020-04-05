@@ -8,20 +8,14 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
-      - id: cache-npm-web
-        name: fetch node modules in web
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-      - id: cache-npm-eslint
-        name: fetch node modules in tools/eslint/config
-        uses: actions/cache@v1
-        with:
-          key: '${{ runner.os }}-npm-${{ hashFiles(''tools/eslint/config/package-lock.json'') }}'
-          path: tools/eslint/config/node_modules
       - id: npm-ci
-        if: steps.cache-npm-web.outputs.cache-hit != 'true' && steps.cache-npm-eslint.outputs.cache-hit != 'true'
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         name: install node modules
         run: npm ci
         working-directory: web
@@ -56,20 +50,14 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
-      - id: cache-npm-web
-        name: fetch node modules in web
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-      - id: cache-npm-eslint
-        name: fetch node modules in tools/eslint/config
-        uses: actions/cache@v1
-        with:
-          key: '${{ runner.os }}-npm-${{ hashFiles(''tools/eslint/config/package-lock.json'') }}'
-          path: tools/eslint/config/node_modules
       - id: npm-ci
-        if: steps.cache-npm-web.outputs.cache-hit != 'true' && steps.cache-npm-eslint.outputs.cache-hit != 'true'
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         name: install node modules
         run: npm ci
         working-directory: web
@@ -88,20 +76,14 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
-      - id: cache-npm-web
-        name: fetch node modules in web
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-      - id: cache-npm-eslint
-        name: fetch node modules in tools/eslint/config
-        uses: actions/cache@v1
-        with:
-          key: '${{ runner.os }}-npm-${{ hashFiles(''tools/eslint/config/package-lock.json'') }}'
-          path: tools/eslint/config/node_modules
       - id: npm-ci
-        if: steps.cache-npm-web.outputs.cache-hit != 'true' && steps.cache-npm-eslint.outputs.cache-hit != 'true'
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         name: install node modules
         run: npm ci
         working-directory: web
@@ -114,20 +96,14 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
-      - id: cache-npm-web
-        name: fetch node modules in web
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-      - id: cache-npm-eslint
-        name: fetch node modules in tools/eslint/config
-        uses: actions/cache@v1
-        with:
-          key: '${{ runner.os }}-npm-${{ hashFiles(''tools/eslint/config/package-lock.json'') }}'
-          path: tools/eslint/config/node_modules
       - id: npm-ci
-        if: steps.cache-npm-web.outputs.cache-hit != 'true' && steps.cache-npm-eslint.outputs.cache-hit != 'true'
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         name: install node modules
         run: npm ci
         working-directory: web
@@ -154,20 +130,14 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
-      - id: cache-npm-web
-        name: fetch node modules in web
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-      - id: cache-npm-eslint
-        name: fetch node modules in tools/eslint/config
-        uses: actions/cache@v1
-        with:
-          key: '${{ runner.os }}-npm-${{ hashFiles(''tools/eslint/config/package-lock.json'') }}'
-          path: tools/eslint/config/node_modules
       - id: npm-ci
-        if: steps.cache-npm-web.outputs.cache-hit != 'true' && steps.cache-npm-eslint.outputs.cache-hit != 'true'
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         name: install node modules
         run: npm ci
         working-directory: web
@@ -207,20 +177,14 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
-      - id: cache-npm-web
-        name: fetch node modules in web
+      - id: cache-npm
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: '${{ runner.os }}-npm-${{ hashFiles(''web/package-lock.json'') }}'
           path: web/node_modules
-      - id: cache-npm-eslint
-        name: fetch node modules in tools/eslint/config
-        uses: actions/cache@v1
-        with:
-          key: '${{ runner.os }}-npm-${{ hashFiles(''tools/eslint/config/package-lock.json'') }}'
-          path: tools/eslint/config/node_modules
       - id: npm-ci
-        if: steps.cache-npm-web.outputs.cache-hit != 'true' && steps.cache-npm-eslint.outputs.cache-hit != 'true'
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         name: install node modules
         run: npm ci
         working-directory: web
