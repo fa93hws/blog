@@ -7,9 +7,11 @@ import { Cross } from '../icons/icons';
 export const Header = ({
   showShortBarTitle,
   onCloseClicked,
+  titleRef,
 }: {
   showShortBarTitle: boolean;
   onCloseClicked(): void;
+  titleRef?: React.Ref<HTMLDivElement>;
 }) => (
   <div className={styles.container}>
     <div
@@ -23,7 +25,7 @@ export const Header = ({
       {showShortBarTitle && <Title.Small>夏目天子的博客</Title.Small>}
     </div>
     <div className={styles.content}>
-      <div>
+      <div ref={titleRef}>
         <Title.Small>兴趣使然的博客</Title.Small>
       </div>
       <div className={styles.subTitle}>

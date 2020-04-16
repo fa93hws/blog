@@ -12,6 +12,7 @@ interface CssExports {
   'monoWhiteA200': string;
   'monoWhiteA50': string;
   'shortBar': string;
+  'shortHeaderHeight': string;
   'subTitle': string;
   'withBottomShadow': string;
 }

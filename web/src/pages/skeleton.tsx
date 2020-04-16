@@ -3,14 +3,17 @@ import { BrowserRouter } from 'react-router-dom';
 import { createHomePage } from './home/home';
 import { NavItem } from '../components/nav/nav-links/nav-links';
 import { Nav } from '../components/nav/nav';
+import { createGlobalHeader } from './global-header/create-golbal-hreader';
 import styles from './page.css';
 
 export const Skeleton = ({
   LeftNav,
   MainContent,
+  GlobalHeader,
 }: {
   LeftNav: React.ComponentType;
   MainContent: React.ComponentType;
+  GlobalHeader: React.ComponentType;
 }) => (
   <BrowserRouter>
     <div className={styles.container}>
@@ -18,6 +21,7 @@ export const Skeleton = ({
         <LeftNav />
       </aside>
       <main className={styles.mainContent}>
+        <GlobalHeader />
         <MainContent />
       </main>
     </div>
@@ -65,9 +69,13 @@ export function createSkeleton() {
       sourceCodeUrl="https://github.com/fa93hws/blog"
     />
   );
-
+  const GlobalHeader = createGlobalHeader();
   const SkeletonImpl = () => (
-    <Skeleton MainContent={MainContent} LeftNav={LeftNav} />
+    <Skeleton
+      LeftNav={LeftNav}
+      MainContent={MainContent}
+      GlobalHeader={GlobalHeader}
+    />
   );
   return SkeletonImpl;
 }
