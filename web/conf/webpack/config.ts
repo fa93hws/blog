@@ -2,11 +2,13 @@ import { Configuration } from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as TerserPlugin from 'terser-webpack-plugin';
+import * as ManifestPlugin from 'webpack-manifest-plugin';
 import { getCssLoaderOption } from './css/css-loader-options';
 import { getOutput } from './output';
 import { getMiniCssExtractPluginOptions } from './css/mini-css-plugin';
 import { getOptionsFromEnv } from './env-options';
 import { getPostcssOption } from './css/postcss-options';
+import { generateManifest } from './manifest-processor';
 
 const {
   hashOutput,
@@ -76,6 +78,7 @@ export const webpackConfig: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({ template: 'index.html' }),
     new MiniCssExtractPlugin(getMiniCssExtractPluginOptions(hashOutput)),
+    new ManifestPlugin({ generate: generateManifest }),
   ],
   optimization: {
     splitChunks: {

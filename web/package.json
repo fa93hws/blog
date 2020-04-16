@@ -51,6 +51,7 @@
     "@types/terser-webpack-plugin": "^2.2.0",
     "@types/webpack": "^4.41.6",
     "@types/webpack-dev-server": "^3.10.0",
+    "@types/webpack-manifest-plugin": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
     "acorn": "^7.1.1",
@@ -91,7 +92,8 @@
     "typescript": "^3.8.2",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "webpack-manifest-plugin": "^2.2.0"
   },
   "browserslist": [
     "last 1 version"
