@@ -3,6 +3,8 @@
 @value monoWhite, monoWhiteA50, monoWhiteA200, monoBlackA250 from '../colors.css';
 @value colorPurpleLight from '../colors.css';
 
+@value shortHeaderHeight: calc(gridBaseline * 7);
+
 .cross {
   fill: monoWhite;
   background-color: unset;
@@ -20,10 +22,11 @@
 .shortBar {
   position: fixed;
   top: 0;
-  height: calc(gridBaseline * 7);
+  height: shortHeaderHeight;
   width: 100%;
   display: flex;
   align-items: center;
+  background-color: colorBlue;
 }
 
 .withBottomShadow {

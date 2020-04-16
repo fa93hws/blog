@@ -15,11 +15,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    'eslint-plugin-react',
-    'react-hooks',
-    'jsx-a11y',
-  ],
+  plugins: ['eslint-plugin-react', 'react-hooks', 'jsx-a11y'],
   extends: [
     '@fa93hws-blog/eslint-config',
     'plugin:jsx-a11y/recommended',
@@ -36,6 +32,7 @@ module.exports = {
         ],
       },
     ],
+    'no-useless-constructor': 'off',
   },
   overrides: [
     {
