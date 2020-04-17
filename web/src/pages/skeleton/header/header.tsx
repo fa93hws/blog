@@ -16,14 +16,12 @@ const IconButton = React.memo(
 export const Header = React.memo(
   ({
     showShortBarTitle,
-    onCloseClicked,
-    onMenuClicked,
+    onIconClicked,
     titleRef,
     icon,
   }: {
     showShortBarTitle: boolean;
-    onCloseClicked(): void;
-    onMenuClicked(): void;
+    onIconClicked(): void;
     titleRef?: React.Ref<HTMLDivElement>;
     icon: 'cross' | 'menu';
   }) => (
@@ -33,10 +31,7 @@ export const Header = React.memo(
           [styles.withBottomShadow]: showShortBarTitle,
         })}
       >
-        <IconButton
-          type={icon}
-          onClicked={icon === 'cross' ? onCloseClicked : onMenuClicked}
-        />
+        <IconButton type={icon} onClicked={onIconClicked} />
         {showShortBarTitle && <Title.Small>夏目天子的博客</Title.Small>}
       </div>
       <div className={styles.content}>

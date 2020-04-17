@@ -6,8 +6,7 @@ describe('Header', () => {
     expect(
       <Header
         showShortBarTitle={false}
-        onCloseClicked={jest.fn()}
-        onMenuClicked={jest.fn()}
+        onIconClicked={jest.fn()}
         icon="cross"
       />,
     ).toMatchRenderedSnapshot();
@@ -17,8 +16,7 @@ describe('Header', () => {
     expect(
       <Header
         showShortBarTitle={true}
-        onCloseClicked={jest.fn()}
-        onMenuClicked={jest.fn()}
+        onIconClicked={jest.fn()}
         icon="cross"
       />,
     ).toMatchRenderedSnapshot();
@@ -28,8 +26,7 @@ describe('Header', () => {
     expect(
       <Header
         showShortBarTitle={false}
-        onCloseClicked={jest.fn()}
-        onMenuClicked={jest.fn()}
+        onIconClicked={jest.fn()}
         icon="menu"
       />,
     ).toMatchRenderedSnapshot();
@@ -37,12 +34,7 @@ describe('Header', () => {
 
   it('renders the header with top bar title and icon is menu', () => {
     expect(
-      <Header
-        showShortBarTitle={true}
-        onCloseClicked={jest.fn()}
-        onMenuClicked={jest.fn()}
-        icon="menu"
-      />,
+      <Header showShortBarTitle={true} onIconClicked={jest.fn()} icon="menu" />,
     ).toMatchRenderedSnapshot();
   });
 });

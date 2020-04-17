@@ -32,11 +32,11 @@ export function createHeader({
       }
       intersectionObserver.observe(titleRef.current);
     }, []);
+    const onIconClicked = icon === 'cross' ? onCloseClicked : onMenuClicked;
     return (
       <Header
         showShortBarTitle={presenter.showShortBarTitle}
-        onCloseClicked={onCloseClicked}
-        onMenuClicked={onMenuClicked}
+        onIconClicked={onIconClicked}
         titleRef={titleRef}
         icon={icon}
       />

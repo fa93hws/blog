@@ -19,8 +19,7 @@ storiesOf('pages.skeleton.header', module).add(
     return (
       <Header
         showShortBarTitle={showShortBarTitle}
-        onCloseClicked={action('close clicked')}
-        onMenuClicked={action('menu clicked')}
+        onIconClicked={action('icon clicked')}
         icon={icon}
       />
     );
@@ -33,8 +32,7 @@ storiesOf(
 ).add('global header (stateless - title displayed)', () => (
   <Header
     showShortBarTitle={true}
-    onCloseClicked={action('close clicked')}
-    onMenuClicked={action('menu clicked')}
+    onIconClicked={action('icon clicked')}
     icon="cross"
   />
 ));
