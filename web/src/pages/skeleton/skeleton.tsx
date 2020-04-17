@@ -16,15 +16,17 @@ export const Skeleton = ({
   Header: React.ComponentType;
 }) => (
   <BrowserRouter>
-    <div className={styles.container}>
+    <>
       <aside className={styles.nav}>
         <LeftNav />
       </aside>
       <main className={styles.mainContent}>
-        <Header />
-        <MainContent />
+        <div>
+          <Header />
+          <MainContent />
+        </div>
       </main>
-    </div>
+    </>
   </BrowserRouter>
 );
 
