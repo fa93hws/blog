@@ -8,6 +8,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-web
         name: fetch node modules in web
         uses: actions/cache@v1
@@ -50,6 +52,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-web
         name: fetch node modules in web
         uses: actions/cache@v1
@@ -76,6 +80,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-web
         name: fetch node modules in web
         uses: actions/cache@v1
@@ -96,6 +102,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-web
         name: fetch node modules in web
         uses: actions/cache@v1
@@ -130,6 +138,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-web
         name: fetch node modules in web
         uses: actions/cache@v1
@@ -177,6 +187,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-web
         name: fetch node modules in web
         uses: actions/cache@v1

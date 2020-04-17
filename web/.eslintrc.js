@@ -32,8 +32,6 @@ module.exports = {
         ],
       },
     ],
-    'no-useless-constructor': 'off',
-    'import/no-unresolved': 'off',
   },
   overrides: [
     {

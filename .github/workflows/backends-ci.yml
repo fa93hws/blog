@@ -8,6 +8,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-backends
         name: fetch node modules in backends
         uses: actions/cache@v1
@@ -32,6 +34,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-backends
         name: fetch node modules in backends
         uses: actions/cache@v1
@@ -58,6 +62,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-backends
         name: fetch node modules in backends
         uses: actions/cache@v1
@@ -78,6 +84,8 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v1
+        with:
+          lfs: true
       - id: npm-cache-backends
         name: fetch node modules in backends
         uses: actions/cache@v1
