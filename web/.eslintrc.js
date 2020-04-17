@@ -32,6 +32,7 @@ module.exports = {
         ],
       },
     ],
+    'react/display-name': 'off',
   },
   overrides: [
     {

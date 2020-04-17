@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Skeleton should match the snapshot 1`] = `
+exports[`Skeleton renders the skeleton when menu is hidden 1`] = `
 Array [
   <aside
     class="nav"
@@ -11,6 +11,30 @@ Array [
   </aside>,
   <main
     class="mainContent"
+  >
+    <div>
+      <div>
+        Header
+      </div>
+      <div>
+        MainContent
+      </div>
+    </div>
+  </main>,
+]
+`;
+
+exports[`Skeleton renders the skeleton when menu is open 1`] = `
+Array [
+  <aside
+    class="nav hideMenu"
+  >
+    <div>
+      Nav
+    </div>
+  </aside>,
+  <main
+    class="mainContent hideMenu"
   >
     <div>
       <div>

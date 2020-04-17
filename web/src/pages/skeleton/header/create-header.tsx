@@ -6,7 +6,13 @@ import headerStyles from './header.css';
 
 const THRESHOLD = 0.9;
 
-export function createHeader() {
+export function createHeader({
+  onCloseClicked,
+  onMenuClicked,
+}: {
+  onCloseClicked(): void;
+  onMenuClicked(): void;
+}) {
   const presenter = new GlobalHeaderStore();
   const intersectionObserver = new IntersectionObserver(
     entries => {
@@ -18,9 +24,8 @@ export function createHeader() {
       threshold: THRESHOLD,
     },
   );
-  const onCloseClicked = () => undefined;
   const titleRef = React.createRef<HTMLDivElement>();
-  const GlobalHeader = () => {
+  const GlobalHeader = ({ icon }: { icon: 'cross' | 'menu' }) => {
     React.useEffect(() => {
       if (titleRef.current == null) {
         throw new Error('ref to title should not be null');
@@ -31,7 +36,9 @@ export function createHeader() {
       <Header
         showShortBarTitle={presenter.showShortBarTitle}
         onCloseClicked={onCloseClicked}
+        onMenuClicked={onMenuClicked}
         titleRef={titleRef}
+        icon={icon}
       />
     );
   };

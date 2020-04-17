@@ -5,8 +5,8 @@ interface CssExports {
   'colorPurpleLight': string;
   'container': string;
   'content': string;
-  'cross': string;
   'gridBaseline': string;
+  'icon': string;
   'monoBlackA250': string;
   'monoWhite': string;
   'monoWhiteA200': string;

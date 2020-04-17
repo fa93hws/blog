@@ -2,14 +2,26 @@
 
 @value navWidth: calc(gridBaseline * 30);
 
+@value animationTransition: 500ms cubic-bezier(.18, .81, .3, .89);
+
 .nav {
   position: fixed;
   width: navWidth;
   display: flex;
   height: 100vh;
+  transition: transform animationTransition;
+}
+
+.nav.hideMenu {
+  transform: translateX(-100%);
 }
 
 .mainContent {
   flex-grow: 1;
   padding-left: navWidth;
+  transition: padding animationTransition;
+}
+
+.mainContent.hideMenu {
+  padding-left: 0;
 }

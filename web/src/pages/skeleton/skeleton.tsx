@@ -1,28 +1,41 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
+import * as classnames from 'classnames';
 import { BrowserRouter } from 'react-router-dom';
 import { createHomePage } from 'pages/home/home';
 import { NavItem } from './nav/nav-links/nav-links';
 import { Nav } from './nav/nav';
 import { createHeader } from './header/create-header';
+import { SkeletonPresenter } from './skeleton-presenter';
 import styles from './skeleton.css';
 
 export const Skeleton = ({
   LeftNav,
   MainContent,
   Header,
+  isMenuHidden,
 }: {
   LeftNav: React.ComponentType;
   MainContent: React.ComponentType;
-  Header: React.ComponentType;
+  Header: React.ComponentType<{ icon: 'cross' | 'menu' }>;
+  isMenuHidden: boolean;
 }) => (
   <BrowserRouter>
     <>
-      <aside className={styles.nav}>
+      <aside
+        className={classnames(styles.nav, {
+          [styles.hideMenu]: isMenuHidden,
+        })}
+      >
         <LeftNav />
       </aside>
-      <main className={styles.mainContent}>
+      <main
+        className={classnames(styles.mainContent, {
+          [styles.hideMenu]: isMenuHidden,
+        })}
+      >
         <div>
-          <Header />
+          <Header icon={isMenuHidden ? 'menu' : 'cross'} />
           <MainContent />
         </div>
       </main>
@@ -71,9 +84,19 @@ export function createSkeleton() {
       sourceCodeUrl="https://github.com/fa93hws/blog"
     />
   );
-  const Header = createHeader();
+
+  const presenter = new SkeletonPresenter();
+  const Header = createHeader({
+    onCloseClicked: () => presenter.hideMenu(),
+    onMenuClicked: () => presenter.showMenu(),
+  });
   const SkeletonImpl = () => (
-    <Skeleton Header={Header} LeftNav={LeftNav} MainContent={MainContent} />
+    <Skeleton
+      Header={Header}
+      LeftNav={LeftNav}
+      MainContent={MainContent}
+      isMenuHidden={presenter.isMenuHidden}
+    />
   );
-  return SkeletonImpl;
+  return observer(SkeletonImpl);
 }
