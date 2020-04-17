@@ -5,7 +5,7 @@
 
 @value shortHeaderHeight: calc(gridBaseline * 7);
 
-.cross {
+.icon {
   fill: monoWhite;
   background-color: unset;
   border: none;
