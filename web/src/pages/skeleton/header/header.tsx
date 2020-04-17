@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as classnames from 'classnames';
+import { Title, Text } from 'components/typography/typography';
+import { Cross } from 'components/icons/icons';
 import styles from './header.css';
-import { Title, Text } from '../../../components/typography/typography';
-import { Cross } from '../../../components/icons/icons';
 
 export const Header = ({
   showShortBarTitle,

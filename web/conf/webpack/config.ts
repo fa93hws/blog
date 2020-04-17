@@ -9,6 +9,7 @@ import { getMiniCssExtractPluginOptions } from './css/mini-css-plugin';
 import { getOptionsFromEnv } from './env-options';
 import { getPostcssOption } from './css/postcss-options';
 import { generateManifest } from './manifest-processor';
+import { resolveOption } from './resolver-options';
 
 const {
   hashOutput,
@@ -23,9 +24,7 @@ export const webpackConfig: Configuration = {
   mode,
   entry: './src/index.tsx',
   output: getOutput(hashOutput),
-  resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
-  },
+  resolve: resolveOption,
   module: {
     rules: [
       {

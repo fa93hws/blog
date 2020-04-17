@@ -1,4 +1,4 @@
-@value gridBaseline from '../metrics.css';
+@value gridBaseline from '~components/metrics.css';
 
 .section {
   margin-top: 20px;

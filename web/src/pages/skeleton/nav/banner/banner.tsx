@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '../../../../components/typography/typography';
+import { Text } from 'components/typography/typography';
 import styles from './banner.css';
 
 export const SourceCodeBanner = ({

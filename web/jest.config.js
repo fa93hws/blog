@@ -12,6 +12,8 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/tools/jest/setup.ts'],
   moduleNameMapper: {
     '.css$': '<rootDir>/tools/jest/css-transformer.ts',
+    '^components/(.*)$': '<rootDir>/src/components/$1',
+    '^pages/(.*)$': '<rootDir>/src/pages/$1',
   },
   transform: {
     '.svg$': '<rootDir>/tools/jest/svg-transformer.js',

@@ -1,5 +1,5 @@
-@value gridBaseline from '../../../../components/metrics.css';
-@value monoWhiteA50, monoGreyLight, monoGreyA100 from '../../../../components/colors.css';
+@value gridBaseline from '~components/metrics.css';
+@value monoWhiteA50, monoGreyLight, monoGreyA100 from '~components/colors.css';
 
 @value bannerWidth: calc(gridBaseline * 16);
 @value bannerHeight: calc(gridBaseline * 4);
