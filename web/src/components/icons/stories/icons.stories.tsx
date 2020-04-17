@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StorySubSection } from '../../storybook/storybook';
+import { StorySubSection } from 'components/storybook/storybook';
 import { Size } from '../create-icon';
 import * as Icons from '../icons';
 import styles from './icons.stories.css';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 import StoryRouter from 'storybook-react-router';
-import { StorySection } from '../../../../components/storybook/storybook';
+import { StorySection } from 'components/storybook/storybook';
 import { Nav } from '../nav';
 import { fakeNavLinkItems } from '../nav-links/fake/fake-links';
 import styles from './nav.stories.css';

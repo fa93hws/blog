@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { createHomePage } from '../home/home';
+import { createHomePage } from 'pages/home/home';
 import { NavItem } from './nav/nav-links/nav-links';
 import { Nav } from './nav/nav';
 import { createHeader } from './header/create-header';

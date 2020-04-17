@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+import { StorySection } from 'components/storybook/storybook';
 import { Title } from '../typography';
-import { StorySection } from '../../storybook/storybook';
 
 storiesOf('components.typography', module).add('typography', () => (
   <StorySection name="Title">

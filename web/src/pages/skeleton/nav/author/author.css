@@ -1,5 +1,5 @@
-@value gridBaseline from '../../../../components/metrics.css';
-@value colorBlueLight, monoWhite, colorPurpleLight from '../../../../components/colors.css';
+@value gridBaseline from '~components/metrics.css';
+@value colorBlueLight, monoWhite, colorPurpleLight from '~components/colors.css';
 
 @value marginLeft: calc(gridBaseline * 3);
 

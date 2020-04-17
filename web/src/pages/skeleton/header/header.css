@@ -1,7 +1,7 @@
-@value gridBaseline from '../../../components/metrics.css';
-@value colorBlue from '../../../components/colors.css';
-@value monoWhite, monoWhiteA50, monoWhiteA200, monoBlackA250 from '../../../components/colors.css';
-@value colorPurpleLight from '../../../components/colors.css';
+@value gridBaseline from '~components/metrics.css';
+@value colorBlue from '~components/colors.css';
+@value monoWhite, monoWhiteA50, monoWhiteA200, monoBlackA250 from '~components/colors.css';
+@value colorPurpleLight from '~components/colors.css';
 
 @value shortHeaderHeight: calc(gridBaseline * 7);
 
