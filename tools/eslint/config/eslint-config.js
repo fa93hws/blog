@@ -27,5 +27,7 @@ module.exports = {
     'import/no-default-export': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'import/extensions': 'off',
+    'no-useless-constructor': 'off',
+    'import/no-unresolved': 'off',
   },
 };

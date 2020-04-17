@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
-    "@fa93hws-blog/eslint-config": "file:../tools/eslint/config/fa93hws-blog-eslint-config-1.0.2.tgz",
+    "@fa93hws-blog/eslint-config": "file:../tools/eslint/config/fa93hws-blog-eslint-config-1.0.5.tgz",
     "@fa93hws-blog/pipeline-generator": "file:../tools/pipeline-generator/fa93hws-blog-pipeline-generator-1.0.1.tgz",
     "@percy/storybook": "^3.3.0",
     "@storybook/addon-actions": "^5.3.18",
