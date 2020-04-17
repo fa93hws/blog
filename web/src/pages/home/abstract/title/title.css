@@ -1,0 +1,19 @@
+@value colorBlue from '~components/colors.css';
+
+.title {
+  display: inline-block;
+  color: colorBlue;
+}
+
+.underline {
+  box-sizing: border-box;
+  height: 2px;
+  background-color: colorBlue;
+  transform-origin: 50%;
+  transform: scaleX(0%);
+  transition: transform 300ms ease-in-out;
+}
+
+.title:hover > .underline {
+  transform: scaleX(100%);
+}
