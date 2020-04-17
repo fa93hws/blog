@@ -8,7 +8,6 @@
     "baseUrl": "./",
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
     "paths": {
       "components/*": ["src/components/*"],
       "pages/*": ["src/pages/*"]
