@@ -1,5 +1,7 @@
-@value gridBaseline from '../../metrics.css';
-@value monoGreyA100, monoGreyUltraLight, monoBlackA100, monoBlackA150, blueA400 from '../../colors.css';
+@value gridBaseline from '../../../../components/metrics.css';
+@value monoBlackA100, monoBlackA150 from '../../../../components/colors.css';
+@value monoGreyA100, monoGreyUltraLight from '../../../../components/colors.css';
+@value blueA400 from '../../../../components/colors.css';
 
 .link {
   display: flex;

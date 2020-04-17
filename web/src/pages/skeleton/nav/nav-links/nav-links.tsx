@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Text } from '../../typography/typography';
+import { Text } from '../../../../components/typography/typography';
 import styles from './nav-links.css';
 
 export type NavItem = {

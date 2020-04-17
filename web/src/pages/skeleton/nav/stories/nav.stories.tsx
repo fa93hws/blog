@@ -2,12 +2,12 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 import StoryRouter from 'storybook-react-router';
-import { StorySection } from '../../storybook/storybook';
+import { StorySection } from '../../../../components/storybook/storybook';
 import { Nav } from '../nav';
 import { fakeNavLinkItems } from '../nav-links/fake/fake-links';
 import styles from './nav.stories.css';
 
-storiesOf('components.nav', module)
+storiesOf('pages.skeleton.nav', module)
   .addDecorator(StoryRouter())
   .add('global nav', () => {
     const author = {

@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { createHomePage } from './home/home';
-import { NavItem } from '../components/nav/nav-links/nav-links';
-import { Nav } from '../components/nav/nav';
-import { createGlobalHeader } from './global-header/create-golbal-hreader';
-import styles from './page.css';
+import { createHomePage } from '../home/home';
+import { NavItem } from './nav/nav-links/nav-links';
+import { Nav } from './nav/nav';
+import { createHeader } from './header/create-header';
+import styles from './skeleton.css';
 
 export const Skeleton = ({
   LeftNav,
   MainContent,
-  GlobalHeader,
+  Header,
 }: {
   LeftNav: React.ComponentType;
   MainContent: React.ComponentType;
-  GlobalHeader: React.ComponentType;
+  Header: React.ComponentType;
 }) => (
   <BrowserRouter>
     <div className={styles.container}>
@@ -21,7 +21,7 @@ export const Skeleton = ({
         <LeftNav />
       </aside>
       <main className={styles.mainContent}>
-        <GlobalHeader />
+        <Header />
         <MainContent />
       </main>
     </div>
@@ -69,13 +69,9 @@ export function createSkeleton() {
       sourceCodeUrl="https://github.com/fa93hws/blog"
     />
   );
-  const GlobalHeader = createGlobalHeader();
+  const Header = createHeader();
   const SkeletonImpl = () => (
-    <Skeleton
-      LeftNav={LeftNav}
-      MainContent={MainContent}
-      GlobalHeader={GlobalHeader}
-    />
+    <Skeleton Header={Header} LeftNav={LeftNav} MainContent={MainContent} />
   );
   return SkeletonImpl;
 }

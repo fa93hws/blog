@@ -1,4 +1,4 @@
-@value gridBaseline from '../components/metrics.css';
+@value gridBaseline from '../../components/metrics.css';
 
 .container {
   display: flex;

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { Header } from '../../components/header/header';
-import { GlobalHeaderStore } from './global-header-presenter';
-import headerStyles from '../../components/header/header.css';
+import { Header } from './header';
+import { GlobalHeaderStore } from './header-presenter';
+import headerStyles from './header.css';
 
 const THRESHOLD = 0.9;
 
-export function createGlobalHeader() {
+export function createHeader() {
   const presenter = new GlobalHeaderStore();
   const intersectionObserver = new IntersectionObserver(
     entries => {

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { createSkeleton } from './pages/skeleton';
+import { createSkeleton } from './pages/skeleton/skeleton';
 import './pages/global.css';
 
 export const App = () => {
