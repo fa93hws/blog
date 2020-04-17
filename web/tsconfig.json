@@ -9,6 +9,5 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "resolveJsonModule": true
-  },
-  "exclude": ["**/tests/**", "**/stories/**"]
+  }
 }

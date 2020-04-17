@@ -5,13 +5,9 @@ describe('Skeleton', () => {
   it('should match the snapshot', () => {
     const LeftNav = () => <div>Nav</div>;
     const MainContent = () => <div>MainContent</div>;
-    const GlobalHeader = () => <div>GlobalHeader</div>;
+    const Header = () => <div>Header</div>;
     expect(
-      <Skeleton
-        LeftNav={LeftNav}
-        MainContent={MainContent}
-        GlobalHeader={GlobalHeader}
-      />,
+      <Skeleton LeftNav={LeftNav} MainContent={MainContent} Header={Header} />,
     ).toMatchRenderedSnapshot();
   });
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '../../typography/typography';
+import { Text } from '../../../../components/typography/typography';
 import styles from './author.css';
 
 export type AuthorProps = {
