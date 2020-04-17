@@ -1,17 +1,15 @@
 @value gridBaseline from '~components/metrics.css';
 
-.container {
-  display: flex;
-  min-height: 100vh;
-}
+@value navWidth: calc(gridBaseline * 30);
 
 .nav {
-  width: calc(gridBaseline * 30);
+  position: fixed;
+  width: navWidth;
   display: flex;
+  height: 100vh;
 }
 
 .mainContent {
-  display: flex;
-  flex-direction: column;
   flex-grow: 1;
+  padding-left: navWidth;
 }
