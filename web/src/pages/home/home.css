@@ -1,3 +1,6 @@
+@value monoGreyLight from '~components/colors.css';
+
 .home {
   height: 100vh;
+  background-color: monoGreyLight;
 }

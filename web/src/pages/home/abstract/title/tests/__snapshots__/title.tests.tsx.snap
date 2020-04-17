@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AbstractTitle renders the title for the abstract 1`] = `
+<div
+  class="title"
+>
+  <a
+    href="/target"
+  >
+    <h4
+      class="titleSmall"
+    >
+      Abstract Title
+    </h4>
+  </a>
+  <div
+    class="underline"
+  />
+</div>
+`;
