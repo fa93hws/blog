@@ -15,7 +15,7 @@ exports[`Skeleton should match the snapshot 1`] = `
     class="mainContent"
   >
     <div>
-      GlobalHeader
+      Header
     </div>
     <div>
       MainContent
