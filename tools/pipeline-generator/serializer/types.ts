@@ -1,5 +1,8 @@
 export type CheckoutActionStep = {
   uses: 'actions/checkout@v1';
+  with?: {
+    lfs?: boolean;
+  }
 };
 
 export type CacheActionStep = {

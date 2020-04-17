@@ -5,4 +5,7 @@ export const checkoutStep: CheckoutStep = {
   uses: 'actions/checkout@v1',
   name: 'checkout',
   id: 'checkout',
+  with: {
+    lfs: true,
+  }
 };
