@@ -9,7 +9,7 @@ const IconContainer = ({
   Icon,
   title,
 }: {
-  Icon: React.ComponentType<{ size: Size; title: string; className: string }>;
+  Icon: React.ComponentType<{ size: Size; title: string }>;
   title: string;
 }) => {
   const allSizes: readonly Size[] = ['small', 'medium', 'large'];
@@ -19,12 +19,9 @@ const IconContainer = ({
         <h1>{title}: </h1>
         <div className={styles.section}>
           {allSizes.map(s => (
-            <Icon
-              size={s}
-              title={`${title}-${s}`}
-              key={s}
-              className={styles.icon}
-            />
+            <div className={styles.icon} key={s}>
+              <Icon size={s} title={`${title}-${s}`} />
+            </div>
           ))}
         </div>
       </StorySubSection>

@@ -3,8 +3,7 @@
 exports[`createIcon should generate the large icon correctly 1`] = `
 <span
   aria-hidden="true"
-  class="large-class"
-  title="large-title"
+  class="iconSpan"
 >
   <svg
     height="48"
@@ -25,8 +24,7 @@ exports[`createIcon should generate the large icon correctly 1`] = `
 exports[`createIcon should generate the medium icon correctly 1`] = `
 <span
   aria-hidden="true"
-  class="medium-class"
-  title="medium-title"
+  class="iconSpan"
 >
   <svg
     height="32"
@@ -47,8 +45,7 @@ exports[`createIcon should generate the medium icon correctly 1`] = `
 exports[`createIcon should generate the small icon correctly 1`] = `
 <span
   aria-hidden="true"
-  class="small-class"
-  title="small-title"
+  class="iconSpan"
 >
   <svg
     height="16"
