@@ -5,6 +5,7 @@ interface CssExports {
   'defaultFontStack': string;
   'fontSizeMedium': string;
   'fontSizeMicro': string;
+  'fontSizeSmall': string;
   'fontSizeTitleLarge': string;
   'fontSizeTitleMedium': string;
   'fontSizeTitleSmall': string;
@@ -16,6 +17,8 @@ interface CssExports {
   'textMediumLineHeight': string;
   'textMicro': string;
   'textMicroLineHeight': string;
+  'textSmall': string;
+  'textSmallLineHeight': string;
   'textTitleLargeLineHeight': string;
   'textTitleMediumLineHeight': string;
   'textTitleSmallLineHeight': string;

@@ -5,6 +5,7 @@
 @value fontSizeTitleMedium: 2.4rem;
 @value fontSizeTitleSmall: 1.8rem;
 @value fontSizeMedium: 1.4rem;
+@value fontSizeSmall: 1.2rem;
 @value fontSizeMicro: 1.0rem;
 
 @value fontWeightRegular: 400;
@@ -15,6 +16,7 @@
 @value textTitleMediumLineHeight: 1.3;
 @value textTitleSmallLineHeight: 1.3;
 @value textMediumLineHeight: 1.6;
+@value textSmallLineHeight: 1.6;
 @value textMicroLineHeight: 1.6;
 
 .base {
@@ -64,6 +66,14 @@
   font-weight: fontWeightRegular;
   font-size: fontSizeMedium;
   line-height: textMediumLineHeight;
+}
+
+.textSmall {
+  composes: textBase;
+
+  font-weight: fontWeightRegular;
+  font-size: fontSizeSmall;
+  line-height: textSmallLineHeight;
 }
 
 .textMicro {

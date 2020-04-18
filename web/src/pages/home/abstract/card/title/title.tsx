@@ -7,7 +7,7 @@ export const AbstractTitle = React.memo(
   ({ children, linkTo }: { children: React.ReactNode; linkTo: string }) => (
     <div className={styles.title}>
       <Link to={linkTo}>
-        <Title.Small>{children}</Title.Small>
+        <Title.Medium>{children}</Title.Medium>
       </Link>
       <div className={styles.underline} />
     </div>

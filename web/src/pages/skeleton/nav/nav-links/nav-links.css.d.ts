@@ -7,7 +7,7 @@ interface CssExports {
   'list': string;
   'monoBlackA100': string;
   'monoBlackA150': string;
-  'monoGreyA100': string;
+  'monoGreyA200': string;
   'monoGreyUltraLight': string;
 }
 export const cssExports: CssExports;
