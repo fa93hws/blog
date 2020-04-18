@@ -2,7 +2,6 @@
 
 @value lengthSmall: calc(gridBaseline * 4);
 @value lengthLarge: calc(gridBaseline * 8);
-@value animationDuration: 800ms;
 
 .baseButton {
   position: relative;
