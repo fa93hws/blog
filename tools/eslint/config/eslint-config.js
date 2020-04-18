@@ -29,5 +29,7 @@ module.exports = {
     'import/extensions': 'off',
     'no-useless-constructor': 'off',
     'import/no-unresolved': 'off',
+    'no-unused-expressions': 'off',
+    '@typescript-eslint/no-namespace': 'off',
   },
 };

@@ -34,8 +34,6 @@ module.exports = {
       },
     ],
     'react/display-name': 'off',
-    'no-unused-expressions': 'off',
-    '@typescript-eslint/no-namespace': 'off',
   },
   overrides: [
     {
