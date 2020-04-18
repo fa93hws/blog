@@ -7,19 +7,19 @@ describe('createIcon', () => {
 
   it('should generate the small icon correctly', () => {
     expect(
-      <Icon size="small" className="small-class" title="small-title" />,
+      <Icon size="small" className="small-class" />,
     ).toMatchRenderedSnapshot();
   });
 
   it('should generate the medium icon correctly', () => {
     expect(
-      <Icon size="medium" className="medium-class" title="medium-title" />,
+      <Icon size="medium" className="medium-class" />,
     ).toMatchRenderedSnapshot();
   });
 
   it('should generate the large icon correctly', () => {
     expect(
-      <Icon size="large" className="large-class" title="large-title" />,
+      <Icon size="large" className="large-class" />,
     ).toMatchRenderedSnapshot();
   });
 });

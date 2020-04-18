@@ -2,15 +2,21 @@ import * as React from 'react';
 import * as classnames from 'classnames';
 import { Title, Text } from 'components/typography/typography';
 import { Cross, Menu } from 'components/icons/icons';
+import { IconButton } from 'components/buttons/icon-button';
 import styles from './header.css';
 
-const IconButton = React.memo(
-  ({ type, onClicked }: { type: 'cross' | 'menu'; onClicked(): void }) => (
-    <button className={styles.icon} onClick={onClicked}>
-      {type === 'cross' && <Cross size="small" title="close" />}
-      {type === 'menu' && <Menu size="small" title="menu" />}
-    </button>
-  ),
+const IconButtonImpl = React.memo(
+  ({ type, onClick }: { type: 'cross' | 'menu'; onClick(): void }) => {
+    const Icon =
+      type === 'cross'
+        ? () => <Cross size="small" />
+        : () => <Menu size="small" />;
+    return (
+      <div className={styles.icon}>
+        <IconButton size="small" onClick={onClick} Icon={Icon} circle />
+      </div>
+    );
+  },
 );
 
 export const Header = React.memo(
@@ -31,7 +37,7 @@ export const Header = React.memo(
           [styles.withBottomShadow]: showShortBarTitle,
         })}
       >
-        <IconButton type={icon} onClicked={onIconClicked} />
+        <IconButtonImpl type={icon} onClick={onIconClicked} />
         {showShortBarTitle && <Title.Small>夏目天子的博客</Title.Small>}
       </div>
       <div className={styles.content}>

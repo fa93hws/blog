@@ -1,0 +1,35 @@
+@value gridBaseline from '~components/metrics.css';
+
+@value lengthSmall: calc(gridBaseline * 4);
+@value lengthLarge: calc(gridBaseline * 8);
+@value animationDuration: 800ms;
+
+.baseButton {
+  position: relative;
+  overflow: hidden;
+}
+
+.iconButton {
+  composes: baseButton;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconButton.small {
+  width: lengthSmall;
+  height: lengthSmall;
+}
+
+.iconButton.large {
+  width: lengthLarge;
+  height: lengthLarge;
+}
+
+.circle {
+  border-radius: 50%;
+}

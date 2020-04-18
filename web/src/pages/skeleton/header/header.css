@@ -7,10 +7,7 @@
 
 .icon {
   fill: monoWhite;
-  background-color: unset;
-  border: none;
-  cursor: pointer;
-  margin-left: calc(gridBaseline * 3);
+  margin-left: calc(gridBaseline * 2);
 }
 
 .container {

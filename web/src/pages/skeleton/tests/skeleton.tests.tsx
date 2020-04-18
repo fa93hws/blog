@@ -2,7 +2,6 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { setupIntersectionObserverMock } from 'utils/tests/mock-intersection-observer';
 import { Skeleton, createSkeleton } from '../skeleton';
-import 'mobx-react/batchingOptOut';
 
 describe('Skeleton', () => {
   const LeftNav = () => <div>Nav</div>;
