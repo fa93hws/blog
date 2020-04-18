@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 
-export class SkeletonPresenter {
+export class SkeletonStore {
   @observable.ref
   isMenuHidden = false;
 

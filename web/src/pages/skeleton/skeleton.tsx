@@ -6,7 +6,7 @@ import { createHomePage } from 'pages/home/home';
 import { NavItem } from './nav/nav-links/nav-links';
 import { Nav } from './nav/nav';
 import { createHeader } from './header/create-header';
-import { SkeletonPresenter } from './skeleton-presenter';
+import { SkeletonStore } from './skeleton-store';
 import styles from './skeleton.css';
 
 export const Skeleton = ({
@@ -85,17 +85,17 @@ export function createSkeleton() {
     />
   );
 
-  const presenter = new SkeletonPresenter();
+  const store = new SkeletonStore();
   const Header = createHeader({
-    onCloseClicked: () => presenter.hideMenu(),
-    onMenuClicked: () => presenter.showMenu(),
+    onCloseClicked: () => store.hideMenu(),
+    onMenuClicked: () => store.showMenu(),
   });
   const SkeletonImpl = () => (
     <Skeleton
       Header={Header}
       LeftNav={LeftNav}
       MainContent={MainContent}
-      isMenuHidden={presenter.isMenuHidden}
+      isMenuHidden={store.isMenuHidden}
     />
   );
   return observer(SkeletonImpl);

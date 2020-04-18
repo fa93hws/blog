@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Header } from './header';
-import { GlobalHeaderStore } from './header-presenter';
+import { HeaderStore } from './header-store';
 import headerStyles from './header.css';
 
 const THRESHOLD = 0.9;
@@ -13,14 +13,17 @@ export function createHeader({
   onCloseClicked(): void;
   onMenuClicked(): void;
 }) {
-  const presenter = new GlobalHeaderStore();
+  const store = new HeaderStore();
   const intersectionObserver = new IntersectionObserver(
     entries => {
-      presenter.setShowShortBarTitle(entries[0].intersectionRatio < THRESHOLD);
+      if (entries[0].intersectionRatio < THRESHOLD) {
+        store.hideShortBarTitle();
+      } else {
+        store.showShortBarTitle();
+      }
     },
     {
-      // TODO Fix types
-      rootMargin: `-${(headerStyles as any).shortHeaderHeight}`,
+      rootMargin: `-${headerStyles.shortHeaderHeight}`,
       threshold: THRESHOLD,
     },
   );
@@ -35,7 +38,7 @@ export function createHeader({
     const onIconClicked = icon === 'cross' ? onCloseClicked : onMenuClicked;
     return (
       <Header
-        showShortBarTitle={presenter.showShortBarTitle}
+        showShortBarTitle={store.isShortBarTitleHidden}
         onIconClicked={onIconClicked}
         titleRef={titleRef}
         icon={icon}
