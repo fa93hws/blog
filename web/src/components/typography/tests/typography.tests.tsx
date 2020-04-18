@@ -20,6 +20,10 @@ describe('Text', () => {
     expect(<Text.Medium>Medium</Text.Medium>).toMatchRenderedSnapshot();
   });
 
+  it('renders small text', () => {
+    expect(<Text.Small>Medium</Text.Small>).toMatchRenderedSnapshot();
+  });
+
   it('renders micro text', () => {
     expect(<Text.Micro>Micro</Text.Micro>).toMatchRenderedSnapshot();
   });

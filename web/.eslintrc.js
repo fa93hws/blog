@@ -29,6 +29,7 @@ module.exports = {
           'conf/**/*.ts',
           'tools/**/*.ts',
           'src/**/stories/*.ts{,x}',
+          'src/**/tests/*.ts{,x}',
         ],
       },
     ],
