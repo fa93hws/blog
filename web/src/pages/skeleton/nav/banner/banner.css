@@ -1,5 +1,5 @@
 @value gridBaseline from '~components/metrics.css';
-@value monoWhiteA50, monoGreyLight, monoGreyA100 from '~components/colors.css';
+@value monoWhiteA50, monoGreyLight, monoGreyA200 from '~components/colors.css';
 
 @value bannerWidth: calc(gridBaseline * 16);
 @value bannerHeight: calc(gridBaseline * 4);
@@ -16,7 +16,7 @@
   z-index: 15;
   text-align: center;
   background-color: green;
-  box-shadow: 0 0 calc(gridBaseline * 6) 0 monoGreyA100;
+  box-shadow: 0 0 calc(gridBaseline * 6) 0 monoGreyA200;
   color: monoWhiteA50;
   cursor: pointer;
 

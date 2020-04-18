@@ -1,6 +1,6 @@
 @value gridBaseline from '~components/metrics.css';
 @value monoBlackA100, monoBlackA150 from '~components/colors.css';
-@value monoGreyA100, monoGreyUltraLight from '~components/colors.css';
+@value monoGreyA200, monoGreyUltraLight from '~components/colors.css';
 @value blueA400 from '~components/colors.css';
 
 .link {
@@ -17,8 +17,8 @@
 
 .list {
   padding-top: gridBaseline;
-  border-right: 1px solid monoGreyA100;
-  box-shadow: 0 0 10px 0 monoGreyA100;
+  border-right: 1px solid monoGreyA200;
+  box-shadow: 0 0 10px 0 monoGreyA200;
   box-sizing: border-box;
   background-color: monoGreyUltraLight;
   color: monoBlackA150;

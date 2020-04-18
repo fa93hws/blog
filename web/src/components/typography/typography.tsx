@@ -39,6 +39,10 @@ export const Text = {
     tagName: 'p',
     className: styles.textMedium,
   }),
+  Small: createTextComponent({
+    tagName: 'p',
+    className: styles.textSmall,
+  }),
   Micro: createTextComponent({
     tagName: 'p',
     className: styles.textMicro,

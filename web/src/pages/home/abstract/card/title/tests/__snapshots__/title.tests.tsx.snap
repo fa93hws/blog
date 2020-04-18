@@ -7,11 +7,11 @@ exports[`AbstractTitle renders the title for the abstract 1`] = `
   <a
     href="/target"
   >
-    <h4
-      class="titleSmall"
+    <h3
+      class="titleMedium"
     >
       Abstract Title
-    </h4>
+    </h3>
   </a>
   <div
     class="underline"
