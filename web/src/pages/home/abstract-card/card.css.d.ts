@@ -5,6 +5,7 @@ interface CssExports {
   'content': string;
   'gridBaseline': string;
   'monoGreyA100': string;
+  'monoWhite': string;
   'time': string;
   'title': string;
 }

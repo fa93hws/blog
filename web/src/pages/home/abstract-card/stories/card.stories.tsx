@@ -5,7 +5,7 @@ import StoryRouter from 'storybook-react-router';
 import { AbstractCard } from '../card';
 import styles from './card.stories.css';
 
-storiesOf('pages.home.abstract.card', module)
+storiesOf('pages.home.abstract-card', module)
   .addDecorator(StoryRouter())
   .add('card', () => {
     const dummyParagraph =

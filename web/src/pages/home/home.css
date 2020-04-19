@@ -1,6 +1,17 @@
+@value gridBaseline from '~components/metrics.css';
 @value monoGreyLight from '~components/colors.css';
 
 .home {
-  height: 100vh;
+  min-height: 100vh;
   background-color: monoGreyLight;
+}
+
+.blogList {
+  width: calc(gridBaseline * 120);
+  margin: 0 auto;
+  padding: calc(gridBaseline * 4) 0;
+}
+
+.blogAbstract {
+  margin-bottom: calc(gridBaseline * 4);
 }
