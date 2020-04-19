@@ -45,15 +45,6 @@ export const Skeleton = ({
 
 export function createSkeleton() {
   const MainContent = createHomePage();
-  const author = {
-    name: '夏目天子',
-    email: 'wjun0912@gmail.com',
-    avatar: {
-      img: 'https://avatars0.githubusercontent.com/u/10626756',
-      alt: "author's github page",
-      linkTo: 'https://github.com/fa93hws',
-    },
-  };
   const navLinkItems: readonly NavItem[] = [
     {
       text: 'Home',
@@ -77,13 +68,7 @@ export function createSkeleton() {
     },
   ];
 
-  const LeftNav = () => (
-    <Nav
-      author={author}
-      navItems={navLinkItems}
-      sourceCodeUrl="https://github.com/fa93hws/blog"
-    />
-  );
+  const LeftNav = () => <Nav navItems={navLinkItems} />;
 
   const store = new SkeletonStore();
   const Header = createHeader({
