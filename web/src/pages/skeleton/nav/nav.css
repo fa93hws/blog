@@ -1,3 +1,13 @@
+@value gridBaseline from '~components/metrics.css';
+@value colorBlueUltraLight from '~components/colors.css';
+@value colorPurpleLight from '~components/colors.css';
+@value monoWhite, monoWhiteA50 from '~components/colors.css';
+@value monoGreyLight, monoGreyA200 from '~components/colors.css';
+
+@value authorMarginLeft: calc(gridBaseline * 3);
+@value sourceCodeBannerWidth: calc(gridBaseline * 16);
+@value sourceCodeBannerHeight: calc(gridBaseline * 4);
+
 .nav {
   position: relative;
   display: flex;
@@ -8,4 +18,55 @@
 .content {
   flex-grow: 7;
   background-color: rgb(44, 35, 35);
+}
+
+.authorContainer {
+  background-color: colorBlueUltraLight;
+  padding: calc(gridBaseline * 5) 0;
+}
+
+.avatarImg {
+  width: calc(gridBaseline * 10);
+  height: calc(gridBaseline * 10);
+  border-radius: 50%;
+  margin-left: authorMarginLeft;
+}
+
+.name {
+  white-space: nowrap;
+  color: monoWhite;
+  margin-top: gridBaseline;
+  margin-left: authorMarginLeft;
+}
+
+.email {
+  white-space: nowrap;
+  color: colorPurpleLight;
+  margin-left: authorMarginLeft;
+}
+
+.sourceCodeBanner {
+  width: sourceCodeBannerWidth;
+  height: sourceCodeBannerHeight;
+  left: calc(sourceCodeBannerWidth * 0.707 / 2 - sourceCodeBannerWidth / 2);
+  top: calc(sourceCodeBannerWidth * 0.707 / 2 - sourceCodeBannerHeight / 2);
+  transform: rotate(-45deg) translate(0, calc(0 - sourceCodeBannerHeight));
+
+  position: absolute;
+  overflow: hidden;
+  z-index: 15;
+  text-align: center;
+  background-color: green;
+  box-shadow: 0 0 calc(gridBaseline * 6) 0 monoGreyA200;
+  color: monoWhiteA50;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sourceCodeBanner:hover {
+  text-decoration: underline;
+  box-shadow: 0 0 calc(gridBaseline * 2) gridBaseline monoGreyLight;
 }

@@ -5,10 +5,10 @@ exports[`Global Nav should match the snapshot 1`] = `
   class="nav"
 >
   <div
-    class="banner"
+    class="sourceCodeBanner"
   >
     <a
-      href="sourceCodeUrl"
+      href="/https://github.com/fa93hws/blog"
     >
       <p
         class="textMicro"
@@ -18,15 +18,15 @@ exports[`Global Nav should match the snapshot 1`] = `
     </a>
   </div>
   <div
-    class="container"
+    class="authorContainer"
   >
     <a
-      href="author avatar link"
+      href="/https://github.com/fa93hws/"
     >
       <img
-        alt="author avatar alt"
+        alt="avatar"
         class="avatarImg"
-        src="author avatar path"
+        src="https://avatars0.githubusercontent.com/u/10626756"
       />
     </a>
     <div
@@ -35,7 +35,7 @@ exports[`Global Nav should match the snapshot 1`] = `
       <p
         class="textMicro"
       >
-        author name
+        夏目天子
       </p>
     </div>
     <div
@@ -44,7 +44,7 @@ exports[`Global Nav should match the snapshot 1`] = `
       <p
         class="textMicro"
       >
-        author email
+        wjun0912@gmail.com
       </p>
     </div>
   </div>
