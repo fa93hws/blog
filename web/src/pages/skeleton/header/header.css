@@ -5,9 +5,12 @@
 
 @value shortHeaderHeight: calc(gridBaseline * 7);
 
+.iconButton {
+  margin-left: calc(gridBaseline * 2);
+}
+
 .icon {
   fill: monoWhite;
-  margin-left: calc(gridBaseline * 2);
 }
 
 .container {

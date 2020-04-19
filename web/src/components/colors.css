@@ -1,12 +1,12 @@
 @value colorBlue: color(#3F51B5);
-@value colorBlueLight: color(#6AA1C9);
-@value blueA400: color(#3F51B5 a(10%));
+@value colorBlueUltraLight: color(#6AA1C9);
+@value colorBlueA250: color(colorBlue a(30%));
+@value colorBlueA400: color(colorBlue a(10%));
 
 @value monoWhite: color(#ffffff);
 @value monoWhiteA50: color(monoWhite a(95%));
 @value monoWhiteA100: color(monoWhite a(65%));
 @value monoWhiteA200: color(monoWhite a(40%));
-@value monoWhiteA500: color(monoWhite a(40%));
 
 @value monoBlack: color(#0e1318);
 @value monoBlackA100: color(monoBlack a(70%));

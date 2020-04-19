@@ -34,6 +34,7 @@ module.exports = {
       },
     ],
     'react/display-name': 'off',
+    'no-console': 'error',
   },
   overrides: [
     {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as classnames from 'classnames';
 import styles from './icons.css';
 
 export type Size = 'small' | 'medium' | 'large';
@@ -25,20 +26,20 @@ function createSvgString(svgContent: string, size: Size) {
   return `${openTag}${svgContent}</g></svg>`;
 }
 
-const BaseIcon = ({ size, svgContent }: IconProps) => {
+const BaseIcon = ({ size, svgContent, className }: IconProps) => {
   const svg = createSvgString(svgContent, size);
   return (
-    <span
+    <i
       aria-hidden="true"
-      className={styles.iconSpan}
+      className={classnames(styles.iconSpan, className)}
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
 };
 
 export function createIcon(svgContent: string) {
-  const Icon = ({ size }: Omit<IconProps, 'svgContent'>) => (
-    <BaseIcon size={size} svgContent={svgContent} />
+  const Icon = ({ size, className }: Omit<IconProps, 'svgContent'>) => (
+    <BaseIcon size={size} svgContent={svgContent} className={className} />
   );
   return Icon;
 }

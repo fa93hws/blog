@@ -28,14 +28,14 @@ export function createHeader({
     },
   );
   const titleRef = React.createRef<HTMLDivElement>();
-  const GlobalHeader = ({ icon }: { icon: 'cross' | 'menu' }) => {
+  const GlobalHeader = ({ icon }: { icon: 'Cross' | 'Menu' }) => {
     React.useEffect(() => {
       if (titleRef.current == null) {
         throw new Error('ref to title should not be null');
       }
       intersectionObserver.observe(titleRef.current);
     }, []);
-    const onIconClicked = icon === 'cross' ? onCloseClicked : onMenuClicked;
+    const onIconClicked = icon === 'Cross' ? onCloseClicked : onMenuClicked;
     return (
       <Header
         showShortBarTitle={store.isShortBarTitleHidden}

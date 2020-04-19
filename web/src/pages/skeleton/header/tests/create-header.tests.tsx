@@ -10,7 +10,7 @@ describe('createHeader', () => {
       onCloseClicked: jest.fn(),
       onMenuClicked: jest.fn(),
     });
-    const element = <Header icon="cross" />;
+    const element = <Header icon="Cross" />;
     expect(() => mount(element)).not.toThrow();
   });
 });

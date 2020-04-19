@@ -1,23 +1,22 @@
 @value gridBaseline from '~components/metrics.css';
+@value colorBlue from '~components/colors.css';
 @value monoWhite from '~components/colors.css';
 
 .ripple {
-  position: absolute;
-  background: monoWhite;
+  position: relative;
   border-radius: 50%;
   width: calc(gridBaseline * 0.5);
   height: calc(gridBaseline * 0.5);
-  pointer-events: none;
-}
-
-.ripple {
-  opacity: 0.4;
-  transform: scale(10);
-}
-
-.ripple.useAnimation {
   opacity: 0;
-  animation: rippleEffect 1500ms 1;
+  animation: rippleEffect 500ms 1;
+}
+
+.white {
+  background-color: monoWhite;
+}
+
+.blue {
+  background-color: colorBlue;
 }
 
 @keyframes rippleEffect {

@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.container > button:not(:first-child) {
+  margin-left: 16px;
+}

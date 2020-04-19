@@ -1,10 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Ripple renders the container with ripple 1`] = `
+exports[`Ripple renders the blue ripple 1`] = `
+<div
+  class="ripple blue"
+  style="top:2px;left:4px"
+/>
+`;
+
+exports[`Ripple renders the container with white ripple 1`] = `
 <button>
   button text
   <div
-    class="ripple useAnimation"
+    class="ripple white"
     style="top:2px;left:4px"
   />
 </button>
@@ -16,9 +23,9 @@ exports[`Ripple renders the container without ripple 1`] = `
 </button>
 `;
 
-exports[`Ripple renders the ripple 1`] = `
+exports[`Ripple renders the white ripple 1`] = `
 <div
-  class="ripple useAnimation"
+  class="ripple white"
   style="top:2px;left:4px"
 />
 `;

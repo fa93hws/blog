@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as classnames from 'classnames';
 import { observer } from 'mobx-react';
+import * as classnames from 'classnames';
 import styles from './ripple.css';
 import { RippleStore } from './ripple-store';
 
@@ -8,21 +8,14 @@ export type RipplePosition = {
   top: number;
   left: number;
 };
+export type RippleColor = 'white' | 'blue';
 
 export namespace Internal {
   export const Ripple = React.memo(
-    ({
-      position,
-      useAnimation = true,
-    }: {
-      position: RipplePosition;
-      useAnimation?: boolean;
-    }) => (
+    ({ position, color }: { position: RipplePosition; color: RippleColor }) => (
       <div
         key={Math.random()}
-        className={classnames(styles.ripple, {
-          [styles.useAnimation]: useAnimation,
-        })}
+        className={classnames(styles.ripple, styles[color])}
         style={{ top: position.top, left: position.left }}
       />
     ),
@@ -31,56 +24,43 @@ export namespace Internal {
 
 export type RipplableProps = {
   onMouseDown(e: React.MouseEvent<HTMLElement, MouseEvent>): void;
-  RippleSlot: React.ComponentType;
+  RippleSlot: React.ComponentType<{ color: RippleColor }>;
 };
 
-export function withRipple<
-  T extends {
-    onMouseDown?(e: React.MouseEvent<HTMLElement, MouseEvent>): void;
-  }
->(Container: React.ComponentType<T & RipplableProps>) {
-  return React.memo(
-    (
-      originalProps: T & {
-        store?: RippleStore;
-        useAnimation?: boolean;
+const defaultStoreFactory = () => new RippleStore();
+export function withRipple<T extends RipplableProps>(
+  Container: React.ComponentType<T>,
+  storeFactory: () => RippleStore = defaultStoreFactory,
+) {
+  return React.memo((originalProps: Omit<T, keyof RipplableProps>) => {
+    const store = React.useMemo(storeFactory, []);
+    const onMouseDown = React.useCallback(
+      (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const { left, top } = e.currentTarget.getBoundingClientRect();
+        const offsetY = e.clientY - top;
+        const offsetX = e.clientX - left;
+        store.setRipple({ top: offsetY, left: offsetX });
       },
-    ) => {
-      const store = React.useMemo(
-        () => originalProps.store ?? new RippleStore(),
-        [],
-      );
-      const onMouseDown = React.useCallback(
-        (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-          const { left, top } = e.currentTarget.getBoundingClientRect();
-          const offsetY = e.clientY - top;
-          const offsetX = e.clientX - left;
-          store.setRipple({ top: offsetY, left: offsetX });
-          originalProps.onMouseDown && originalProps.onMouseDown(e);
-        },
-        [originalProps.onMouseDown],
-      );
+      [],
+    );
 
-      const RippleImpl: React.ComponentType = React.useMemo(
-        () =>
-          observer(() =>
-            store.ripplePosition != null ? (
-              <Internal.Ripple
-                position={store.ripplePosition}
-                useAnimation={originalProps.useAnimation ?? true}
-              />
-            ) : null,
-          ),
-        [],
-      );
+    const RippleImpl = React.useMemo(
+      () =>
+        observer(({ color }: { color: RippleColor }) =>
+          store.ripplePosition != null ? (
+            <Internal.Ripple position={store.ripplePosition} color={color} />
+          ) : null,
+        ),
+      [],
+    );
 
-      return (
-        <Container
-          {...originalProps}
-          onMouseDown={onMouseDown}
-          RippleSlot={RippleImpl}
-        />
-      );
-    },
-  );
+    return (
+      <Container
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        {...(originalProps as any)}
+        onMouseDown={onMouseDown}
+        RippleSlot={RippleImpl}
+      />
+    );
+  });
 }
