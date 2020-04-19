@@ -70,7 +70,9 @@ exports[`Global Nav should match the snapshot 1`] = `
     <li>
       <a
         class="link"
-        href="/link2"
+        href="https:www.github.com/link2"
+        rel="noopener noreferrer"
+        target="_blank"
       >
         <p
           class="textMicro"

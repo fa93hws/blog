@@ -12,7 +12,7 @@ describe('Global Nav', () => {
       },
       {
         text: 'item2',
-        link: 'link2',
+        link: 'https:www.github.com/link2',
       },
     ];
     expect(
