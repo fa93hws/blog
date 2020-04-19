@@ -1,0 +1,489 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders 1/7 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      2
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      3
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      4
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      5
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      6
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      7
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders 1/10 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      2
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      3
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      4
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      5
+    </div>
+  </li>
+  <li>
+    <span>
+      …
+    </span>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      10
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders 4/7 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class=""
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      2
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      3
+    </div>
+  </li>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      4
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      5
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      6
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      7
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders 4/10 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class=""
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      2
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      3
+    </div>
+  </li>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      4
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      5
+    </div>
+  </li>
+  <li>
+    <span>
+      …
+    </span>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      10
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders 5/10 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class=""
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <span>
+      …
+    </span>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      4
+    </div>
+  </li>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      5
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      6
+    </div>
+  </li>
+  <li>
+    <span>
+      …
+    </span>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      10
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders 6/10 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class=""
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <span>
+      …
+    </span>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      5
+    </div>
+  </li>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      6
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      7
+    </div>
+  </li>
+  <li>
+    <span>
+      …
+    </span>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      10
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders 7/7 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class=""
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      2
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      3
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      4
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      5
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      6
+    </div>
+  </li>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      7
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders 7/10 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class=""
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <span>
+      …
+    </span>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      6
+    </div>
+  </li>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      7
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      8
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      9
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      10
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Pagination renders 10/10 1`] = `
+<ul
+  class="container"
+>
+  <li>
+    <div
+      class=""
+    >
+      1
+    </div>
+  </li>
+  <li>
+    <span>
+      …
+    </span>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      6
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      7
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      8
+    </div>
+  </li>
+  <li>
+    <div
+      class=""
+    >
+      9
+    </div>
+  </li>
+  <li>
+    <div
+      class="currentNumber"
+    >
+      10
+    </div>
+  </li>
+</ul>
+`;
