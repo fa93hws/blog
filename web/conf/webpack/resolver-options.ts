@@ -9,5 +9,6 @@ export const resolveOption: Resolve = {
     components: join(SRC_DIR, 'components'),
     pages: join(SRC_DIR, 'pages'),
     utils: join(SRC_DIR, 'utils'),
+    services: join(SRC_DIR, 'services'),
   },
 };

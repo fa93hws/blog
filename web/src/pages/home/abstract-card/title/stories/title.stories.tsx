@@ -5,7 +5,7 @@ import StoryRouter from 'storybook-react-router';
 import { StorySection } from 'components/storybook/storybook';
 import { AbstractTitle } from '../title';
 
-storiesOf('pages.home.abstract.card.title', module)
+storiesOf('pages.home.abstract-card.title', module)
   .addDecorator(StoryRouter())
   .add('title', () => (
     <>

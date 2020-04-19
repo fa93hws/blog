@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import { setupIntersectionObserverMock } from 'utils/tests/mock-intersection-observer';
 import { Skeleton, createSkeleton } from '../skeleton';
 
@@ -30,9 +31,14 @@ describe('Skeleton', () => {
     ).toMatchRenderedSnapshot();
   });
 
-  it('mount the skeleton without error', () => {
+  it('mount the skeleton without error', async () => {
     setupIntersectionObserverMock();
     const SkeletonImpl = createSkeleton();
-    expect(() => mount(<SkeletonImpl />)).not.toThrow();
+    const mountPromise = act(async () => {
+      mount(<SkeletonImpl />);
+    });
+    // linting is wrong
+    // eslint-disable-next-line jest/valid-expect
+    expect(mountPromise).resolves.toBe(undefined);
   });
 });

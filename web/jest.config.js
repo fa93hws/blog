@@ -18,6 +18,7 @@ module.exports = {
     '^components/(.*)$': '<rootDir>/src/components/$1',
     '^pages/(.*)$': '<rootDir>/src/pages/$1',
     '^utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^services/(.*)$': '<rootDir>/src/services/$1',
   },
   transform: {
     '.svg$': '<rootDir>/tools/jest/svg-transformer.js',
