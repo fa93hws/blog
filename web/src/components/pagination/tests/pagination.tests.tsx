@@ -53,11 +53,11 @@ describe('Pagination', () => {
     jest.spyOn(console, 'error').mockImplementation(() => false);
     const onCatch = jest.fn();
     const Element = (
-      <ErrorBoundary onCatch={onCatch}>
-        <Pagination currentPage={-2} totalPage={1} getLink={jest.fn()} />
-      </ErrorBoundary>
+      // <ErrorBoundary onCatch={onCatch}>
+      <Pagination currentPage={-2} totalPage={1} getLink={jest.fn()} />
+      // </ErrorBoundary>
     );
-    mount(Element);
-    expect(onCatch).toHaveBeenCalled();
+    expect(() => mount(Element)).toThrow();
+    // expect(onCatch).toHaveBeenCalled();
   });
 });
