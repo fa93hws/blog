@@ -18,7 +18,8 @@
   border-radius: calc(gridBaseline * 0.5);
   cursor: pointer;
 
-  transition: all 500ms;
+  transition-property: box-shadow, opacity;
+  transition-duration: 500ms;
 }
 
 .rippleContainer {
