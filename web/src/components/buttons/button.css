@@ -40,6 +40,9 @@
   color: monoWhite;
   fill: monoWhite;
 }
+.primary > .text {
+  color: monoWhite;
+}
 
 .primary:hover {
   opacity: 0.9;
@@ -54,6 +57,10 @@
   color: colorBlue;
   fill: colorBlue;
   border: none;
+}
+
+.ghost > .text {
+  color: colorBlue;
 }
 
 .ghost:hover {
