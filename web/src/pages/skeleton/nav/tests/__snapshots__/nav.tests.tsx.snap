@@ -8,7 +8,9 @@ exports[`Global Nav should match the snapshot 1`] = `
     class="sourceCodeBanner"
   >
     <a
-      href="/https://github.com/fa93hws/blog"
+      href="https://github.com/fa93hws/blog"
+      rel="noopener noreferrer"
+      target="_blank"
     >
       <p
         class="textMicro"
@@ -21,7 +23,9 @@ exports[`Global Nav should match the snapshot 1`] = `
     class="authorContainer"
   >
     <a
-      href="/https://github.com/fa93hws/"
+      href="https://github.com/fa93hws/"
+      rel="noopener noreferrer"
+      target="_blank"
     >
       <img
         alt="avatar"

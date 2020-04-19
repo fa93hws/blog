@@ -60,11 +60,11 @@ export function createSkeleton() {
     },
     {
       text: 'Github',
-      link: '/github',
+      link: 'https://github.com/fa93hws',
     },
     {
       text: 'Weibo',
-      link: '/weibo',
+      link: 'https://www.weibo.com/hinanawi',
     },
   ];
 
