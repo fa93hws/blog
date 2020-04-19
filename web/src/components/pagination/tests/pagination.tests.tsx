@@ -14,7 +14,7 @@ class ErrorBoundary extends React.Component<{ onCatch(): void }> {
 
 describe('Pagination', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    jest.restoreAllMocks();
   });
 
   it.each([1, 4, 5, 6, 7, 10])('renders %d/10', (idx: number) => {
