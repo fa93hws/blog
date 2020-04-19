@@ -2,16 +2,6 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { Pagination } from '../pagination';
 
-class ErrorBoundary extends React.Component<{ onCatch(): void }> {
-  componentDidCatch() {
-    this.props.onCatch();
-  }
-
-  render() {
-    return this.props.children;
-  }
-}
-
 describe('Pagination', () => {
   afterEach(() => {
     jest.restoreAllMocks();
@@ -35,14 +25,12 @@ describe('Pagination', () => {
       .spyOn((window as any)._virtualConsole, 'emit')
       .mockImplementation(() => false);
     jest.spyOn(console, 'error').mockImplementation(() => false);
-    const onCatch = jest.fn();
     const Element = (
-      <ErrorBoundary onCatch={onCatch}>
-        <Pagination currentPage={2} totalPage={1} getLink={jest.fn()} />
-      </ErrorBoundary>
+      <Pagination currentPage={2} totalPage={1} getLink={jest.fn()} />
     );
-    mount(Element);
-    expect(onCatch).toHaveBeenCalled();
+    expect(() => mount(Element)).toThrowErrorMatchingInlineSnapshot(
+      `"currentPage must not be greater than totalPage"`,
+    );
   });
 
   it('throws if current page is less than 0', () => {
@@ -51,13 +39,11 @@ describe('Pagination', () => {
       .spyOn((window as any)._virtualConsole, 'emit')
       .mockImplementation(() => false);
     jest.spyOn(console, 'error').mockImplementation(() => false);
-    const onCatch = jest.fn();
     const Element = (
-      // <ErrorBoundary onCatch={onCatch}>
       <Pagination currentPage={-2} totalPage={1} getLink={jest.fn()} />
-      // </ErrorBoundary>
     );
-    expect(() => mount(Element)).toThrow();
-    // expect(onCatch).toHaveBeenCalled();
+    expect(() => mount(Element)).toThrowErrorMatchingInlineSnapshot(
+      `"currentPage must be greater than 0"`,
+    );
   });
 });
