@@ -1,10 +1,10 @@
 @value gridBaseline from '~components/metrics.css';
-@value colorBlueLight, monoWhite, colorPurpleLight from '~components/colors.css';
+@value colorBlueUltraLight, monoWhite, colorPurpleLight from '~components/colors.css';
 
 @value marginLeft: calc(gridBaseline * 3);
 
 .container {
-  background-color: colorBlueLight;
+  background-color: colorBlueUltraLight;
   padding: calc(gridBaseline * 5) 0;
 }
 

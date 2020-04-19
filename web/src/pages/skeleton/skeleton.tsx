@@ -17,7 +17,7 @@ export const Skeleton = ({
 }: {
   LeftNav: React.ComponentType;
   MainContent: React.ComponentType;
-  Header: React.ComponentType<{ icon: 'cross' | 'menu' }>;
+  Header: React.ComponentType<{ icon: 'Cross' | 'Menu' }>;
   isMenuHidden: boolean;
 }) => (
   <BrowserRouter>
@@ -35,7 +35,7 @@ export const Skeleton = ({
         })}
       >
         <div>
-          <Header icon={isMenuHidden ? 'menu' : 'cross'} />
+          <Header icon={isMenuHidden ? 'Menu' : 'Cross'} />
           <MainContent />
         </div>
       </main>

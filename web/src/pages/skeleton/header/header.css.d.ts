@@ -7,6 +7,7 @@ interface CssExports {
   'content': string;
   'gridBaseline': string;
   'icon': string;
+  'iconButton': string;
   'monoBlackA250': string;
   'monoWhite': string;
   'monoWhiteA200': string;

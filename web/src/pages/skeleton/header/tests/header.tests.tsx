@@ -7,7 +7,7 @@ describe('Header', () => {
       <Header
         showShortBarTitle={false}
         onIconClicked={jest.fn()}
-        icon="cross"
+        icon="Cross"
       />,
     ).toMatchRenderedSnapshot();
   });
@@ -17,7 +17,7 @@ describe('Header', () => {
       <Header
         showShortBarTitle={true}
         onIconClicked={jest.fn()}
-        icon="cross"
+        icon="Cross"
       />,
     ).toMatchRenderedSnapshot();
   });
@@ -27,14 +27,14 @@ describe('Header', () => {
       <Header
         showShortBarTitle={false}
         onIconClicked={jest.fn()}
-        icon="menu"
+        icon="Menu"
       />,
     ).toMatchRenderedSnapshot();
   });
 
   it('renders the header with top bar title and icon is menu', () => {
     expect(
-      <Header showShortBarTitle={true} onIconClicked={jest.fn()} icon="menu" />,
+      <Header showShortBarTitle={true} onIconClicked={jest.fn()} icon="Menu" />,
     ).toMatchRenderedSnapshot();
   });
 });

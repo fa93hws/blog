@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`createIcon should generate the large icon correctly 1`] = `
-<span
+<i
   aria-hidden="true"
-  class="iconSpan"
+  class="iconSpan large-class"
 >
   <svg
     height="48"
@@ -18,13 +18,13 @@ exports[`createIcon should generate the large icon correctly 1`] = `
       <path />
     </g>
   </svg>
-</span>
+</i>
 `;
 
 exports[`createIcon should generate the medium icon correctly 1`] = `
-<span
+<i
   aria-hidden="true"
-  class="iconSpan"
+  class="iconSpan medium-class"
 >
   <svg
     height="32"
@@ -39,13 +39,13 @@ exports[`createIcon should generate the medium icon correctly 1`] = `
       <path />
     </g>
   </svg>
-</span>
+</i>
 `;
 
 exports[`createIcon should generate the small icon correctly 1`] = `
-<span
+<i
   aria-hidden="true"
-  class="iconSpan"
+  class="iconSpan small-class"
 >
   <svg
     height="16"
@@ -60,5 +60,5 @@ exports[`createIcon should generate the small icon correctly 1`] = `
       <path />
     </g>
   </svg>
-</span>
+</i>
 `;

@@ -8,29 +8,36 @@ exports[`Header renders the header with top bar title and icon is cross 1`] = `
     class="shortBar withBottomShadow"
   >
     <div
-      class="icon"
+      class="iconButton"
     >
       <button
-        class="iconButton small circle"
+        class="baseButton large ghost circle"
       >
         <span
-          aria-hidden="true"
-          class="iconSpan"
+          class="text"
         >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 16 16"
-            width="16"
-            xmlns="http://www.w3.org/2000/svg"
+          <i
+            aria-hidden="true"
+            class="iconSpan icon"
           >
-            <g
-              transform="scale(1)"
+            <svg
+              height="16"
+              version="1.1"
+              viewBox="0 0 16 16"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              src/components/icons/assets/cross.svg
-            </g>
-          </svg>
+              <g
+                transform="scale(1)"
+              >
+                src/components/icons/assets/cross.svg
+              </g>
+            </svg>
+          </i>
         </span>
+        <div
+          class="rippleContainer"
+        />
       </button>
     </div>
     <h4
@@ -70,29 +77,36 @@ exports[`Header renders the header with top bar title and icon is menu 1`] = `
     class="shortBar withBottomShadow"
   >
     <div
-      class="icon"
+      class="iconButton"
     >
       <button
-        class="iconButton small circle"
+        class="baseButton large ghost circle"
       >
         <span
-          aria-hidden="true"
-          class="iconSpan"
+          class="text"
         >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 16 16"
-            width="16"
-            xmlns="http://www.w3.org/2000/svg"
+          <i
+            aria-hidden="true"
+            class="iconSpan icon"
           >
-            <g
-              transform="scale(1)"
+            <svg
+              height="16"
+              version="1.1"
+              viewBox="0 0 16 16"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              src/components/icons/assets/menu.svg
-            </g>
-          </svg>
+              <g
+                transform="scale(1)"
+              >
+                src/components/icons/assets/menu.svg
+              </g>
+            </svg>
+          </i>
         </span>
+        <div
+          class="rippleContainer"
+        />
       </button>
     </div>
     <h4
@@ -132,29 +146,36 @@ exports[`Header renders the header without top bar title and icon is cross 1`] =
     class="shortBar"
   >
     <div
-      class="icon"
+      class="iconButton"
     >
       <button
-        class="iconButton small circle"
+        class="baseButton large ghost circle"
       >
         <span
-          aria-hidden="true"
-          class="iconSpan"
+          class="text"
         >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 16 16"
-            width="16"
-            xmlns="http://www.w3.org/2000/svg"
+          <i
+            aria-hidden="true"
+            class="iconSpan icon"
           >
-            <g
-              transform="scale(1)"
+            <svg
+              height="16"
+              version="1.1"
+              viewBox="0 0 16 16"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              src/components/icons/assets/cross.svg
-            </g>
-          </svg>
+              <g
+                transform="scale(1)"
+              >
+                src/components/icons/assets/cross.svg
+              </g>
+            </svg>
+          </i>
         </span>
+        <div
+          class="rippleContainer"
+        />
       </button>
     </div>
   </div>
@@ -189,29 +210,36 @@ exports[`Header renders the header without top bar title and icon is menu 1`] = 
     class="shortBar"
   >
     <div
-      class="icon"
+      class="iconButton"
     >
       <button
-        class="iconButton small circle"
+        class="baseButton large ghost circle"
       >
         <span
-          aria-hidden="true"
-          class="iconSpan"
+          class="text"
         >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 16 16"
-            width="16"
-            xmlns="http://www.w3.org/2000/svg"
+          <i
+            aria-hidden="true"
+            class="iconSpan icon"
           >
-            <g
-              transform="scale(1)"
+            <svg
+              height="16"
+              version="1.1"
+              viewBox="0 0 16 16"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              src/components/icons/assets/menu.svg
-            </g>
-          </svg>
+              <g
+                transform="scale(1)"
+              >
+                src/components/icons/assets/menu.svg
+              </g>
+            </svg>
+          </i>
         </span>
+        <div
+          class="rippleContainer"
+        />
       </button>
     </div>
   </div>

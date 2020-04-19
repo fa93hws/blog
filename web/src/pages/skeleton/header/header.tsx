@@ -1,19 +1,19 @@
 import * as React from 'react';
 import * as classnames from 'classnames';
 import { Title, Text } from 'components/typography/typography';
+import { GhostButton } from 'components/buttons/button';
 import { Cross, Menu } from 'components/icons/icons';
-import { IconButton } from 'components/buttons/icon-button';
 import styles from './header.css';
 
+const iconMap = { Cross, Menu };
 const IconButtonImpl = React.memo(
-  ({ type, onClick }: { type: 'cross' | 'menu'; onClick(): void }) => {
-    const Icon =
-      type === 'cross'
-        ? () => <Cross size="small" />
-        : () => <Menu size="small" />;
+  ({ type, onClick }: { type: 'Cross' | 'Menu'; onClick(): void }) => {
+    const Icon = iconMap[type];
     return (
-      <div className={styles.icon}>
-        <IconButton size="small" onClick={onClick} Icon={Icon} circle />
+      <div className={styles.iconButton}>
+        <GhostButton size="large" onClick={onClick} circle>
+          <Icon size="small" className={styles.icon} />
+        </GhostButton>
       </div>
     );
   },
@@ -29,7 +29,7 @@ export const Header = React.memo(
     showShortBarTitle: boolean;
     onIconClicked(): void;
     titleRef?: React.Ref<HTMLDivElement>;
-    icon: 'cross' | 'menu';
+    icon: 'Cross' | 'Menu';
   }) => (
     <div className={styles.container}>
       <div

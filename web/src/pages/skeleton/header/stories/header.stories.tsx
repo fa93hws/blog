@@ -11,10 +11,10 @@ storiesOf('pages.skeleton.header', module).add(
     const icon = select(
       'iconType',
       {
-        cross: 'cross',
-        menu: 'menu',
+        cross: 'Cross',
+        menu: 'Menu',
       },
-      'cross',
+      'Cross',
     );
     return (
       <Header
@@ -33,6 +33,6 @@ storiesOf(
   <Header
     showShortBarTitle={true}
     onIconClicked={action('icon clicked')}
-    icon="cross"
+    icon="Cross"
   />
 ));

@@ -2,7 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'avatarImg': string;
-  'colorBlueLight': string;
+  'colorBlueUltraLight': string;
   'colorPurpleLight': string;
   'container': string;
   'email': string;
