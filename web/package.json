@@ -55,7 +55,6 @@
     "@types/webpack-manifest-plugin": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
-    "acorn": "^7.1.1",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
