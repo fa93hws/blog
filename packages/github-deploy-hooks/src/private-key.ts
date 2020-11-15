@@ -1,3 +1,4 @@
 /* eslint-disable */
-const privateKey = 'replace-with-real-key-when-built';
+// private key for github
+const privateKey = 'dummy';
 export default privateKey;

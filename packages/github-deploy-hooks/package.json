@@ -7,6 +7,7 @@
     "build": "rimraf target && rollup --config rollup.config.js",
     "lint:ts": "eslint \"src/**/*.ts\"",
     "lint:ts:types": "tsc --noEmit",
+    "print:key": "ts-node src/print-private-key.ts",
     "format": "prettier --check **/*"
   },
   "author": "",
