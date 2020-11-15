@@ -21,7 +21,7 @@ jobs:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
           path: node_modules
       - id: yarn-install
-        if: steps.yarn-install.outputs.cache-hit != 'true'
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         name: Install node modules
         run: yarn install --frozen-lockfile
 
@@ -42,7 +42,7 @@ jobs:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
           path: node_modules
       - uses: actions/github-script@v3
-        if: steps.yarn-install.outputs.cache-hit != 'true'
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         with:
           script: |
             core.setFailed('node_modules can not be found')

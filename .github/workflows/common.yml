@@ -17,7 +17,7 @@ jobs:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
           path: node_modules
       - id: yarn-install
-        if: steps.yarn-install.outputs.cache-hit != 'true'
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         name: install node modules
         run: yarn install --frozen-lockfile
       - id: eslint
