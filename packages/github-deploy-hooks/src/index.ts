@@ -1,8 +1,6 @@
 /* eslint-disable no-console, import/no-default-export */
 import { request, RequestOptions } from 'https';
-// TODO: Find a better solution to store the key
 import * as jwt from 'jsonwebtoken';
-import privateKey from './private-key';
 
 const APP_NAME = 's3-deploybot';
 const HOSTNAME = 'api.github.com';
@@ -31,6 +29,10 @@ function parseQueryStringParameter(query: Record<string, unknown>): Params {
 }
 
 function signJwt() {
+  const privateKey = process.env.GITHUB_PRIVATE_KEY;
+  if (typeof privateKey !== 'string') {
+    throw new Error('private key must be string');
+  }
   const payload = {
     iat: Math.floor(new Date().getTime() / 1000),
     exp: Math.floor(new Date().getTime() / 1000 + 60),
