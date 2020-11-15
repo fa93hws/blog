@@ -8,7 +8,6 @@ jobs:
   webpack:
     name: webpack
     runs-on: ubuntu-latest
-    needs: install
     steps:
       - id: checkout
         name: checkout
@@ -53,7 +52,6 @@ jobs:
   storybook:
     name: storybook
     runs-on: ubuntu-latest
-    needs: install
     steps:
       - id: checkout
         name: checkout
