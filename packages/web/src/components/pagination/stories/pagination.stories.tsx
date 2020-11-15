@@ -13,7 +13,7 @@ storiesOf('components.pagination', module)
     return (
       <>
         <StorySection name="1 ... 10">
-          {ten.map(num => (
+          {ten.map((num) => (
             <Pagination
               key={num}
               currentPage={num}
@@ -23,7 +23,7 @@ storiesOf('components.pagination', module)
           ))}
         </StorySection>
         <StorySection name="1 ... 7">
-          {seven.map(num => (
+          {seven.map((num) => (
             <Pagination
               key={num}
               currentPage={num}

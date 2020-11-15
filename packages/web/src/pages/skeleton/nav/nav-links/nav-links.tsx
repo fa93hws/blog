@@ -34,7 +34,7 @@ export type NavItem = {
 
 export const NavLinks = ({ items }: { items: readonly NavItem[] }) => (
   <ul className={styles.list}>
-    {items.map(item => (
+    {items.map((item) => (
       <li key={item.link}>
         <NavLink link={item.link}>
           <Text.Micro>{item.text}</Text.Micro>

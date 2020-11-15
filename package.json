@@ -17,6 +17,7 @@
     "packages/prettier-config",
     "packages/pipeline-generator",
     "packages/github-deploy-hooks",
-    "packages/web"
+    "packages/web",
+    "packages/esbuild-cli"
   ]
 }

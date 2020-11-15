@@ -50,9 +50,9 @@ function makeRequest(
     } else if (options.headers == null) {
       throw new Error('headers must not be empty');
     }
-    const req = request(options, res => {
+    const req = request(options, (res) => {
       let data = '';
-      res.on('data', chunk => {
+      res.on('data', (chunk) => {
         data += chunk;
       });
 
@@ -71,7 +71,7 @@ function makeRequest(
       });
     });
 
-    req.on('error', error => reject(error));
+    req.on('error', (error) => reject(error));
 
     body && req.write(JSON.stringify(body));
     req.end();

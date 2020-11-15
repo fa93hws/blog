@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@fa93hws-blog/web",
   "version": "1.0.0",
   "author": "fa93hws",
   "license": "MIT",
@@ -7,6 +7,7 @@
   "repository": {},
   "scripts": {
     "build": "bin/webdev.sh build",
+    "build:esbuild": "bin/esbuild.sh",
     "format": "prettier --check **/*",
     "lint:ts": "eslint \"{conf,src,tools}/**/*.ts{,x}\"",
     "lint:ts:types": "tsc --project conf/typescript/tsconfig.check.json",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
+    "@fa93hws-blog/esbuild-cli": "^0.1.0",
     "@fa93hws-blog/eslint-config": "^0.1.1",
     "@fa93hws-blog/prettier-config": "^0.1.0",
     "@percy/storybook": "^3.3.0",
@@ -81,7 +83,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-modules-values": "^3.0.0",
     "postcss-modules-values-replace": "^3.1.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.2",
     "raw-loader": "^4.0.0",
     "rimraf": "^3.0.2",
     "storybook-react-router": "^1.0.8",

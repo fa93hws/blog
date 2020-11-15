@@ -18,7 +18,7 @@ jobs:
         name: Fetch node modules
         uses: actions/cache@v1
         with:
-          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
           path: node_modules
       - id: yarn-install
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -39,7 +39,7 @@ jobs:
         name: Fetch node modules
         uses: actions/cache@v1
         with:
-          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
           path: node_modules
       - uses: actions/github-script@v3
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -83,7 +83,7 @@ jobs:
         name: Fetch node modules
         uses: actions/cache@v1
         with:
-          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
           path: node_modules
       - uses: actions/github-script@v3
         if: steps.yarn-cache.outputs.cache-hit != 'true'

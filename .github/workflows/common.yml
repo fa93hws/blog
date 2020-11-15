@@ -14,7 +14,7 @@ jobs:
         name: fetch node modules
         uses: actions/cache@v1
         with:
-          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
           path: node_modules
       - id: yarn-install
         if: steps.yarn-cache.outputs.cache-hit != 'true'
