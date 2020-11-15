@@ -43,7 +43,7 @@ jobs:
       - id: deploy-to-s3
         name: Deploy to S3
         run: |
-          aws s3 sync . s3://github-cd/fa93hws/blog/refs/heads/ci/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog --acl public-read --delete
+          aws s3 sync . s3://github-cd/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog --acl public-read --delete
         working-directory: packages/web/dist/blog
       - id: display-url
         name: Display deployed url
@@ -92,7 +92,7 @@ jobs:
       - id: deploy-to-s3
         name: Deploy to S3
         run: |
-          aws s3 sync . s3://github-cd/fa93hws/blog/refs/heads/ci/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook --acl public-read --delete
+          aws s3 sync . s3://github-cd/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook --acl public-read --delete
         working-directory: packages/web/dist/storybook
       - id: display-url
         name: Display deployed url
