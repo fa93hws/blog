@@ -15,14 +15,14 @@ jobs:
         with:
           lfs: true
       - id: yarn-cache
-        name: fetch node modules
+        name: Fetch node modules
         uses: actions/cache@v1
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
           path: node_modules
       - id: yarn-install
         if: steps.yarn-install.outputs.cache-hit != 'true'
-        name: install node modules
+        name: Install node modules
         run: yarn install --frozen-lockfile
 
   build:
@@ -36,7 +36,7 @@ jobs:
         with:
           lfs: true
       - id: yarn-cache
-        name: fetch node modules
+        name: Fetch node modules
         uses: actions/cache@v1
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"

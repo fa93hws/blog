@@ -6,7 +6,7 @@ on:
       - .github/workflows/web.yml
 jobs:
   install:
-    name: install node_modules
+    name: Install node_modules
     runs-on: ubuntu-latest
     steps:
       - id: checkout
@@ -15,14 +15,14 @@ jobs:
         with:
           lfs: true
       - id: yarn-cache
-        name: fetch node modules
+        name: Fetch node modules
         uses: actions/cache@v1
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
           path: node_modules
       - id: yarn-install
         if: steps.yarn-install.outputs.cache-hit != 'true'
-        name: install node modules
+        name: Install node modules
         run: yarn install --frozen-lockfile
 
   webpack:
@@ -36,7 +36,7 @@ jobs:
         with:
           lfs: true
       - id: yarn-cache
-        name: fetch node modules
+        name: Fetch node modules
         uses: actions/cache@v1
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
@@ -80,7 +80,7 @@ jobs:
         with:
           lfs: true
       - id: yarn-cache
-        name: fetch node modules
+        name: Fetch node modules
         uses: actions/cache@v1
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
