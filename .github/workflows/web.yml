@@ -33,18 +33,18 @@ jobs:
         env:
           CI: "true"
           DEBUG: webpack_options*
-      - id: deploy-to-s3
-        name: Deploy to s3
-        env:
-          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
-          AWS_REGION: ap-northeast-2
-          AWS_S3_BUCKET: github-cd
-          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY_VALUE }}"
-          DEST_DIR: $GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog
-          SOURCE_DIR: packages/web/dist/blog
-        uses: jakejarvis/s3-sync-action@v0.5.1
+      - id: configure-aws
+        name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          args: "--acl public-read --delete"
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_VALUE }}
+          aws-region: ap-northeast-2
+      - id: deploy-to-s3
+        name: Deploy to S3
+        run: |
+          aws s3 sync . s3://github-cd/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog --acl public-read --delete
+        working-directory: packages/web/dist/blog
       - id: display-url
         name: Display deployed url
         run: 'curl "https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?name=blog&commitHash=$GITHUB_SHA&url=https://github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html"'
@@ -76,24 +76,24 @@ jobs:
         name: Run storybook build
         run: "yarn storybook:build"
         working-directory: packages/web
-      - id: deploy-to-s3
-        env:
-          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
-          AWS_REGION: ap-northeast-2
-          AWS_S3_BUCKET: github-cd
-          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY_VALUE }}"
-          DEST_DIR: $GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook
-          SOURCE_DIR: packages/web/dist/storybook
-        name: Deploy to s3
-        uses: jakejarvis/s3-sync-action@v0.5.1
-        with:
-          args: "--acl public-read --delete"
-      - id: display-url
-        name: Display deployed url
-        run: 'curl "https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?name=storybook&commitHash=$GITHUB_SHA&url=https://github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook/index.html"'
       - id: percy-storybook
         env:
           PERCY_TOKEN: "${{ secrets.PERCY_TOKEN }}"
         name: Run percy on storybook
         run: "yarn percy:storybook"
         working-directory: packages/web
+      - id: configure-aws
+        name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_VALUE }}
+          aws-region: ap-northeast-2
+      - id: deploy-to-s3
+        name: Deploy to S3
+        run: |
+          aws s3 sync . s3://github-cd/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook --acl public-read --delete
+        working-directory: packages/web/dist/storybook
+      - id: display-url
+        name: Display deployed url
+        run: 'curl "https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?name=storybook&commitHash=$GITHUB_SHA&url=https://github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook/index.html"'
