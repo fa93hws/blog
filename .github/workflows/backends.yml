@@ -6,7 +6,7 @@ on:
       - .github/workflows/backends.yml
 jobs:
   build:
-    name: build nest
+    name: Build nest
     runs-on: ubuntu-latest
     steps:
       - id: checkout

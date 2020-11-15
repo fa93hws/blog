@@ -6,7 +6,7 @@ on:
       - .github/workflows/web.yml
 jobs:
   webpack:
-    name: webpack
+    name: Webpack
     runs-on: ubuntu-latest
     steps:
       - id: checkout
@@ -50,7 +50,7 @@ jobs:
         run: 'curl "https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?name=blog&commitHash=$GITHUB_SHA&url=https://github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html"'
 
   storybook:
-    name: storybook
+    name: Storybook
     runs-on: ubuntu-latest
     steps:
       - id: checkout
