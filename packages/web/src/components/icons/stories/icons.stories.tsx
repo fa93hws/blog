@@ -18,7 +18,7 @@ const IconContainer = ({
       <StorySubSection>
         <h1>{title}: </h1>
         <div className={styles.section}>
-          {allSizes.map(s => (
+          {allSizes.map((s) => (
             <div className={styles.icon} key={s}>
               <Icon size={s} title={`${title}-${s}`} />
             </div>

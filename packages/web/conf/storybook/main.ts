@@ -42,7 +42,9 @@ export const storybookConfig = {
       },
       plugins: [
         ...config.plugins,
-        ...webpackConfig.plugins.filter(p => !(p instanceof HtmlWebpackPlugin)),
+        ...webpackConfig.plugins.filter(
+          (p) => !(p instanceof HtmlWebpackPlugin),
+        ),
       ],
     };
   },

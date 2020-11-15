@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <% for(const cssFile of cssFiles) { %>
+    <link rel="stylesheet" href="<%- cssFile %>" />
+    <% } %>
+  </head>
+  <body>
+    <div id="root"></div>
+    <% for(const jsFile of jsFiles) { %>
+    <script src="<%- jsFile %>"></script>
+    <% } %>
+  </body>
+</html>

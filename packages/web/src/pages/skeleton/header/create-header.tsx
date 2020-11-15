@@ -15,7 +15,7 @@ export function createHeader({
 }) {
   const store = new HeaderStore();
   const intersectionObserver = new IntersectionObserver(
-    entries => {
+    (entries) => {
       if (entries[0].intersectionRatio < THRESHOLD) {
         store.hideShortBarTitle();
       } else {

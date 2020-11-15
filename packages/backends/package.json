@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nest start",
     "start:dev": "nest start --watch",
-    "lint:ts": "eslint \"src/**/*.ts{,x}\"",
+    "lint:ts": "eslint \"src/**/*.ts\"",
     "lint:ts:types": "tsc --project tsconfig.check.json",
     "format": "prettier --check **/*",
     "build": "nest build",
@@ -41,7 +41,7 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",
     "jest": "^25.1.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.2",
     "supertest": "^4.0.2",
     "ts-jest": "25.2.1",
     "ts-loader": "^6.2.1",

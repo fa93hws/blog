@@ -17,7 +17,7 @@ const emptyBlogList: BlogListProto = {
 export const HomePage = React.memo(({ blogList }: HomePageProps) => (
   <div className={styles.home}>
     <ul className={styles.blogList}>
-      {blogList.blogAbstracts.map(blogAbstract => (
+      {blogList.blogAbstracts.map((blogAbstract) => (
         <li key={blogAbstract.id} className={styles.blogAbstract}>
           <AbstractCard
             time={blogAbstract.time}

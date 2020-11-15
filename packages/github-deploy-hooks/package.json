@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf target && rollup --config rollup.config.js",
-    "lint:ts": "eslint \"src/**/*.ts{,x}\"",
+    "lint:ts": "eslint \"src/**/*.ts\"",
     "lint:ts:types": "tsc --noEmit",
     "format": "prettier --check **/*"
   },
@@ -25,7 +25,7 @@
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@rollup/plugin-typescript": "^2.0.1",
     "@types/jsonwebtoken": "^8.3.7",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
