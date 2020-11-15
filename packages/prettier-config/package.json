@@ -1,0 +1,10 @@
+{
+  "name": "@fa93hws-blog/prettier-config",
+  "version": "0.1.0",
+  "main": ".prettierrc.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@fa93hws-blog/eslint-config": "^0.1.1",
+    "typescript": "^4.0.5"
+  }
+}

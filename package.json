@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "version": "0.1.0",
+  "repository": "git@github.com:fa93hws/blog.git",
+  "author": "fa93hws <wjun0912@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "scripts": {
+    "lerna": "lerna"
+  },
+  "workspaces": [
+    "packages/eslint-config",
+    "packages/backends",
+    "packages/prettier-config",
+    "packages/pipeline-generator",
+    "packages/github-deploy-hooks",
+    "packages/web"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "github-deploy-hooks",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf target && rollup --config rollup.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "builtin-modules": "^3.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "rollup": "^1.31.1",
+    "typescript": "^3.8.2"
+  },
+  "devDependencies": {
+    "@fa93hws-blog/eslint-config": "^0.1.1",
+    "@fa93hws-blog/prettier-config": "^0.1.0",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-typescript": "^2.0.1",
+    "@types/jsonwebtoken": "^8.3.7",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "ts-node": "^8.6.2",
+    "tslib": "^1.11.0"
+  }
+}
