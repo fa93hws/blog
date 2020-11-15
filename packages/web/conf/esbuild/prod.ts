@@ -1,23 +1,18 @@
-import * as path from 'path';
 import type { Options } from '@fa93hws-blog/esbuild-cli';
 
-const webDir = path.resolve(__dirname, '..', '..');
+import { commonEsbuildOptions, commonHtmlOptions } from './common';
+
 const options: Options = {
   esbuildOptions: {
-    bundle: true,
-    entryPoints: [path.join(webDir, 'src', 'index.esbuild.tsx')],
+    ...commonEsbuildOptions,
     define: {
       'process.env.NODE_ENV': '"production"',
     },
     minify: true,
-    outdir: path.join(webDir, 'dist', 'blog'),
-    platform: 'browser',
-    sourcemap: true,
-    write: false,
   },
   hashFile: true,
   htmlOptions: {
-    entry: path.join(webDir, 'index.ejs'),
+    ...commonHtmlOptions,
     minify: true,
   },
 };
