@@ -15,11 +15,13 @@ jobs:
         with:
           lfs: true
       - id: yarn-cache
-        name: Fetch node modules
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
-          path: node_modules
+          path: |
+            node_modules
+            packages/*/node_modules
       - id: yarn-install
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         name: Install node modules
@@ -36,11 +38,13 @@ jobs:
         with:
           lfs: true
       - id: yarn-cache
-        name: Fetch node modules
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
-          path: node_modules
+          path: |
+            node_modules
+            packages/*/node_modules
       - uses: actions/github-script@v3
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         with:
@@ -80,11 +84,13 @@ jobs:
         with:
           lfs: true
       - id: yarn-cache
-        name: Fetch node modules
+        name: fetch node modules
         uses: actions/cache@v1
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
-          path: node_modules
+          path: |
+            node_modules
+            packages/*/node_modules
       - uses: actions/github-script@v3
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         with:
