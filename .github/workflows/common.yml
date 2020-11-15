@@ -1,0 +1,37 @@
+name: common
+on: push
+jobs:
+  linting:
+    name: linting
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+        with:
+          lfs: true
+      - id: yarn-cache
+        name: fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
+          path: node_modules
+      - id: yarn-install
+        if: steps.yarn-install.outputs.cache-hit != 'true'
+        name: install node modules
+        run: yarn install --frozen-lockfile
+      - id: eslint
+        name: Check ESlint
+        run: yarn lerna run lint:ts
+      - id: tscheck
+        if: always()
+        name: Check Typescripe
+        run: yarn lerna run lint:ts:types
+      - id: prettier
+        if: always()
+        name: Check Prettier
+        run: yarn lerna run format
+      - id: unittest
+        if: always()
+        name: unit test
+        run: yarn lerna run test:unit
