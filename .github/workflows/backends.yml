@@ -5,28 +5,6 @@ on:
       - packages/backends/**
       - .github/workflows/backends.yml
 jobs:
-  install:
-    name: install node_modules
-    runs-on: ubuntu-latest
-    steps:
-      - id: checkout
-        name: checkout
-        uses: actions/checkout@v1
-        with:
-          lfs: true
-      - id: yarn-cache
-        name: fetch node modules
-        uses: actions/cache@v2
-        with:
-          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
-          path: |
-            node_modules
-            packages/*/node_modules
-      - id: yarn-install
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        name: Install node modules
-        run: yarn install --frozen-lockfile
-
   build:
     name: build nest
     runs-on: ubuntu-latest
@@ -42,12 +20,11 @@ jobs:
         uses: actions/cache@v2
         with:
           key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}"
+          restore-keys: "${{ runner.os }}-yarn-"
           path: node_modules
-      - uses: actions/github-script@v3
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        with:
-          script: |
-            core.setFailed('node_modules can not be found')
+      - id: yarn-install
+        name: Install node modules
+        run: yarn install --frozen-lockfile
       - id: nest-build
         name: Run nest build
         run: yarn build
