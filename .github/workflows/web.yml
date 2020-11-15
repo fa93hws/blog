@@ -1,0 +1,119 @@
+name: web
+on:
+  push:
+    paths:
+      - packages/web/**
+      - .github/workflows/web.yml
+jobs:
+  install:
+    name: Install node_modules
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+        with:
+          lfs: true
+      - id: yarn-cache
+        name: Fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
+          path: node_modules
+      - id: yarn-install
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        name: Install node modules
+        run: yarn install --frozen-lockfile
+
+  webpack:
+    name: webpack
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+        with:
+          lfs: true
+      - id: yarn-cache
+        name: Fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
+          path: node_modules
+      - uses: actions/github-script@v3
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        with:
+          script: |
+            core.setFailed('node_modules can not be found')
+      - id: webpack
+        name: Run webpack build
+        run: yarn build
+        working-directory: packages/web
+        env:
+          CI: "true"
+          DEBUG: webpack_options*
+      - id: deploy-to-s3
+        name: Deploy to s3
+        env:
+          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          AWS_REGION: ap-northeast-2
+          AWS_S3_BUCKET: github-cd
+          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY_VALUE }}"
+          DEST_DIR: $GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog
+          SOURCE_DIR: packages/web/dist/blog
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: "--acl public-read --delete"
+      - id: display-url
+        name: Display deployed url
+        run: 'curl "https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?name=blog&commitHash=$GITHUB_SHA&url=https://github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog/index.html"'
+
+  storybook:
+    name: storybook
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v1
+        with:
+          lfs: true
+      - id: yarn-cache
+        name: Fetch node modules
+        uses: actions/cache@v1
+        with:
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn-lock.json') }}"
+          path: node_modules
+      - uses: actions/github-script@v3
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        with:
+          script: |
+            core.setFailed('node_modules can not be found')
+      - id: storybook
+        env:
+          DEBUG: storybook_config
+        name: Run storybook build
+        run: "yarn storybook:build"
+        working-directory: packages/web
+      - id: deploy-to-s3
+        env:
+          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          AWS_REGION: ap-northeast-2
+          AWS_S3_BUCKET: github-cd
+          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY_VALUE }}"
+          DEST_DIR: $GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook
+          SOURCE_DIR: packages/web/dist/storybook
+        name: Deploy to s3
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: "--acl public-read --delete"
+      - id: display-url
+        name: Display deployed url
+        run: 'curl "https://3zrr015ofi.execute-api.ap-northeast-2.amazonaws.com/default/deploy-github-build-to-s3?name=storybook&commitHash=$GITHUB_SHA&url=https://github-cd.s3.ap-northeast-2.amazonaws.com/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/storybook/index.html"'
+      - id: percy-storybook
+        env:
+          PERCY_TOKEN: "${{ secrets.PERCY_TOKEN }}"
+        name: Run percy on storybook
+        run: "yarn percy:storybook"
+        working-directory: packages/web

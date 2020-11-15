@@ -1,7 +1,8 @@
+/* eslint-disable no-console, import/no-default-export */
 import { request, RequestOptions } from 'https';
 // TODO: Find a better solution to store the key
-import privateKey from './private-key';
 import * as jwt from 'jsonwebtoken';
+import privateKey from './private-key';
 
 const APP_NAME = 's3-deploybot';
 const HOSTNAME = 'api.github.com';
@@ -12,7 +13,7 @@ type Params = {
   url: string;
 };
 
-function parseQueryStringParameter(query: any): Params {
+function parseQueryStringParameter(query: Record<string, unknown>): Params {
   if (query.commitHash == null || typeof query.commitHash !== 'string') {
     throw new Error(`commitHash must be string, got ${query.commitHash}`);
   }
@@ -41,9 +42,10 @@ function signJwt() {
 function makeRequest(
   options: RequestOptions,
   body: Record<string, string> | undefined,
-): Promise<any> {
+): Promise<string> {
   return new Promise((resolve, reject) => {
     if (body != null && options.headers != null) {
+      // eslint-disable-next-line no-param-reassign
       options.headers['Content-Length'] = JSON.stringify(body).length;
     } else if (options.headers == null) {
       throw new Error('headers must not be empty');
@@ -65,7 +67,7 @@ function makeRequest(
             new Error(`invalid statusCode ${res.statusCode}: ${replyBody}`),
           );
         }
-        resolve(replyBody);
+        return resolve(replyBody);
       });
     });
 
@@ -105,17 +107,20 @@ function createCheck({ commitHash, url, name }: Params, token: string) {
   };
   const data = {
     name: `deploy: ${name}`,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     head_sha: commitHash,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     details_url: url,
     status: 'completed',
     conclusion: 'success',
   };
   return makeRequest(options, data);
 }
+// eslint-disable-next-line @typescript-eslint/camelcase
 export default async function lambda_handler({
   queryStringParameters,
 }: {
-  queryStringParameters: any;
+  queryStringParameters: Record<string, unknown>;
 }) {
   try {
     const tokenForAuth = signJwt();
@@ -131,5 +136,6 @@ export default async function lambda_handler({
     return response;
   } catch (e) {
     console.error(e);
+    return { statusCode: 500 };
   }
 }

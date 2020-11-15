@@ -1,18 +1,18 @@
-import * as debug from 'debug';
+// import * as debug from 'debug';
 import { Configuration } from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import { resolve, relative, join } from 'path';
 import { webpackConfig } from '../webpack/config';
 
-const info = debug('storybook_config').extend('info');
+// const info = debug('storybook_config').extend('info');
 function getStoriesFromEnv() {
   const folder = process.env.STORYBOOK_PKG || 'src';
   const webRoot = resolve(__dirname, '..', '..');
-  info('Parsed STORYBOOK_PKG:', folder);
+  // info('Parsed STORYBOOK_PKG:', folder);
   const stories = resolve(webRoot, folder);
   const relativePath = relative(__dirname, stories);
   const glob = join(relativePath, '**', '*.stories.tsx');
-  info('Stories glob:', glob);
+  // info('Stories glob:', glob);
   return glob;
 }
 
