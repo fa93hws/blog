@@ -52,7 +52,7 @@ jobs:
         working-directory: packages/web
         env:
           CI: "true"
-          DEBUG: webpack_options
+          DEBUG: webpack_options*
       - id: deploy-to-s3
         name: Deploy to s3
         env:

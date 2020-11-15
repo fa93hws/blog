@@ -1,7 +1,6 @@
-import * as debug from 'debug';
 import { Configuration } from 'webpack';
 
-const info = debug('webpack_options').extend(':info');
+// const info = debug('webpack_options').extend(':info');
 
 type Options = {
   hashOutput: boolean;
@@ -51,6 +50,6 @@ export function getOptionsFromEnv(): Options {
     hotModuleReplacement: parseBoolean('HOT_MODULE_RELOAD', false),
     tsTranspileOnly: parseBoolean('TS_TRANSPILE_ONLY', false),
   };
-  info(options);
+  // console.lo(options);
   return options;
 }
