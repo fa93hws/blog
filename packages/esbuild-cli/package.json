@@ -9,17 +9,22 @@
   "scripts": {
     "lint:ts": "eslint \"./**/*.ts\"",
     "lint:ts:types": "tsc --noEmit",
+    "build:script": "esbuild client-entry/client-entry.ts --bundle --outfile=client-entry/client-entry.js",
     "format": "prettier --check **/*",
     "test:unit": "jest --ci"
   },
   "dependencies": {
     "@minify-html/js": "^0.3.9",
+    "@types/component-emitter": "^1.2.10",
+    "@types/cookie": "^0.4.0",
+    "@types/cors": "^2.8.8",
     "chalk": "^4.1.0",
     "crypto": "^1.0.1",
     "esbuild": "^0.8.7",
     "lodash": "^4.17.20",
     "mime": "^2.4.6",
     "socket.io": "^3.0.1",
+    "socket.io-client": "^3.0.1",
     "yargs": "^16.1.0"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ import * as React from 'react';
 import './pages/global.css';
 
 export const App = () => {
-  const SkeletonImpl = () => <div>hello world!</div>;
+  const SkeletonImpl = () => <div>hello world</div>;
   return <SkeletonImpl />;
 };
 
