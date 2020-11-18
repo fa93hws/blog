@@ -2,8 +2,8 @@ import * as path from 'path';
 import * as yargs from 'yargs';
 import { buildSync } from 'esbuild';
 
-import type { Options } from '../types';
-import { normalizeOptions, doBuild } from '../common';
+import type { Options } from './types';
+import { normalizeOptions, doBuild } from './common';
 
 type CliArgs = {
   // config path
