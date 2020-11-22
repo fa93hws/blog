@@ -21,27 +21,6 @@ _parse_webpack_dev_args() {
   done
 }
 
-build() {
-  rm -rf "${WEB_DIR}"/dist/blog
-
-  export HASH_OUTPUT="true"
-  export SOURCE_MAP="true"
-  export WEBPACK_MODE="production"
-  export HOT_MODULE_RELOAD="false"
-  export TS_TRANSPILE_ONLY="true"
-
-  webpack --config="${WEB_DIR}"/conf/webpack/webpack.config.js
-}
-
-webpack_dev_server() {
-  export HASH_OUTPUT="false"
-  export SOURCE_MAP="true"
-  export WEBPACK_MODE="development"
-  _parse_webpack_dev_args "$@"
-
-  webpack-dev-server --config="${WEB_DIR}"/conf/webpack/webpack.config.js
-}
-
 storybook() {
   export HASH_OUTPUT="false"
   export SOURCE_MAP="true"
@@ -56,7 +35,7 @@ storybook() {
   _parse_webpack_dev_args "$@"
 
   export STORYBOOK_PKG="${pkg}"
-  start-storybook --config-dir="${WEB_DIR}"/conf/storybook
+  DEBUG=storybook_config* start-storybook --config-dir="${WEB_DIR}"/conf/storybook
 }
 
 build_storybook() {
@@ -82,8 +61,6 @@ main () {
   shift
 
   case "${cmd}" in
-    build) build "$@" ;;
-    serve) webpack_dev_server "$@" ;;
     storybook) storybook "$@" ;;
     build-storybook) build_storybook "$@" ;;
     percy-storybook) percy_storybook "$@" ;;
