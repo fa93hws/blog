@@ -11,6 +11,11 @@ export const commonEsbuildOptions: Partial<Options['esbuildOptions']> = {
   sourcemap: true,
   platform: 'browser',
   write: false,
+  loader: {
+    '.svg': 'text',
+    '.woff2': 'file',
+    '.woff': 'file',
+  },
 };
 
 export const commonHtmlOptions = {
