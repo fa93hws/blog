@@ -1,10 +1,10 @@
 import { Controller, Get, Render } from '@nestjs/common';
 
 @Controller()
-export class GatewayController {
+export class AppController {
   @Get()
   @Render('index.ejs')
   getHello() {
-    return { message: 123 };
+    return { message: '123' };
   }
 }
