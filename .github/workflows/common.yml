@@ -40,4 +40,4 @@ jobs:
       - id: checkregern
         if: always()
         name: Check auto generated code
-        run: yarn learna run check:regen
+        run: yarn lerna run check:regen
