@@ -16,10 +16,12 @@
   "author": "fa93hws",
   "license": "MIT",
   "dependencies": {
+    "@fa93hws-blog/protos": "^0.1.0",
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "ejs": "^3.0.2",
+    "protobufjs": "^6.10.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4"

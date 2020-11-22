@@ -6,10 +6,11 @@ import {
   CardContent,
   Typography,
 } from '@material-ui/core';
-import type { PostInList } from '@services/post/post';
+import type { PostProto } from '@fa93hws-blog/protos';
 
+type Summary = PostProto.ISummary;
 type PostProps = {
-  post: PostInList;
+  post: Summary;
 };
 const Post = React.memo(({ post }: PostProps) => (
   <Card>
@@ -31,7 +32,7 @@ const Post = React.memo(({ post }: PostProps) => (
 ));
 
 type PostListProps = {
-  posts: readonly PostInList[];
+  posts: readonly Summary[];
 };
 export const PostList = React.memo((props: PostListProps) => (
   <List>

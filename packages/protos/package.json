@@ -1,0 +1,16 @@
+{
+  "name": "@fa93hws-blog/protos",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "regen": "bin/regenerate.sh"
+  },
+  "peerDependencies": {
+    "protobufjs": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "protobufjs": "^6.10.2"
+  }
+}

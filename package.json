@@ -18,6 +18,7 @@
     "packages/pipeline-generator",
     "packages/github-deploy-hooks",
     "packages/web",
-    "packages/esbuild-cli"
+    "packages/esbuild-cli",
+    "packages/protos"
   ]
 }

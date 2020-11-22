@@ -18,10 +18,12 @@
   },
   "dependencies": {
     "@badrap/result": "^0.2.6",
+    "@fa93hws-blog/protos": "^0.1.0",
     "@material-ui/core": "^4.11.0",
     "axios": "^0.21.0",
     "mobx": "^6.0.4",
     "mobx-react": "^7.0.5",
+    "protobufjs": "^6.10.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",

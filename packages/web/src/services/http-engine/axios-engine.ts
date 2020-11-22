@@ -1,15 +1,10 @@
-import Axios from 'axios';
-import type { AxiosRequestConfig, AxiosInstance } from 'axios';
+import type { AxiosInstance } from 'axios';
 import { Result } from '@badrap/result';
 
 import type { HttpEngine } from './http-engine';
 
 export class AxiosEngine implements HttpEngine {
-  private readonly axios: AxiosInstance;
-
-  constructor(config: AxiosRequestConfig) {
-    this.axios = Axios.create(config);
-  }
+  constructor(private readonly axios: AxiosInstance) {}
 
   get<T>(url: string): Promise<Result<T>> {
     return new Promise((resolve) => {
