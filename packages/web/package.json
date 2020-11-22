@@ -17,9 +17,11 @@
     "percy:storybook": "bin/webdev.sh percy-storybook"
   },
   "dependencies": {
+    "@badrap/result": "^0.2.6",
     "@material-ui/core": "^4.11.0",
-    "mobx": "^5.15.4",
-    "mobx-react": "^6.2.2",
+    "axios": "^0.21.0",
+    "mobx": "^6.0.4",
+    "mobx-react": "^7.0.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",

@@ -9,14 +9,17 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import 'typeface-roboto';
 
-import { Home } from '@pages/home/home';
+import { createPages } from '@pages/create-pages';
 import { Header } from '@components/header/header';
 import { Footer } from '@components/footer/footer';
 import './pages/global.css';
 
 const theme = responsiveFontSizes(createMuiTheme());
 
-export const App = () => {
+type AppProps = {
+  Pages: React.ComponentType;
+};
+const AppSkeleton = ({ Pages }: AppProps) => {
   const [height, setHeight] = React.useState(0);
 
   React.useEffect(() => {
@@ -32,12 +35,19 @@ export const App = () => {
       <Box display="flex" flexDirection="column" minHeight={height}>
         <Header />
         <Box flexGrow="1" component="main">
-          <Home />
+          <Pages />
         </Box>
         <Footer />
       </Box>
     </ThemeProvider>
   );
 };
+
+function createApp() {
+  const Pages = createPages();
+  return () => <AppSkeleton Pages={Pages} />;
+}
+
+const App = createApp();
 
 ReactDOM.render(<App />, document.getElementById('root'));
