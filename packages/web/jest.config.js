@@ -23,7 +23,7 @@ module.exports = {
   transform: {
     '.svg$': '<rootDir>/tools/jest/svg-transformer.js',
   },
-  snapshotSerializers: ['enzyme-to-json/serializer', 'jest-serializer-html'],
+  snapshotSerializers: ['jest-serializer-html'],
   globals: {
     'ts-jest': {
       diagnostics: {
