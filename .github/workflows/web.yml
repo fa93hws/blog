@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - packages/web/**
+      - packages/esbuild-cli/**
       - .github/workflows/web.yml
 jobs:
   esbuild:
