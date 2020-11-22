@@ -137,6 +137,7 @@ export async function doBuild({
   }
   const buildFiles = hashFile ? hashOutputs(outputFiles) : outputFiles;
   buildFiles.forEach((file) => {
+    fs.mkdirSync(path.dirname(file.path), { recursive: true });
     writeFileSync(file.path, file.text);
   });
 
