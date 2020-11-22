@@ -5,8 +5,8 @@ on:
       - packages/web/**
       - .github/workflows/web.yml
 jobs:
-  webpack:
-    name: Webpack
+  esbuild:
+    name: ESBuild
     runs-on: ubuntu-latest
     steps:
       - id: checkout
@@ -26,13 +26,10 @@ jobs:
       - id: yarn-install
         name: Install node modules
         run: yarn install --frozen-lockfile
-      - id: webpack
-        name: Run webpack build
+      - id: esbuild
+        name: Run ESBuild build
         run: yarn build
         working-directory: packages/web
-        env:
-          CI: "true"
-          DEBUG: webpack_options*
       - id: configure-aws
         name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
