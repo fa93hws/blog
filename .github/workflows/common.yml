@@ -37,3 +37,7 @@ jobs:
         if: always()
         name: Run unit test
         run: yarn lerna run test:unit
+      - id: checkregern
+        if: always()
+        name: Check auto generated code
+        run: yarn lerna run check:regen

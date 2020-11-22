@@ -10,6 +10,8 @@
     "lint:ts": "eslint \"./**/*.ts\"",
     "lint:ts:types": "tsc --noEmit",
     "build:script": "esbuild client-entry/client-entry.ts --bundle --outfile=client-entry/client-entry.js",
+    "precheck:regen": "yarn build:script",
+    "check:regen": "git diff --exit-code HEAD 'client-entry/client-entry.js'",
     "format": "prettier --check **/*",
     "test:unit": "jest --ci"
   },
