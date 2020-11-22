@@ -1,9 +1,10 @@
 import { makeObservable, observable, action } from 'mobx';
 import type { PostService } from '@services/post/post-service';
-import type { PostInList } from '@services/post/post';
+import type { PostProto } from '@fa93hws-blog/protos';
 
+type Summary = PostProto.ISummary;
 export class HomeStore {
-  posts: readonly PostInList[] = [];
+  posts: readonly Summary[] = [];
 
   constructor(private readonly postService: PostService) {
     makeObservable(this, {
@@ -12,14 +13,14 @@ export class HomeStore {
     });
   }
 
-  setPosts(postList: readonly PostInList[]) {
+  setPosts(postList: readonly Summary[]) {
     this.posts = postList;
   }
 
   async fetchList() {
     const result = await this.postService.fetchList();
     if (result.isOk) {
-      this.setPosts(result.value);
+      this.setPosts(result.value.list ?? []);
     } else {
       throw result.error;
     }

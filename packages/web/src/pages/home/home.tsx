@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import type { PostService } from '@services/post/post-service';
-import type { PostInList } from '@services/post/post';
+import type { PostProto } from '@fa93hws-blog/protos';
 import { HomeStore } from './home-store';
 import { PostList } from './post-list/post-list';
 
+type Summary = PostProto.ISummary;
+
 type HomeProps = {
-  posts: readonly PostInList[];
+  posts: readonly Summary[];
   onMount(): void;
 };
 export const Home = React.memo((props: HomeProps) => {
