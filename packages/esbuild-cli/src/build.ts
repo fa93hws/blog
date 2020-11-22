@@ -20,6 +20,9 @@ function handler({ config }: CliArgs) {
   doBuild({
     esbuild: () => buildSync(normalizedOptions.esbuildOptions),
     options: normalizedOptions,
+  }).catch((e) => {
+    console.error(e);
+    process.exit(1);
   });
 }
 

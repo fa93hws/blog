@@ -1,10 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { createSkeleton } from './pages/skeleton/skeleton';
+import 'typeface-roboto';
 import './pages/global.css';
 
 export const App = () => {
-  const SkeletonImpl = createSkeleton();
+  const SkeletonImpl = () => <div>hello world</div>;
   return <SkeletonImpl />;
 };
 
