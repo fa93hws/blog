@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "regen": "bin/regenerate.sh"
+    "regen": "bin/regenerate.sh",
+    "precheck:regen": "yarn regen",
+    "check:regen": "git diff --exit-code HEAD 'index.js' 'index.d.ts'"
   },
   "peerDependencies": {
     "protobufjs": "*"

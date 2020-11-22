@@ -9,6 +9,7 @@ main() {
 
   local files
   readarray -t files <<< $(find . -name '*.proto')
+  echo "regenerating protos"
   "${pbjs}" -t static-module -w commonjs -o index.js "${files[@]}"
   "${pbts}" -o index.d.ts index.js
 }
