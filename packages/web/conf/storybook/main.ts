@@ -1,54 +1,34 @@
-// import * as debug from 'debug';
+import * as debug from 'debug';
 import { Configuration } from 'webpack';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import { resolve, relative, join } from 'path';
-import { webpackConfig } from '../webpack/config';
+import * as path from 'path';
+import { webDir } from '../path';
 
-// const info = debug('storybook_config').extend('info');
+const info = debug('storybook_config').extend('info');
+
 function getStoriesFromEnv() {
   const folder = process.env.STORYBOOK_PKG || 'src';
-  const webRoot = resolve(__dirname, '..', '..');
-  // info('Parsed STORYBOOK_PKG:', folder);
-  const stories = resolve(webRoot, folder);
-  const relativePath = relative(__dirname, stories);
-  const glob = join(relativePath, '**', '*.stories.tsx');
-  // info('Stories glob:', glob);
+  const webRoot = path.resolve(__dirname, '..', '..');
+  info('Parsed STORYBOOK_PKG:', folder);
+  const stories = path.resolve(webRoot, folder);
+  const relativePath = path.relative(__dirname, stories);
+  const glob = path.join(relativePath, '**', '*.stories.tsx');
+  info('Stories glob:', glob);
   return glob;
 }
 
 export const storybookConfig = {
-  webpackFinal: async (config: Configuration) => {
-    /* eslint-disable no-param-reassign */
-    config.module = config.module ?? { rules: [] };
-    config.plugins = config.plugins ?? [];
-    /* eslint-enable no-param-reassign */
-
-    if (webpackConfig.module == null) {
-      throw new Error('our webpack config should have module rules');
-    }
-    if (webpackConfig.plugins == null) {
-      throw new Error('our webpack config should have plugins');
-    }
-
-    return {
-      ...config,
-      resolve: {
-        ...config.resolve,
-        ...webpackConfig.resolve,
+  webpackFinal: (config: Configuration) => ({
+    ...config,
+    resolve: {
+      ...config.resolve,
+      alias: {
+        '@components': path.join(webDir, 'src', 'components'),
+        '@pages': path.join(webDir, 'src', 'pages'),
+        '@utils': path.join(webDir, 'src', 'utils'),
+        '@services': path.join(webDir, 'src', 'services'),
       },
-      module: {
-        ...config.module,
-        ...webpackConfig.module,
-      },
-      plugins: [
-        ...config.plugins,
-        ...webpackConfig.plugins.filter(
-          (p) => !(p instanceof HtmlWebpackPlugin),
-        ),
-      ],
-    };
-  },
-
+    },
+  }),
   stories: [getStoriesFromEnv()],
   addons: [
     '@storybook/addon-knobs/register',

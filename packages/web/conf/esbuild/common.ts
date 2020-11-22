@@ -1,7 +1,7 @@
 import * as path from 'path';
 import type { Options } from '@fa93hws-blog/esbuild-cli';
+import { webDir } from '../path';
 
-const webDir = path.resolve(__dirname, '..', '..');
 const outbase = path.join(webDir, 'src');
 export const commonEsbuildOptions: Partial<Options['esbuildOptions']> = {
   entryPoints: [path.join(webDir, 'src', 'index.tsx')],
