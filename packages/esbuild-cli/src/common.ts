@@ -138,7 +138,11 @@ export async function doBuild({
   const buildFiles = hashFile ? hashOutputs(outputFiles) : outputFiles;
   buildFiles.forEach((file) => {
     fs.mkdirSync(path.dirname(file.path), { recursive: true });
-    writeFileSync(file.path, file.text);
+    if (['.woff2', '.woff'].includes(path.extname(file.path))) {
+      writeFileSync(file.path, file.contents);
+    } else {
+      writeFileSync(file.path, file.text);
+    }
   });
 
   if (htmlOptions != null && esbuildOptions.outdir != null) {
