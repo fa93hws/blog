@@ -6,14 +6,12 @@
   "description": "nothing",
   "repository": {},
   "scripts": {
-    "build": "bin/webdev.sh build",
-    "build:esbuild": "esbuild-cli build --config conf/esbuild/prod.ts",
+    "build": "esbuild-cli build --config conf/esbuild/prod.ts",
     "format": "prettier --check **/*",
     "lint:ts": "eslint \"{conf,src,tools}/**/*.ts{,x}\"",
     "lint:ts:types": "tsc --project conf/typescript/tsconfig.check.json",
     "test:unit": "jest --ci",
-    "serve": "bin/webdev.sh serve",
-    "serve:esbuild": "esbuild-cli serve --config conf/esbuild/dev.ts --port 8888 --watch-dir src",
+    "serve": "esbuild-cli serve --config conf/esbuild/dev.ts --port 8888 --watch-dir src",
     "storybook": "bin/webdev.sh storybook",
     "storybook:build": "bin/webdev.sh build-storybook",
     "percy:storybook": "bin/webdev.sh percy-storybook"
