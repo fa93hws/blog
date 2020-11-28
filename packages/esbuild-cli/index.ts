@@ -1,1 +1,1 @@
-export { Options } from './src/types';
+export { Options, DevOptions } from './src/types';

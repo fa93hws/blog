@@ -6,16 +6,13 @@ import { startService, BuildOptions } from 'esbuild';
 import { debounce } from 'lodash';
 import { yellow } from 'chalk';
 
-import type { Options } from '../types';
+import type { DevOptions } from '../types';
 import { startDevServer } from './dev-server';
-import { normalizeOptions, doBuild } from '../common';
+import { doBuild } from '../common';
 
 type CliArgs = {
   // config path
   config: string;
-  // port number
-  port: number;
-  watchDir: string;
 };
 
 function injectClientEntry(esbuildOptions: BuildOptions, port: number) {
@@ -41,20 +38,20 @@ function registerCleanup(callback: () => unknown) {
   process.on('beforeExit', callback);
 }
 
-async function handler({ config, port, watchDir }: CliArgs) {
+async function handler({ config }: CliArgs) {
   const absConfigPath = path.isAbsolute(config)
     ? config
     : path.resolve(process.cwd(), config);
   // eslint-disable-next-line import/no-dynamic-require, global-require, @typescript-eslint/no-var-requires
-  const options: Options = require(absConfigPath);
-  injectClientEntry(options.esbuildOptions, port);
-  const normalizedOptions = normalizeOptions(options);
+  const options: DevOptions = require(absConfigPath);
+  injectClientEntry(options.esbuildOptions, options.port);
+  const { port, watchDir } = options;
 
   const esbuildService = await startService();
   const esbuild = () => esbuildService.build(options.esbuildOptions);
   doBuild({
     esbuild,
-    options: normalizedOptions,
+    options,
   });
 
   const buildOutputFolder = options.esbuildOptions.outdir;
@@ -69,11 +66,8 @@ async function handler({ config, port, watchDir }: CliArgs) {
     io.emit('browserReload');
   }
 
-  const normalizedWatchDir = path.isAbsolute(watchDir)
-    ? watchDir
-    : path.join(process.cwd(), watchDir);
-  const watcher = fs.watch(normalizedWatchDir, { recursive: true }, () =>
-    debouncedBuild({ esbuild, options: normalizedOptions, afterBuild }),
+  const watcher = fs.watch(watchDir, { recursive: true }, () =>
+    debouncedBuild({ esbuild, options, afterBuild }),
   );
   watcher.once('close', () => {
     console.log(yellow(`${EOL}Terminate esbuild dev server`));
@@ -87,21 +81,10 @@ export const serveModule: yargs.CommandModule<unknown, CliArgs> = {
   command: 'serve',
   describe: 'serve with esbuild and auto browser refresh',
   builder: (): yargs.Argv<CliArgs> =>
-    yargs
-      .option('config', {
-        demandOption: true,
-        type: 'string',
-        description: 'path to config path',
-      })
-      .option('port', {
-        demandOption: true,
-        type: 'number',
-        description: 'port number',
-      })
-      .option('watchDir', {
-        demandOption: true,
-        type: 'string',
-        description: 'path to watch',
-      }),
+    yargs.option('config', {
+      demandOption: true,
+      type: 'string',
+      description: 'path to config path',
+    }),
   handler,
 };

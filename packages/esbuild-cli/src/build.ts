@@ -3,7 +3,7 @@ import * as yargs from 'yargs';
 import { buildSync } from 'esbuild';
 
 import type { Options } from './types';
-import { normalizeOptions, doBuild } from './common';
+import { doBuild } from './common';
 
 type CliArgs = {
   // config path
@@ -16,10 +16,9 @@ function handler({ config }: CliArgs) {
     : path.resolve(process.cwd(), config);
   // eslint-disable-next-line import/no-dynamic-require, global-require, @typescript-eslint/no-var-requires
   const options: Options = require(absConfigPath);
-  const normalizedOptions = normalizeOptions(options);
   doBuild({
-    esbuild: () => buildSync(normalizedOptions.esbuildOptions),
-    options: normalizedOptions,
+    esbuild: () => buildSync(options.esbuildOptions),
+    options,
   }).catch((e) => {
     console.error(e);
     process.exit(1);
