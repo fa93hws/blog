@@ -12,7 +12,7 @@ export const commonEsbuildOptions: Partial<Options['esbuildOptions']> = {
   platform: 'browser',
   write: false,
   loader: {
-    '.svg': 'text',
+    '.svg': 'file',
     '.woff2': 'file',
     '.woff': 'file',
   },
