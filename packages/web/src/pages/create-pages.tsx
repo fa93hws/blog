@@ -6,7 +6,7 @@ import { PostService } from '@services/post/post-service';
 
 export function createPages() {
   const axios = Axios.create({
-    baseURL: 'http://localhost:3000/api/v1',
+    baseURL: '/api/v1',
   });
   const axiosEngine = new AxiosEngine(axios);
   const postService = new PostService(axiosEngine);

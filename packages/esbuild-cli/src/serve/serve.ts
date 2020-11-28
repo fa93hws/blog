@@ -1,4 +1,5 @@
 import { EOL } from 'os';
+import * as axios from 'axios';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as yargs from 'yargs';
@@ -60,7 +61,7 @@ async function handler({ config }: CliArgs) {
   }
 
   const debouncedBuild = debounce(doBuild, 100);
-  const io = startDevServer({ port, buildOutputFolder });
+  const io = startDevServer({ port, buildOutputFolder, proxy: options.proxy });
 
   function afterBuild() {
     io.emit('browserReload');

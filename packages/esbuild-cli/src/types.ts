@@ -14,4 +14,5 @@ export type Options = {
 export type DevOptions = Options & {
   port: number;
   watchDir: string;
+  proxy?: Record<string, string>;
 };
