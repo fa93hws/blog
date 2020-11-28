@@ -10,3 +10,8 @@ export type Options = {
     entry: string;
   } | null;
 };
+
+export type DevOptions = Options & {
+  port: number;
+  watchDir: string;
+};

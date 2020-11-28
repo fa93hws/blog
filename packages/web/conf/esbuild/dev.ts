@@ -1,8 +1,10 @@
-import type { Options } from '@fa93hws-blog/esbuild-cli';
+import * as path from 'path';
+import type { DevOptions } from '@fa93hws-blog/esbuild-cli';
 
+import { webDir } from '../path';
 import { commonEsbuildOptions, commonHtmlOptions } from './common';
 
-const options: Options = {
+const options: DevOptions = {
   esbuildOptions: {
     ...commonEsbuildOptions,
     define: {
@@ -15,6 +17,8 @@ const options: Options = {
     ...commonHtmlOptions,
     minify: false,
   },
+  port: 8888,
+  watchDir: path.join(webDir, 'src'),
 };
 
 module.exports = options;

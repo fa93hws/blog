@@ -101,17 +101,6 @@ export function copyAssets({
     );
 }
 
-export function normalizeOptions(options: Options): Required<Options> {
-  const { hashFile = false, mute = false } = options;
-
-  return {
-    esbuildOptions: options.esbuildOptions,
-    mute,
-    hashFile,
-    htmlOptions: options.htmlOptions ?? null,
-  };
-}
-
 export async function doBuild({
   afterBuild,
   esbuild,
@@ -121,7 +110,7 @@ export async function doBuild({
 }: {
   esbuild: () => Promise<BuildResult> | BuildResult;
   afterBuild?: () => void;
-  options: Required<Options>;
+  options: Options;
   writeFileSync?: typeof fs.writeFileSync;
   existsSync?: typeof fs.existsSync;
 }) {
