@@ -22,7 +22,8 @@ function createFakeService(): Services {
 }
 
 export function createService() {
-  // see conf/global.ts. Can reference the value otherwise it won't be ignored after build
+  // const enum won't be inlined https://github.com/evanw/esbuild/issues/128
+  // This leads to fake code not be igored after minification
   return process.env.MODE === 'FAKE'
     ? createFakeService()
     : createRealService();
