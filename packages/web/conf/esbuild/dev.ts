@@ -8,6 +8,7 @@ const options: DevOptions = {
   esbuildOptions: {
     ...commonEsbuildOptions,
     define: {
+      ...commonEsbuildOptions.define,
       'process.env.NODE_ENV': '"development"',
     },
     minify: false,
