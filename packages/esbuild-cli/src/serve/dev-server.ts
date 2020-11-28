@@ -90,6 +90,32 @@ export class DevServerRouter {
   }
 }
 
+async function handleProxy(
+  actualUrl: string,
+  originReq: http.IncomingMessage,
+  res: http.ServerResponse,
+) {
+  try {
+    const actualRes = await axios.request({
+      url: actualUrl,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      method: originReq.method as any,
+      headers: originReq.headers,
+    });
+    res.writeHead(actualRes.status, actualRes.headers);
+    return res.end(JSON.stringify(actualRes.data));
+  } catch (e) {
+    if ('response' in e) {
+      const { response } = e;
+      res.writeHead(response.status, response.headers);
+      return res.end(JSON.stringify(response.data));
+    }
+    res.writeHead(500);
+    console.error(e);
+    return res.end(`internal error when send proxy request to ${actualUrl}`);
+  }
+}
+
 export async function handleRouteResult(
   routeResult: RouteResult,
   res: http.ServerResponse,
@@ -109,23 +135,7 @@ export async function handleRouteResult(
       res.writeHead(200);
       return res.end(fs.readFileSync(routeResult.file));
     case ResultKind.PROXY:
-      // eslint-disable-next-line no-case-declarations
-      try {
-        const actualRes = await axios.request({
-          url: routeResult.actualUrl,
-          method: routeResult.originalReq.method as any,
-          headers: routeResult.originalReq.headers,
-          // ...routeResult.originalReq,
-        });
-        res.writeHead(actualRes.status, actualRes.headers);
-        return res.end(JSON.stringify(actualRes.data));
-      } catch (e) {
-        res.writeHead(500);
-        console.error(e);
-        return res.end(
-          `internal error when send proxy request to${routeResult.actualUrl}`,
-        );
-      }
+      return handleProxy(routeResult.actualUrl, routeResult.originalReq, res);
     default:
       mute || console.error('wrong routeResult', routeResult);
       res.writeHead(500);
