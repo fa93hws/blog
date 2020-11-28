@@ -1,4 +1,6 @@
 import type { PostProto } from '@fa93hws-blog/protos';
+import { Result } from '@badrap/result';
+import type { IPostService } from '../post-service';
 
 export const fakePostList: PostProto.ISummrayList = {
   list: [
@@ -33,3 +35,9 @@ export const fakePostList: PostProto.ISummrayList = {
   ],
   count: 4,
 };
+
+export class FakePostService implements IPostService {
+  async fetchList() {
+    return Result.ok(fakePostList);
+  }
+}

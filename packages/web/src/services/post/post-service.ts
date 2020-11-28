@@ -4,7 +4,11 @@ import { Result } from '@badrap/result';
 
 type SummaryList = PostProto.ISummrayList;
 
-export class PostService {
+export interface IPostService {
+  fetchList(): Promise<Result<SummaryList>>;
+}
+
+export class PostService implements IPostService {
   constructor(private readonly httpEngine: HttpEngine) {}
 
   async fetchList(): Promise<Result<SummaryList>> {

@@ -6,6 +6,7 @@ const options: Options = {
   esbuildOptions: {
     ...commonEsbuildOptions,
     define: {
+      ...commonEsbuildOptions.define,
       'process.env.NODE_ENV': '"production"',
     },
     minify: true,
