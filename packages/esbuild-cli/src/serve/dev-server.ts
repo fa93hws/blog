@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as http from 'http';
 import * as mime from 'mime';
 import * as path from 'path';
@@ -9,6 +10,7 @@ export const enum ResultKind {
   BAD = 'BAD_REQUEST',
   NOT_FOUND = 'NOT_FOUND',
   STATIC_FILE = 'STATIC_FILE',
+  PROXY = 'PROXY',
 }
 type RouteResult =
   | {
@@ -20,29 +22,55 @@ type RouteResult =
   | {
       kind: ResultKind.STATIC_FILE;
       file: string;
+    }
+  | {
+      kind: ResultKind.PROXY;
+      actualUrl: string;
+      originalReq: http.IncomingMessage;
     };
 
 export class DevServerRouter {
   private readonly staticFolder: string;
 
-  constructor({ staticFolder }: { staticFolder: string }) {
+  private readonly proxy: Record<string, string>;
+
+  constructor({
+    staticFolder,
+    proxy,
+  }: {
+    staticFolder: string;
+    proxy: Record<string, string>;
+  }) {
     this.staticFolder = staticFolder;
+    this.proxy = proxy;
   }
 
   private returnStaticFile(file: string) {
     return {
       kind: ResultKind.STATIC_FILE,
       file,
-    };
+    } as const;
   }
 
-  getRoutes(reqUrl: string | undefined): RouteResult {
+  getRoutes(req: http.IncomingMessage): RouteResult {
+    const { url: reqUrl } = req;
     if (reqUrl == null) {
       return { kind: ResultKind.BAD };
     }
-    if (reqUrl == null) {
-      return { kind: ResultKind.NOT_FOUND };
+
+    for (let idx = 0; idx < Object.keys(this.proxy).length; idx += 1) {
+      const from = Object.keys(this.proxy)[idx];
+      const to = this.proxy[from];
+      if (reqUrl.startsWith(from)) {
+        const actualUrl = to + reqUrl.slice(from.length);
+        return {
+          kind: ResultKind.PROXY,
+          actualUrl,
+          originalReq: req,
+        };
+      }
     }
+
     const maybeFile = path.join(this.staticFolder, reqUrl);
     if (fs.existsSync(maybeFile)) {
       if (fs.lstatSync(maybeFile).isDirectory()) {
@@ -62,7 +90,7 @@ export class DevServerRouter {
   }
 }
 
-export function handleRouteResult(
+export async function handleRouteResult(
   routeResult: RouteResult,
   res: http.ServerResponse,
   mute = false,
@@ -80,6 +108,24 @@ export function handleRouteResult(
       mimeType && res.setHeader('Content-Type', mimeType);
       res.writeHead(200);
       return res.end(fs.readFileSync(routeResult.file));
+    case ResultKind.PROXY:
+      // eslint-disable-next-line no-case-declarations
+      try {
+        const actualRes = await axios.request({
+          url: routeResult.actualUrl,
+          method: routeResult.originalReq.method as any,
+          headers: routeResult.originalReq.headers,
+          // ...routeResult.originalReq,
+        });
+        res.writeHead(actualRes.status, actualRes.headers);
+        return res.end(JSON.stringify(actualRes.data));
+      } catch (e) {
+        res.writeHead(500);
+        console.error(e);
+        return res.end(
+          `internal error when send proxy request to${routeResult.actualUrl}`,
+        );
+      }
     default:
       mute || console.error('wrong routeResult', routeResult);
       res.writeHead(500);
@@ -90,16 +136,19 @@ export function handleRouteResult(
 export function startDevServer({
   port,
   buildOutputFolder,
+  proxy = {},
 }: {
   port: number;
   buildOutputFolder: string;
+  proxy?: Record<string, string>;
 }) {
   const router = new DevServerRouter({
     staticFolder: buildOutputFolder,
+    proxy,
   });
-  const server = http.createServer((req, res) => {
-    const routeResult = router.getRoutes(req.url);
-    handleRouteResult(routeResult, res);
+  const server = http.createServer(async (req, res) => {
+    const routeResult = router.getRoutes(req);
+    await handleRouteResult(routeResult, res);
   });
   server.listen(port);
   const hostLink = `http://localhost:${port}/`;
