@@ -30,8 +30,5 @@ export const storybookConfig = {
     },
   }),
   stories: [getStoriesFromEnv()],
-  addons: [
-    '@storybook/addon-knobs/register',
-    '@storybook/addon-actions/register',
-  ],
+  addons: ['@storybook/addon-knobs', '@storybook/addon-actions'],
 };

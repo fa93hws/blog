@@ -1,6 +1,7 @@
 import { makeObservable, observable, action } from 'mobx';
 import type { IPostService } from '@services/post/post-service';
 import type { PostProto } from '@fa93hws-blog/protos';
+import type { ShowFn } from '@components/alert/alert';
 
 type Summary = PostProto.ISummary;
 export class HomeStore {
@@ -8,7 +9,10 @@ export class HomeStore {
 
   loading = false;
 
-  constructor(private readonly postService: IPostService) {
+  constructor(
+    private readonly postService: IPostService,
+    private readonly showGlobalMsg: ShowFn,
+  ) {
     makeObservable(this, {
       posts: observable.ref,
       loading: observable.ref,
@@ -28,11 +32,12 @@ export class HomeStore {
   async fetchList() {
     this.setLoading(true);
     const result = await this.postService.fetchList();
+    this.setLoading(false);
     if (result.isOk) {
       this.setPosts(result.value.list ?? []);
-      this.setLoading(false);
     } else {
-      throw result.error;
+      this.setPosts([]);
+      this.showGlobalMsg('error', '载入博客列表失败');
     }
   }
 }

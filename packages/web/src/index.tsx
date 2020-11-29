@@ -13,12 +13,14 @@ import { createPages } from '@pages/create-pages';
 import { Header } from '@components/header/header';
 import { Footer } from '@components/footer/footer';
 import { SideBar } from '@components/sidebar/sidebar';
-import './pages/global.css';
+import { createAlert } from '@components/alert/alert';
+import '@pages/global.css';
 
 const theme = responsiveFontSizes(createMuiTheme());
 
 type AppProps = {
   Pages: React.ComponentType;
+  Alert: React.ComponentType;
 };
 const AppSkeleton = ({ Pages }: AppProps) => {
   const [height, setHeight] = React.useState(0);
@@ -49,11 +51,7 @@ const AppSkeleton = ({ Pages }: AppProps) => {
   );
 };
 
-function createApp() {
-  const Pages = createPages();
-  return () => <AppSkeleton Pages={Pages} />;
-}
-
-const App = createApp();
-
+const { Component: Alert, showGlobalMsg } = createAlert();
+const Pages = createPages({ showGlobalMsg });
+const App = () => <AppSkeleton Pages={Pages} Alert={Alert} />;
 ReactDOM.render(<App />, document.getElementById('root'));
