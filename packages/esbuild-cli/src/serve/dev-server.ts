@@ -105,14 +105,13 @@ async function handleProxy(
     res.writeHead(actualRes.status, actualRes.headers);
     return res.end(JSON.stringify(actualRes.data));
   } catch (e) {
-    if ('response' in e) {
+    if (e.response != null) {
       const { response } = e;
       res.writeHead(response.status, response.headers);
       return res.end(JSON.stringify(response.data));
     }
     res.writeHead(500);
-    console.error(e);
-    return res.end(`internal error when send proxy request to ${actualUrl}`);
+    return res.end(JSON.stringify(e.toJSON()));
   }
 }
 

@@ -6,9 +6,11 @@ import {
   CardContent,
   Typography,
 } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import type { PostProto } from '@fa93hws-blog/protos';
 
 type Summary = PostProto.ISummary;
+
 type PostProps = {
   post: Summary;
 };
@@ -41,5 +43,22 @@ export const PostList = React.memo((props: PostListProps) => (
         <Post post={post} />
       </ListItem>
     ))}
+  </List>
+));
+
+export const PostListPlaceholder = React.memo(() => (
+  <List>
+    <ListItem>
+      <Skeleton animation="pulse" variant="rect" height={250} width="100%" />
+    </ListItem>
+    <ListItem>
+      <Skeleton animation="wave" variant="rect" height={250} width="100%" />
+    </ListItem>
+    <ListItem>
+      <Skeleton animation="pulse" variant="rect" height={250} width="100%" />
+    </ListItem>
+    <ListItem>
+      <Skeleton animation="wave" variant="rect" height={250} width="100%" />
+    </ListItem>
   </List>
 ));
