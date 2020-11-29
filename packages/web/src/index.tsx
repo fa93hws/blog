@@ -22,7 +22,7 @@ type AppProps = {
   Pages: React.ComponentType;
   Alert: React.ComponentType;
 };
-const AppSkeleton = ({ Pages }: AppProps) => {
+const AppSkeleton = ({ Pages, Alert }: AppProps) => {
   const [height, setHeight] = React.useState(0);
 
   React.useEffect(() => {
@@ -35,6 +35,7 @@ const AppSkeleton = ({ Pages }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Alert />
       <Box display="flex" flexDirection="column" minHeight={height}>
         <Header />
         <Box flexGrow="1" component="main" display="flex" padding={2}>
