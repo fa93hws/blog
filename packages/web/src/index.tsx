@@ -33,22 +33,24 @@ const AppSkeleton = ({ Pages, Alert }: AppProps) => {
   }, [setHeight]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Alert />
-      <Box display="flex" flexDirection="column" minHeight={height}>
-        <Header />
-        <Box flexGrow="1" component="main" display="flex" padding={2}>
-          <Box flex={8}>
-            <Pages />
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Alert />
+        <Box display="flex" flexDirection="column" minHeight={height}>
+          <Header />
+          <Box flexGrow="1" component="main" display="flex" padding={2}>
+            <Box flex={8}>
+              <Pages />
+            </Box>
+            <Box flex={2}>
+              <SideBar />
+            </Box>
           </Box>
-          <Box flex={2}>
-            <SideBar />
-          </Box>
+          <Footer />
         </Box>
-        <Footer />
-      </Box>
-    </ThemeProvider>
+      </ThemeProvider>
+    </React.StrictMode>
   );
 };
 
