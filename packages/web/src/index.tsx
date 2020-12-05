@@ -5,6 +5,7 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from '@material-ui/core/styles';
+import { BrowserRouter } from 'react-router-dom';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import 'typeface-roboto';
@@ -34,22 +35,24 @@ const AppSkeleton = ({ Pages, Alert }: AppProps) => {
 
   return (
     <React.StrictMode>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Alert />
-        <Box display="flex" flexDirection="column" minHeight={height}>
-          <Header />
-          <Box flexGrow="1" component="main" display="flex" padding={2}>
-            <Box flex={8}>
-              <Pages />
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Alert />
+          <Box display="flex" flexDirection="column" minHeight={height}>
+            <Header />
+            <Box flexGrow="1" component="main" display="flex" padding={2}>
+              <Box flex={8}>
+                <Pages />
+              </Box>
+              <Box flex={2}>
+                <SideBar />
+              </Box>
             </Box>
-            <Box flex={2}>
-              <SideBar />
-            </Box>
+            <Footer />
           </Box>
-          <Footer />
-        </Box>
-      </ThemeProvider>
+        </ThemeProvider>
+      </BrowserRouter>
     </React.StrictMode>
   );
 };

@@ -2,10 +2,12 @@ import * as React from 'react';
 import {
   List,
   ListItem,
+  Link,
   Card,
   CardContent,
   Typography,
 } from '@material-ui/core';
+import { Link as ReactLink } from 'react-router-dom';
 import { Skeleton } from '@material-ui/lab';
 import type { PostProto } from '@fa93hws-blog/protos';
 
@@ -26,9 +28,11 @@ const Post = React.memo(({ post }: PostProps) => (
       <Typography variant="subtitle1" paragraph>
         {post.content}
       </Typography>
-      <Typography variant="subtitle1" color="primary">
-        全文...
-      </Typography>
+      <Link component={ReactLink} to={`/post/${post.uid}`}>
+        <Typography variant="subtitle1" color="primary">
+          全文...
+        </Typography>
+      </Link>
     </CardContent>
   </Card>
 ));
