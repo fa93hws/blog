@@ -32,7 +32,7 @@ export const SideBar = withTheme(
   React.memo(() => {
     const styles = useStyles();
     return (
-      <Box minWidth="150px">
+      <Box>
         <Paper elevation={0} className={styles.paper}>
           <Typography variant="h6" gutterBottom>
             作者

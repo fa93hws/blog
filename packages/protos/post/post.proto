@@ -13,3 +13,9 @@ message SummrayList {
   repeated Summary list = 1;
   required int32 count = 2;
 }
+
+message Post {
+  required string title = 1;
+  required string date = 2;
+  required string content = 3;
+}

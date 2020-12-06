@@ -503,6 +503,238 @@ $root.PostProto = (function() {
         return SummrayList;
     })();
 
+    PostProto.Post = (function() {
+
+        /**
+         * Properties of a Post.
+         * @memberof PostProto
+         * @interface IPost
+         * @property {string} title Post title
+         * @property {string} date Post date
+         * @property {string} content Post content
+         */
+
+        /**
+         * Constructs a new Post.
+         * @memberof PostProto
+         * @classdesc Represents a Post.
+         * @implements IPost
+         * @constructor
+         * @param {PostProto.IPost=} [properties] Properties to set
+         */
+        function Post(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Post title.
+         * @member {string} title
+         * @memberof PostProto.Post
+         * @instance
+         */
+        Post.prototype.title = "";
+
+        /**
+         * Post date.
+         * @member {string} date
+         * @memberof PostProto.Post
+         * @instance
+         */
+        Post.prototype.date = "";
+
+        /**
+         * Post content.
+         * @member {string} content
+         * @memberof PostProto.Post
+         * @instance
+         */
+        Post.prototype.content = "";
+
+        /**
+         * Creates a new Post instance using the specified properties.
+         * @function create
+         * @memberof PostProto.Post
+         * @static
+         * @param {PostProto.IPost=} [properties] Properties to set
+         * @returns {PostProto.Post} Post instance
+         */
+        Post.create = function create(properties) {
+            return new Post(properties);
+        };
+
+        /**
+         * Encodes the specified Post message. Does not implicitly {@link PostProto.Post.verify|verify} messages.
+         * @function encode
+         * @memberof PostProto.Post
+         * @static
+         * @param {PostProto.IPost} message Post message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Post.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.title);
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.date);
+            writer.uint32(/* id 3, wireType 2 =*/26).string(message.content);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Post message, length delimited. Does not implicitly {@link PostProto.Post.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof PostProto.Post
+         * @static
+         * @param {PostProto.IPost} message Post message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Post.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Post message from the specified reader or buffer.
+         * @function decode
+         * @memberof PostProto.Post
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {PostProto.Post} Post
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Post.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PostProto.Post();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.title = reader.string();
+                    break;
+                case 2:
+                    message.date = reader.string();
+                    break;
+                case 3:
+                    message.content = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            if (!message.hasOwnProperty("title"))
+                throw $util.ProtocolError("missing required 'title'", { instance: message });
+            if (!message.hasOwnProperty("date"))
+                throw $util.ProtocolError("missing required 'date'", { instance: message });
+            if (!message.hasOwnProperty("content"))
+                throw $util.ProtocolError("missing required 'content'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a Post message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof PostProto.Post
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {PostProto.Post} Post
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Post.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Post message.
+         * @function verify
+         * @memberof PostProto.Post
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Post.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (!$util.isString(message.title))
+                return "title: string expected";
+            if (!$util.isString(message.date))
+                return "date: string expected";
+            if (!$util.isString(message.content))
+                return "content: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a Post message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof PostProto.Post
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {PostProto.Post} Post
+         */
+        Post.fromObject = function fromObject(object) {
+            if (object instanceof $root.PostProto.Post)
+                return object;
+            var message = new $root.PostProto.Post();
+            if (object.title != null)
+                message.title = String(object.title);
+            if (object.date != null)
+                message.date = String(object.date);
+            if (object.content != null)
+                message.content = String(object.content);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Post message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof PostProto.Post
+         * @static
+         * @param {PostProto.Post} message Post
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Post.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.title = "";
+                object.date = "";
+                object.content = "";
+            }
+            if (message.title != null && message.hasOwnProperty("title"))
+                object.title = message.title;
+            if (message.date != null && message.hasOwnProperty("date"))
+                object.date = message.date;
+            if (message.content != null && message.hasOwnProperty("content"))
+                object.content = message.content;
+            return object;
+        };
+
+        /**
+         * Converts this Post to JSON.
+         * @function toJSON
+         * @memberof PostProto.Post
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Post.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return Post;
+    })();
+
     return PostProto;
 })();
 
