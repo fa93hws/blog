@@ -70,10 +70,12 @@ export function generateHtml({
   const templateContent = fs.readFileSync(templatePath, { encoding: 'utf-8' });
   const jsFiles = files
     .filter((f) => path.extname(f) === '.js')
-    .map((f) => path.relative(outdir, f));
+    .map((f) => path.relative(outdir, f))
+    .map((f) => `/${f}`);
   const cssFiles = files
     .filter((f) => path.extname(f) === '.css')
-    .map((f) => path.relative(outdir, f));
+    .map((f) => path.relative(outdir, f))
+    .map((f) => `/${f}`);
   let htmlOutputContent = template(templateContent)({ jsFiles, cssFiles });
   if (minify) {
     const cfg = minifyHtml.createConfiguration({ minifyJs: false });
