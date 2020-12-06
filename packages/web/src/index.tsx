@@ -13,7 +13,6 @@ import 'typeface-roboto';
 import { createPages } from '@pages/create-pages';
 import { Header } from '@components/header/header';
 import { Footer } from '@components/footer/footer';
-import { SideBar } from '@components/sidebar/sidebar';
 import { createAlert } from '@components/alert/alert';
 import '@pages/global.css';
 
@@ -42,12 +41,7 @@ const AppSkeleton = ({ Pages, Alert }: AppProps) => {
           <Box display="flex" flexDirection="column" minHeight={height}>
             <Header />
             <Box flexGrow="1" component="main" display="flex" padding={2}>
-              <Box flex={8}>
-                <Pages />
-              </Box>
-              <Box flex={2}>
-                <SideBar />
-              </Box>
+              <Pages />
             </Box>
             <Footer />
           </Box>

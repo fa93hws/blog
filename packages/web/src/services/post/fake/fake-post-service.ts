@@ -26,7 +26,7 @@ export const fakePostList: PostProto.ISummrayList = {
       uid: 'zvc',
     },
     {
-      title: 'Where can I get some?',
+      title: 'I do not exist',
       content:
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
       date: '2020-11-11',
@@ -36,8 +36,34 @@ export const fakePostList: PostProto.ISummrayList = {
   count: 4,
 };
 
+export const fakePostRecord: Record<string, PostProto.IPost> = {
+  asd: {
+    title: 'What is Lorem Ipsum?',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam velit arcu, lacinia a risus ut, congue maximus quam. Quisque at porttitor libero. Nullam venenatis tincidunt commodo. Vestibulum porttitor, turpis sed varius vulputate, elit est iaculis nisi, eu fringilla mauris orci ac libero. Ut volutpat dapibus felis vitae lobortis. Aliquam condimentum nisi at neque ornare pulvinar. Curabitur aliquet sapien auctor, venenatis purus in, malesuada sapien. ',
+    date: '1999-02-04',
+  },
+  abs: {
+    title: 'abs',
+    content: 'none abs',
+    date: '1989-09-12',
+  },
+  zcv: {
+    title: 'zcv',
+    content: 'none zcv',
+    date: '2020-11-04',
+  },
+};
+
 export class FakePostService implements IPostService {
   async fetchList() {
     return Result.ok(fakePostList);
+  }
+
+  async fetchPost(uid: string) {
+    if (fakePostRecord[uid] == null) {
+      return Result.err(new Error('not found'));
+    }
+    return Result.ok(fakePostRecord[uid]);
   }
 }

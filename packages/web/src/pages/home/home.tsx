@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
+import { Box } from '@material-ui/core';
 import type { IPostService } from '@services/post/post-service';
 import type { PostProto } from '@fa93hws-blog/protos';
 import type { GlobalContext } from '@utils/global-context';
+import { SideBar } from '@components/sidebar/sidebar';
 import { HomeStore } from './home-store';
 import { PostList, PostListPlaceholder } from './post-list/post-list';
 
@@ -17,10 +19,19 @@ export const Home = React.memo((props: HomeProps) => {
   React.useEffect(() => {
     props.onMount();
   }, []);
-  return props.loading ? (
-    <PostListPlaceholder />
-  ) : (
-    <PostList posts={props.posts} />
+  return (
+    <Box display="flex">
+      <Box flex={8}>
+        {props.loading ? (
+          <PostListPlaceholder />
+        ) : (
+          <PostList posts={props.posts} />
+        )}
+      </Box>
+      <Box flex={2} minWidth="150px">
+        <SideBar />
+      </Box>
+    </Box>
   );
 });
 

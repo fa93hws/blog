@@ -19,10 +19,10 @@ type PostProps = {
 const Post = React.memo(({ post }: PostProps) => (
   <Card>
     <CardContent>
-      <Typography component="h2" variant="h5">
+      <Typography component="h2" variant="h5" gutterBottom>
         {post.title}
       </Typography>
-      <Typography variant="subtitle1" color="textSecondary">
+      <Typography variant="subtitle1" color="textSecondary" gutterBottom>
         {post.date}
       </Typography>
       <Typography variant="subtitle1" paragraph>
