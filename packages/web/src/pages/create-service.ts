@@ -22,9 +22,7 @@ function createFakeService(): Services {
 }
 
 export function createService() {
-  // const enum won't be inlined https://github.com/evanw/esbuild/issues/128
-  // This leads to fake code not be igored after minification
-  return process.env.MODE === 'FAKE'
+  return process.env.USE_FAKE === 'true'
     ? createFakeService()
     : createRealService();
 }

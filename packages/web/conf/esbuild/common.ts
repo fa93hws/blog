@@ -2,14 +2,14 @@ import * as path from 'path';
 import * as debug from 'debug';
 import type { Options } from '@fa93hws-blog/esbuild-cli';
 import { webDir } from '../path';
-import { Mode } from '../global';
 
 const outbase = path.join(webDir, 'src');
 const info = debug('esbuild-config');
 
 function getOptionsFromEnv() {
-  const mode = process.env.MODE === Mode.FAKE ? Mode.FAKE : Mode.REAL;
-  const out = { mode };
+  const useFake = process.env.USE_FAKE === 'true';
+  const useHashRoute = process.env.USE_HASH_ROUTE === 'true';
+  const out = { useFake, useHashRoute };
   info(out);
   return out;
 }
@@ -21,7 +21,8 @@ export const commonEsbuildOptions: Partial<Options['esbuildOptions']> = {
   bundle: true,
   outdir: path.join(webDir, 'dist', 'blog'),
   define: {
-    'process.env.MODE': `"${options.mode}"`,
+    'process.env.USE_FAKE': `"${options.useFake}"`,
+    'process.env.USE_HASH_ROUTE': `"${options.useHashRoute}"`,
   },
   outbase,
   sourcemap: true,

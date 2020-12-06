@@ -42,7 +42,7 @@ jobs:
         name: Deploy to S3
         run: |
           rm -rf ./*.*
-          MODE=FAKE yarn build
+          USE_FAKE=true USE_HASH_ROUTE=true yarn build
           aws s3 sync . s3://github-cd/$GITHUB_REPOSITORY/$GITHUB_REF/$GITHUB_SHA/blog --acl public-read --delete
         working-directory: packages/web/dist/blog
       - id: display-url
