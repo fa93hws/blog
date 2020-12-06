@@ -8,8 +8,7 @@ const info = debug('esbuild-config');
 
 function getOptionsFromEnv() {
   const useFake = process.env.USE_FAKE === 'true';
-  const useHashRoute = process.env.USE_HASH_ROUTE === 'true';
-  const out = { useFake, useHashRoute };
+  const out = { useFake };
   info(out);
   return out;
 }
@@ -22,7 +21,6 @@ export const commonEsbuildOptions: Partial<Options['esbuildOptions']> = {
   outdir: path.join(webDir, 'dist', 'blog'),
   define: {
     'process.env.USE_FAKE': `"${options.useFake}"`,
-    'process.env.USE_HASH_ROUTE': `"${options.useHashRoute}"`,
   },
   outbase,
   sourcemap: true,

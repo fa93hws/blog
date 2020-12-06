@@ -13,7 +13,7 @@ import { createPages } from '@pages/create-pages';
 import { Header } from '@components/header/header';
 import { Footer } from '@components/footer/footer';
 import { createAlert } from '@components/alert/alert';
-import { Router } from './router-impl';
+import { HashRouter } from 'react-router-dom';
 import '@pages/global.css';
 
 const theme = responsiveFontSizes(createMuiTheme());
@@ -34,7 +34,7 @@ const AppSkeleton = ({ Pages, Alert }: AppProps) => {
 
   return (
     <React.StrictMode>
-      <Router>
+      <HashRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Alert />
@@ -46,7 +46,7 @@ const AppSkeleton = ({ Pages, Alert }: AppProps) => {
             <Footer />
           </Box>
         </ThemeProvider>
-      </Router>
+      </HashRouter>
     </React.StrictMode>
   );
 };
