@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Box } from '@material-ui/core';
-import type { IPostService } from '@services/post/post-service';
 import type { PostProto } from '@fa93hws-blog/protos';
 import type { GlobalContext } from '@utils/global-context';
 import { SideBar } from '@components/sidebar/sidebar';
@@ -35,11 +34,8 @@ export const Home = React.memo((props: HomeProps) => {
   );
 });
 
-export function createHome(
-  postService: IPostService,
-  globalContext: GlobalContext,
-) {
-  const store = new HomeStore(postService, globalContext.showGlobalMsg);
+export function createHome({ showGlobalMsg, postService }: GlobalContext) {
+  const store = new HomeStore(postService, showGlobalMsg);
   const onMount = () => store.fetchList();
   return observer(() => (
     <Home posts={store.posts} onMount={onMount} loading={store.loading} />

@@ -52,6 +52,6 @@ const AppSkeleton = ({ Pages, Alert }: AppProps) => {
 };
 
 const { Component: Alert, showGlobalMsg } = createAlert();
-const Pages = createPages({ showGlobalMsg });
+const Pages = createPages(showGlobalMsg);
 const App = () => <AppSkeleton Pages={Pages} Alert={Alert} />;
 ReactDOM.render(<App />, document.getElementById('root'));

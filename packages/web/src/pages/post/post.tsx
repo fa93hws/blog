@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles, withTheme } from '@material-ui/core/styles';
 import { Skeleton } from '@material-ui/lab';
-import type { IPostService } from '@services/post/post-service';
 import type { PostProto } from '@fa93hws-blog/protos';
 import type { GlobalContext } from '@utils/global-context';
 import { PostStore } from './post-store';
@@ -71,11 +70,8 @@ type RouterParam = {
   uid: string;
 };
 
-export function createPost(
-  postService: IPostService,
-  globalContext: GlobalContext,
-) {
-  const postStore = new PostStore(postService, globalContext.showGlobalMsg);
+export function createPost({ showGlobalMsg, postService }: GlobalContext) {
+  const postStore = new PostStore(postService, showGlobalMsg);
   return observer(() => {
     const { uid } = useParams<RouterParam>();
     React.useEffect(() => {
