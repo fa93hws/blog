@@ -5,7 +5,6 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from '@material-ui/core/styles';
-import { BrowserRouter } from 'react-router-dom';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import 'typeface-roboto';
@@ -14,6 +13,7 @@ import { createPages } from '@pages/create-pages';
 import { Header } from '@components/header/header';
 import { Footer } from '@components/footer/footer';
 import { createAlert } from '@components/alert/alert';
+import { HashRouter } from 'react-router-dom';
 import '@pages/global.css';
 
 const theme = responsiveFontSizes(createMuiTheme());
@@ -34,7 +34,7 @@ const AppSkeleton = ({ Pages, Alert }: AppProps) => {
 
   return (
     <React.StrictMode>
-      <BrowserRouter>
+      <HashRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Alert />
@@ -46,7 +46,7 @@ const AppSkeleton = ({ Pages, Alert }: AppProps) => {
             <Footer />
           </Box>
         </ThemeProvider>
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   );
 };

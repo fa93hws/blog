@@ -82,10 +82,10 @@ describe('generateHtml', () => {
 
     expect(writeFileSync.mock.calls[0][1].toString()).toEqual(
       [
-        `<link rel=stylesheet href=/b.css>`,
-        `<link rel=stylesheet href=/${path.join('bar', 'd.css')}>`,
-        `<script src=/${path.join('foo', 'a.js')}></script>`,
-        `<script src=/c.js></script>`,
+        `<link rel=stylesheet href=b.css>`,
+        `<link rel=stylesheet href=${path.join('bar', 'd.css')}>`,
+        `<script src=${path.join('foo', 'a.js')}></script>`,
+        `<script src=c.js></script>`,
       ].join(''),
     );
     expect(writeFileSync.mock.calls[0][0]).toEqual(
@@ -194,7 +194,7 @@ describe('doBuild', () => {
       names: [],
     });
     expect(outputs[path.join(outdir, 'index.html')].toString()).toEqual(
-      '<script src=/b5d1382abb5b967c.js></script>',
+      '<script src=b5d1382abb5b967c.js></script>',
     );
   });
 });
