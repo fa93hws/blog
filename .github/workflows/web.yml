@@ -5,6 +5,7 @@ on:
       - packages/web/**
       - packages/esbuild-cli/**
       - .github/workflows/web.yml
+      - yarn.lock
 jobs:
   esbuild:
     name: ESBuild

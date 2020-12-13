@@ -4,6 +4,7 @@ on:
     paths:
       - packages/backends/**
       - .github/workflows/backends.yml
+      - yarn.lock
 jobs:
   build:
     name: Build nest
