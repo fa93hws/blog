@@ -3739,20 +3739,15 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@>= 8":
-  version "14.14.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.7.tgz#8ea1e8f8eae2430cf440564b98c6dfce1ec5945d"
-  integrity sha512-Zw1vhUSQZYw+7u5dAwNbIA9TuTotpzY/OF7sJM9FqPOF3SPjKnxrjoTktXDZgUjybf4cWVBP7O8wvKdSaGHweg==
+"@types/node@*", "@types/node@>= 8", "@types/node@>=13.7.0":
+  version "17.0.38"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.38.tgz#f8bb07c371ccb1903f3752872c89f44006132947"
+  integrity sha512-5jY9RhV7c0Z4Jy09G+NIDTsCZ5G0L5n+Z+p+Y7t5VJHM30bgwzSjVtlcBxqAj+6L/swIlvtOSzr8rBk/aNyV2g==
 
-"@types/node@^13.7.0":
+"@types/node@^13.9.1":
   version "13.13.32"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.32.tgz#f0edd0fb57b3c9f6e64a0b3ddb1e0f729b6f71ce"
   integrity sha512-sPBvDnrwZE1uePhkCEyI/qQlgZM5kePPAhHIFDWNsOrWBFRBOk3LKJYmVCLeLZlL9Ub/FzMJb31OTWCg2F+06g==
-
-"@types/node@^13.9.1":
-  version "13.13.30"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.30.tgz#1ed6e01e4ca576d5aec9cc802cc3bcf94c274192"
-  integrity sha512-HmqFpNzp3TSELxU/bUuRK+xzarVOAsR00hzcvM0TXrMlt/+wcSLa5q6YhTb6/cA6wqDCZLDcfd8fSL95x5h7AA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -13478,9 +13473,9 @@ proto-list@~1.2.1:
   integrity sha1-IS1b/hMYMGpCD2QCuOJv85ZHqEk=
 
 protobufjs@^6.10.2:
-  version "6.10.2"
-  resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.10.2.tgz#b9cb6bd8ec8f87514592ba3fdfd28e93f33a469b"
-  integrity sha512-27yj+04uF6ya9l+qfpH187aqEzfCF4+Uit0I9ZBQVqK09hk/SQzKa2MUqUpXaVa7LOFRg1TSSr3lVxGOk6c0SQ==
+  version "6.11.3"
+  resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.11.3.tgz#637a527205a35caa4f3e2a9a4a13ddffe0e7af74"
+  integrity sha512-xL96WDdCZYdU7Slin569tFX712BxsxslWwAfAhCYjQKGTq7dAU91Lomy6nLLhh/dyGhk/YH4TwTSRxTzhuHyZg==
   dependencies:
     "@protobufjs/aspromise" "^1.1.2"
     "@protobufjs/base64" "^1.1.2"
@@ -13493,7 +13488,7 @@ protobufjs@^6.10.2:
     "@protobufjs/pool" "^1.1.0"
     "@protobufjs/utf8" "^1.1.0"
     "@types/long" "^4.0.1"
-    "@types/node" "^13.7.0"
+    "@types/node" ">=13.7.0"
     long "^4.0.0"
 
 protocols@^1.1.0, protocols@^1.4.0:
