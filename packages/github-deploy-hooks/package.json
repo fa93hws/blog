@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "builtin-modules": "^3.1.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "rollup": "^1.31.1",
     "typescript": "^3.8.2"
   },
